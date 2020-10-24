@@ -17,10 +17,9 @@ _global_script_class_icons={
 
 config/name="Life is not the end"
 config/description="Your newfound life will be returned!"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/Main.tscn"
 boot_splash/image="res://boot_splash.png"
 boot_splash/fullsize=false
-boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://favicon.png"
 
 [autoload]
@@ -44,10 +43,6 @@ window/size/height=1080
 window/size/resizable=false
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
-
-[gdnative]
-
-singletons=[  ]
 
 [input]
 
@@ -76,12 +71,10 @@ ui_down={
  ]
 }
 
-[locale]
-
-locale_filter=[ 1, [ "en", "ru" ] ]
-
 [rendering]
 
+quality/2d/use_pixel_snap=true
+quality/filters/anisotropic_filter_level=16
 quality/subsurface_scattering/quality=2
 quality/subsurface_scattering/follow_surface=true
 quality/voxel_cone_tracing/high_quality=true
