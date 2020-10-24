@@ -17,6 +17,9 @@ func _physics_process(delta: float) -> void:
 
     sprite_flip()
 
+#    if Input.is_action_just_pressed('ui_shape'):
+#        print(1)
+
     #warning-ignore:return_value_discarded
     move_and_slide(velocity, FLOOR)
 
