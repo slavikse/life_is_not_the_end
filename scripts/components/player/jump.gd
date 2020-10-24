@@ -1,12 +1,12 @@
-const JUMP_POWER := 160.0
+const JUMP_POWER := 200.0
 const JUMP_UP_MULTIPLIER := 0.8 # Должно быть меньше 1.
 var current_jump_power := JUMP_POWER
 
-const GRAVITY := 60.0
+const GRAVITY := 65.0
 const JUMP_DOWN_MULTIPLIER := 1.01 # Должно быть больше 1.
 var current_gravity := GRAVITY
 
-const ROOF := 700
+const ROOF := 800.0
 
 var is_jump_pressed := false
 

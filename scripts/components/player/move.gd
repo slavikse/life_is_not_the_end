@@ -1,6 +1,6 @@
-const SPEED := 80
-const INITIAL_SPEED := SPEED / 2
-const MAX_SPEED := SPEED * 8
+const SPEED := 80.0
+const INITIAL_SPEED := SPEED / 1.5
+const MAX_SPEED := SPEED * 7.5
 const SPEED_DECREASE := SPEED * 1.5
 
 var is_left_pressed := false

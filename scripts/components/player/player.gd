@@ -5,23 +5,18 @@ var velocity := Vector2.ZERO;
 
 var move := preload('./move.gd').new()
 var jump := preload('./jump.gd').new()
+var resize := preload('./resize.gd').new()
 
 onready var sprite := $Sprite as Sprite
-
-# TODO Уменьшение / увеличение персонажа для прохождения уровней в разных местах (интерполяция)
 
 #warning-ignore:unused_argument
 func _physics_process(delta: float) -> void:
     moving()
     jumping()
-
     sprite_flip()
 
-#    if Input.is_action_just_pressed('ui_shape'):
-#        print(1)
-
-    #warning-ignore:return_value_discarded
-    move_and_slide(velocity, FLOOR)
+    scale = resize.transform(scale)
+    velocity = move_and_slide(velocity, FLOOR)
 
 
 func moving() -> void:
