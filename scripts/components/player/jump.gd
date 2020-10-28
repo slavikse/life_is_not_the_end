@@ -6,7 +6,7 @@
 
 const N_JUMP_POWER := 200.0
 const N_JUMP_UP_MULTIPLIER := 0.8
-const N_GRAVITY := 65.0
+const N_GRAVITY := 60.0
 const N_JUMP_DOWN_MULTIPLIER := 1.02
 const N_ROOF := 800.0
 

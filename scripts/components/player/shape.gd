@@ -1,7 +1,7 @@
 var is_normal_shape := true
 var small_shape := Vector2(0.6, 0.6)
 var normal_shape := Vector2(1.0, 1.0)
-var interpolation_time := 0.5
+var interpolation_time := 0.6
 
 
 func transform(scale: Vector2) -> Vector2:

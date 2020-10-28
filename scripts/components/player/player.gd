@@ -7,12 +7,21 @@ var jump := preload('./jump.gd').new()
 const FLOOR := Vector2.UP
 var velocity := Vector2.ZERO;
 
-onready var sprite := $Sprite as Sprite
+# enabled | disabled
+var zoom_out_status := 'enabled'
+var is_game_over := false
+
+onready var sprite_node := $Sprite as Sprite
+onready var game_over_node := $GameOver as Node2D
 
 
 #warning-ignore:unused_argument
 func _physics_process(delta: float) -> void:
-    scale = shape.transform(scale)
+    if is_game_over:
+        return
+
+    if zoom_out_status == 'enabled':
+        scale = shape.transform(scale)
 
     moving()
     jumping()
@@ -21,8 +30,6 @@ func _physics_process(delta: float) -> void:
     velocity = move_and_slide(velocity, FLOOR)
 
 
-# TDOO если увиличиться в месте, где персонаж не влезет - то это его уничтожит / fn.
-#   на таком месте будут иголки, которые прикончат персонажа.
 func moving() -> void:
     velocity.x = move.moving(velocity.x, shape.is_normal_shape)
 
@@ -43,4 +50,22 @@ func jumping() -> void:
 # TODO advance(0) - для быстрой смены стороны в анимации при развороте
 func sprite_flip() -> void:
     if velocity.x != 0:
-        sprite.flip_h = velocity.x < 0
+        sprite_node.flip_h = velocity.x < 0
+
+
+func _on_ZoomOutArea_zoom_out(status: String) -> void:
+    zoom_out_status = status
+
+
+func _on_Spike_game_over() -> void:
+    game_over()
+
+
+func game_over() -> void:
+    is_game_over = true
+    game_over_node.visible = true
+
+    # TODO анимация гибели и после окончания перезагрузить сцену
+    yield(get_tree().create_timer(1), 'timeout')
+    #warning-ignore:return_value_discarded
+    get_tree().reload_current_scene()
