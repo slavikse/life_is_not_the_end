@@ -12,7 +12,6 @@ var zoom_out_status := 'enabled'
 var is_game_over := false
 
 onready var sprite_node := $Sprite as Sprite
-onready var game_over_node := $GameOver as Node2D
 
 
 #warning-ignore:unused_argument
@@ -63,7 +62,6 @@ func _on_Spike_game_over() -> void:
 
 func game_over() -> void:
     is_game_over = true
-    game_over_node.visible = true
 
     # TODO анимация гибели и после окончания перезагрузить сцену
     yield(get_tree().create_timer(1), 'timeout')
