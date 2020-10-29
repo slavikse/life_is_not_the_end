@@ -4,17 +4,17 @@
 # JUMP_UP_MULTIPLIER - Должно быть меньше или равно 1.0
 # JUMP_DOWN_MULTIPLIER - Должно быть больше или равно 1.0
 
-const N_JUMP_POWER := 200.0
+const N_JUMP_POWER := 180.0
 const N_JUMP_UP_MULTIPLIER := 0.8
 const N_GRAVITY := 60.0
 const N_JUMP_DOWN_MULTIPLIER := 1.02
-const N_ROOF := 800.0
+const N_ROOF := 770.0
 
-const S_JUMP_POWER := 220.0
+const S_JUMP_POWER := 200.0
 const S_JUMP_UP_MULTIPLIER := 0.9
-const S_GRAVITY := 55.0
+const S_GRAVITY := 60.0
 const S_JUMP_DOWN_MULTIPLIER := 1.0
-const S_ROOF := 1000.0
+const S_ROOF := 1050.0
 
 # Начальное состояние Normal Shape (N_): shape.gd -> is_normal_shape := true
 var current_gravity := N_GRAVITY

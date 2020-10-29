@@ -60,12 +60,6 @@ func _on_Spike_game_over() -> void:
     game_over()
 
 
-# TODO сделать анимацию опрокидывания
 func game_over() -> void:
-    is_game_over = true
     visible = false
-
-    # TODO анимация гибели в DeadPlayer (и после окончания перезагрузить сцену?)
-    yield(get_tree().create_timer(1), 'timeout')
-    #warning-ignore:return_value_discarded
-    get_tree().reload_current_scene()
+    is_game_over = true
