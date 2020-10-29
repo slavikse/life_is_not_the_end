@@ -32,11 +32,11 @@ func move_controls() -> void:
     if Input.is_action_just_pressed('ui_left'):
         is_left_pressed = true
 
-    if Input.is_action_just_released('ui_left'):
-        is_left_pressed = false
-
     if Input.is_action_just_pressed('ui_right'):
         is_right_pressed = true
+
+    if Input.is_action_just_released('ui_left'):
+        is_left_pressed = false
 
     if Input.is_action_just_released('ui_right'):
         is_right_pressed = false

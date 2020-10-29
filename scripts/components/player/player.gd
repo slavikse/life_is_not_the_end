@@ -7,19 +7,16 @@ var jump := preload('./jump.gd').new()
 const FLOOR := Vector2.UP
 var velocity := Vector2.ZERO;
 
-# enabled | disabled
-var zoom_out_status := 'enabled'
+var is_can_zoom_out := true
 var is_game_over := false
 
 onready var sprite_node := $Sprite as Sprite
+onready var camera_node := $Camera2D as Camera2D
 
 
 #warning-ignore:unused_argument
 func _physics_process(delta: float) -> void:
-    if is_game_over:
-        return
-
-    if zoom_out_status == 'enabled':
+    if is_can_zoom_out and not is_game_over:
         scale = shape.transform(scale)
 
     moving()
@@ -52,8 +49,8 @@ func sprite_flip() -> void:
         sprite_node.flip_h = velocity.x < 0
 
 
-func _on_ZoomOutArea_zoom_out(status: String) -> void:
-    zoom_out_status = status
+func _on_IsCanZoomOut_is_can_zoom_out(flag: bool) -> void:
+    is_can_zoom_out = flag
 
 
 func _on_Spike_game_over() -> void:
@@ -61,5 +58,10 @@ func _on_Spike_game_over() -> void:
 
 
 func game_over() -> void:
-    visible = false
     is_game_over = true
+
+    visible = false
+    camera_node.current = false
+
+    yield(get_tree().create_timer(0.2), 'timeout')
+    queue_free()

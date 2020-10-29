@@ -1,13 +1,13 @@
 extends Area2D
 
-signal zoom_out(status)
+signal is_can_zoom_out(flag)
 
 
-func _on_ZoomOutArea_body_entered(body: KinematicBody2D) -> void:
+func _on_IsCanZoomOut_body_entered(body: KinematicBody2D) -> void:
     if body:
-        emit_signal('zoom_out', 'disabled')
+        emit_signal('is_can_zoom_out', false)
 
 
-func _on_ZoomOutArea_body_exited(body: KinematicBody2D) -> void:
+func _on_IsCanZoomOut_body_exited(body: KinematicBody2D) -> void:
     if body:
-        emit_signal('zoom_out', 'enabled')
+        emit_signal('is_can_zoom_out', true)
