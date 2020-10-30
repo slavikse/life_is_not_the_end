@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 var shape := preload('./shape.gd').new()
 var move := preload('./move.gd').new()
 var jump := preload('./jump.gd').new()
@@ -8,15 +10,17 @@ const FLOOR := Vector2.UP
 var velocity := Vector2.ZERO;
 
 var is_can_zoom_out := true
-var is_game_over := false
+var is_stumbled := false
 
 onready var sprite_node := $Sprite as Sprite
-onready var camera_node := $Camera2D as Camera2D
 
 
 #warning-ignore:unused_argument
 func _physics_process(delta: float) -> void:
-    if is_can_zoom_out and not is_game_over:
+    if is_stumbled:
+        return
+
+    if is_can_zoom_out:
         scale = shape.transform(scale)
 
     moving()
@@ -53,15 +57,16 @@ func _on_IsCanZoomOut_is_can_zoom_out(flag: bool) -> void:
     is_can_zoom_out = flag
 
 
-func _on_Spike_game_over() -> void:
-    game_over()
-
-
-func game_over() -> void:
-    is_game_over = true
-
+func _on_Spike_stumbled() -> void:
+    is_stumbled = true
     visible = false
-    camera_node.current = false
 
-    yield(get_tree().create_timer(0.2), 'timeout')
-    queue_free()
+
+# TODO восстановить управление и переместить в новую позицию. удалить мертвеца
+# TODO анимация поднятия
+func risen(dead_position: Vector2) -> void:
+    position = dead_position
+    print('dead_position', dead_position)
+
+    is_stumbled = false
+    visible = true

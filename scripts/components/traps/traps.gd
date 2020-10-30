@@ -1,8 +1,8 @@
 extends Area2D
 
-signal game_over
+signal stumbled
 
 
 func _on_Spike_body_entered(body: KinematicBody2D) -> void:
     if body:
-        emit_signal('game_over')
+        emit_signal('stumbled')
