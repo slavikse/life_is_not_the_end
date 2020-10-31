@@ -58,15 +58,14 @@ func _on_IsCanZoomOut_is_can_zoom_out(flag: bool) -> void:
 
 
 func _on_Spike_stumbled() -> void:
-    is_stumbled = true
     visible = false
+    is_stumbled = true
 
 
 # TODO восстановить управление и переместить в новую позицию. удалить мертвеца
 # TODO анимация поднятия
 func risen(dead_position: Vector2) -> void:
     position = dead_position
-    print('dead_position', dead_position)
 
     is_stumbled = false
     visible = true

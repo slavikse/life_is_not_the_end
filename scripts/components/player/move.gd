@@ -1,5 +1,4 @@
-# N - Normal Shape
-# S - Small Shape
+# N - Normal Shape | S - Small Shape
 
 const N_SPEED := 70.0
 const N_INITIAL_SPEED := N_SPEED / 1.5
@@ -16,7 +15,7 @@ var is_right_pressed := false
 
 
 func moving(x: float, is_normal_shape: bool) -> float:
-    move_controls()
+    controls()
 
     if is_left_pressed and is_right_pressed:
         x = fast_deceleration(x, is_normal_shape)
@@ -28,7 +27,7 @@ func moving(x: float, is_normal_shape: bool) -> float:
     return x
 
 
-func move_controls() -> void:
+func controls() -> void:
     if Input.is_action_just_pressed('ui_left'):
         is_left_pressed = true
 
