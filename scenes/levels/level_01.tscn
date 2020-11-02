@@ -115,8 +115,8 @@ position = Vector2( 128, 448 )
 
 [node name="Ball" type="RigidBody2D" parent="."]
 position = Vector2( 128, 16 )
-collision_layer = 8
-collision_mask = 15
+collision_layer = 16
+collision_mask = 23
 gravity_scale = 5.0
 can_sleep = false
 linear_damp = 0.0
@@ -135,7 +135,7 @@ polygon = PoolVector2Array( 48, -32, 24, -24, 8, 0, 8, 16, 24, 40, 48, 48, 72, 4
 shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 312, 392 )
+position = Vector2( 352, 448 )
 [connection signal="stumbled" from="World/Spikes/Spike" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike" to="Player" method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike2" to="." method="_on_Spike_stumbled"]

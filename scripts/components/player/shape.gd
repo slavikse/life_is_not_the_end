@@ -1,13 +1,21 @@
 var is_normal_shape := true
-var normal_shape := Vector2(1.0, 1.0)
-var small_shape := Vector2(0.6, 0.6)
-var interpolation_time := 0.4
+var small_scale := Vector2(0.6, 0.6)
+# var normal_shape := Vector2(1.0, 1.0)
 
 
-func transform(scale: Vector2) -> Vector2:
+func switch_scale(animation_node: AnimationPlayer) -> void:
     if Input.is_action_just_pressed('ui_transform'):
         is_normal_shape = !is_normal_shape
 
-    var target_shape := normal_shape if is_normal_shape else small_shape
+        if is_normal_shape:
+            animation_node.play('shape_increase')
 
-    return scale.linear_interpolate(target_shape, interpolation_time)
+        else:
+            animation_node.play('shape_decrease')
+
+
+func force_to_small_scale(animation_node: AnimationPlayer) -> Vector2:
+    is_normal_shape = false
+    animation_node.stop()
+
+    return small_scale

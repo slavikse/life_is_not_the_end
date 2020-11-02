@@ -11,7 +11,7 @@ const N_ROOF := 750.0
 
 const S_JUMP_POWER := 190.0
 const S_JUMP_UP_MULTIPLIER := 0.95
-const S_GRAVITY := 55.0
+const S_GRAVITY := 60.0
 const S_JUMP_DOWN_MULTIPLIER := 1.00
 const S_ROOF := 1010.0
 
@@ -41,6 +41,9 @@ func ceiling(y: float, is_normal_shape: bool) -> float:
 
 
 func continuous_jumping(y: float, is_normal_shape: bool) -> float:
+    if Input.is_action_just_released('ui_up'):
+        is_jump_pressed = false
+
     if is_jump_pressed:
         current_jump_power *= N_JUMP_UP_MULTIPLIER if is_normal_shape else S_JUMP_UP_MULTIPLIER
         y -= current_jump_power
@@ -54,8 +57,5 @@ func continuous_jumping(y: float, is_normal_shape: bool) -> float:
     else:
         current_gravity *= N_JUMP_DOWN_MULTIPLIER if is_normal_shape else S_JUMP_DOWN_MULTIPLIER
         y += current_gravity
-
-    if Input.is_action_just_released('ui_up'):
-        is_jump_pressed = false
 
     return y
