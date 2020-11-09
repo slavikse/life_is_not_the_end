@@ -1,21 +1,22 @@
+const NORMAL_SHAPE := Vector2(1.0, 1.0)
+const SMALL_SHAPE := Vector2(0.5, 0.5)
+
 var is_normal_shape := true
-var small_scale := Vector2(0.6, 0.6)
-# var normal_shape := Vector2(1.0, 1.0)
 
 
-func switch_scale(animation_node: AnimationPlayer) -> void:
+func switch_scale(animation_scale_node: AnimationPlayer) -> void:
     if Input.is_action_just_pressed('ui_transform'):
         is_normal_shape = !is_normal_shape
 
         if is_normal_shape:
-            animation_node.play('shape_increase')
+            animation_scale_node.play('shape_increase')
 
         else:
-            animation_node.play('shape_decrease')
+            animation_scale_node.play('shape_decrease')
 
 
-func force_to_small_scale(animation_node: AnimationPlayer) -> Vector2:
+func force_to_small_shape(animation_scale_node: AnimationPlayer) -> Vector2:
     is_normal_shape = false
-    animation_node.stop()
+    animation_scale_node.stop()
 
-    return small_scale
+    return SMALL_SHAPE

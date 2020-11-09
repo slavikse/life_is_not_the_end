@@ -1,24 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://textures/player/adventurer_idle.png" type="Texture" id=2]
+[ext_resource path="res://textures/player/sprite_died.png" type="Texture" id=1]
 [ext_resource path="res://scripts/components/player/dead_player.gd" type="Script" id=3]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 24.0
-height = 32.0
 
 [node name="DeadPlayer" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 17
-gravity_scale = 30.0
+gravity_scale = 20.0
 linear_damp = 2.0
-angular_damp = 3.0
-applied_torque = 30.0
+angular_velocity = 1.0
+angular_damp = 0.0
+applied_torque = 20.0
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -15 )
-texture = ExtResource( 2 )
+position = Vector2( 0, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( 0, 32 )
+polygon = PoolVector2Array( -16, -1, 16, -1, 16, -8, 24, -8, 24, -16, 31, -16, 31, -48, 24, -48, 24, -56, 16, -56, 16, -63, -16, -63, -16, -56, -24, -56, -24, -48, -31, -48, -31, -16, -24, -16, -24, -8, -16, -8 )

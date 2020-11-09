@@ -4,6 +4,7 @@ class_name Player
 
 var move := preload('./move.gd').new()
 var jump := preload('./jump.gd').new()
+var animations := preload('./animations.gd').new()
 var shape := preload('./shape.gd').new()
 
 const FLOOR := Vector2.UP
@@ -13,19 +14,22 @@ var is_stumbled := false
 var is_can_zoom_out := true
 
 onready var sprite_node := $Sprite as Sprite
-onready var animation_node := $AnimationPlayer as AnimationPlayer
+onready var animation_scale_node := $AnimationScale as AnimationPlayer
+onready var animation_move_node := $AnimationMove as AnimationPlayer
 
 
+# TODO определить, что тело в покое, т.е. упало и больше не двигается и тогда восстановить игрока.
 func _physics_process(_delta: float) -> void:
     if is_stumbled:
         return
 
     moving()
     jumping()
-    sprite_flip()
+
+    animations.playing(velocity, animation_move_node, sprite_node)
 
     if is_can_zoom_out:
-        shape.switch_scale(animation_node)
+        shape.switch_scale(animation_scale_node)
 
     velocity = move_and_slide(velocity, FLOOR)
 
@@ -49,20 +53,16 @@ func jumping() -> void:
     velocity.y = jump.continuous_jumping(velocity.y, shape.is_normal_shape)
 
 
-# TODO advance(0) - для быстрой смены стороны в анимации при развороте
-func sprite_flip() -> void:
-    if velocity.x != 0:
-        sprite_node.flip_h = velocity.x < 0
-
-
+# TODO звуковой эффект
 func _on_IsCanZoomOut_is_can_zoom_out(flag: bool) -> void:
     is_can_zoom_out = flag
 
     if not is_can_zoom_out and shape.is_normal_shape:
-        scale = shape.force_to_small_scale(animation_node)
+        scale = shape.force_to_small_shape(animation_scale_node)
 
 
 # TODO в месте соприкосновения вставить спрайт удара, чтобы игрок понимал, что произошло
+# TODO звуковой эффект столкновения
 func _on_Spike_stumbled() -> void:
     visible = false
     is_stumbled = true
@@ -74,5 +74,5 @@ func _on_Spike_stumbled() -> void:
 func external_risen(dead_position: Vector2) -> void:
     position = dead_position
 
-    is_stumbled = false
     visible = true
+    is_stumbled = false

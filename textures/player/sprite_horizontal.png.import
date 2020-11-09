@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/adventurer_idle.png-f534f2bd4f5b5848f0644e01b651c781.stex"
+path="res://.import/sprite_horizontal.png-6f010dcfda86b44f79d5006e03958c60.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/adventurer_idle.png"
-dest_files=[ "res://.import/adventurer_idle.png-f534f2bd4f5b5848f0644e01b651c781.stex" ]
+source_file="res://textures/player/sprite_horizontal.png"
+dest_files=[ "res://.import/sprite_horizontal.png-6f010dcfda86b44f79d5006e03958c60.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

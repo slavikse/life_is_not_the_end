@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/favicon.png-05a5f25b7b35b567a640a7daf7751a8e.stex"
+path="res://.import/sprite_idle.png-a7e43a3efb8a6a5ad48fc779ac66e2ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://favicon.png"
-dest_files=[ "res://.import/favicon.png-05a5f25b7b35b567a640a7daf7751a8e.stex" ]
+source_file="res://textures/player/sprite_idle.png"
+dest_files=[ "res://.import/sprite_idle.png-a7e43a3efb8a6a5ad48fc779ac66e2ec.stex" ]
 
 [params]
 

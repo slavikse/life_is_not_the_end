@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/favicon.png-05a5f25b7b35b567a640a7daf7751a8e.stex"
+path="res://.import/sprite_corner.png-aa7954fad331411a3b84d113f2d4d39e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://favicon.png"
-dest_files=[ "res://.import/favicon.png-05a5f25b7b35b567a640a7daf7751a8e.stex" ]
+source_file="res://textures/player/sprite_corner.png"
+dest_files=[ "res://.import/sprite_corner.png-aa7954fad331411a3b84d113f2d4d39e.stex" ]
 
 [params]
 

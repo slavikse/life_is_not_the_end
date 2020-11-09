@@ -1,22 +1,30 @@
 extends RigidBody2D
 
-const for_center_y_gravity := 5.0 * 8.0
+const FOR_NORMAL_SHAPE_CENTER_Y_GRAVITY := 4.0 * 8.0
+const FOR_SMALL_SHAPE_CENTER_Y_GRAVITY := 2.0 * 8.0
+
+# Нормальная форма 32 по умолчанию.
+const FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y := 16
+
+const DECREASE_ACCELERATION := 0.6
 
 onready var player_node := $'/root/Level/Player' as Player
-onready var player_sprite_node := player_node.get_node('Sprite') as Sprite
 
 onready var sprite_node := $Sprite as Sprite
-onready var collision_shape_node := $CollisionShape2D as CollisionShape2D
+onready var collision_polygon_node := $CollisionPolygon2D as CollisionPolygon2D
 
 
 func _ready() -> void:
-    position = Vector2(player_node.position.x, player_node.position.y - for_center_y_gravity)
+    if player_node.shape.is_normal_shape:
+        position = Vector2(player_node.position.x, player_node.position.y - FOR_NORMAL_SHAPE_CENTER_Y_GRAVITY)
 
-    sprite_node.flip_h = player_sprite_node.flip_h
-    sprite_node.scale = player_node.scale
-    collision_shape_node.scale = player_node.scale
+    else:
+        position = Vector2(player_node.position.x, player_node.position.y - FOR_SMALL_SHAPE_CENTER_Y_GRAVITY)
 
-    set_linear_velocity(player_node.velocity)
+        sprite_node.position.y = FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y
+        sprite_node.scale = player_node.shape.NORMAL_SHAPE
 
+        collision_polygon_node.position.y = FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y
+        collision_polygon_node.scale = player_node.shape.NORMAL_SHAPE
 
-# TODO определить, что тело в покое, т.е. упало и больше не двигается и тогда восстановить игрока.
+    set_linear_velocity(player_node.velocity * DECREASE_ACCELERATION)

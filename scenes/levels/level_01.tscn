@@ -78,7 +78,7 @@ __meta__ = {
 }
 
 [node name="Spike" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( -24, 448 )
+position = Vector2( -32, 448 )
 
 [node name="Spike2" parent="World/Spikes" instance=ExtResource( 2 )]
 position = Vector2( -64, -64 )
@@ -136,20 +136,20 @@ shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 352, 448 )
-[connection signal="stumbled" from="World/Spikes/Spike" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike2" to="." method="_on_Spike_stumbled"]
+[connection signal="stumbled" from="World/Spikes/Spike" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike2" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike3" to="." method="_on_Spike_stumbled"]
+[connection signal="stumbled" from="World/Spikes/Spike2" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike3" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike4" to="." method="_on_Spike_stumbled"]
+[connection signal="stumbled" from="World/Spikes/Spike3" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike4" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike5" to="." method="_on_Spike_stumbled"]
+[connection signal="stumbled" from="World/Spikes/Spike4" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike5" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike6" to="." method="_on_Spike_stumbled"]
+[connection signal="stumbled" from="World/Spikes/Spike5" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike6" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike7" to="." method="_on_Spike_stumbled"]
+[connection signal="stumbled" from="World/Spikes/Spike6" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike7" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike8" to="." method="_on_Spike_stumbled"]
+[connection signal="stumbled" from="World/Spikes/Spike7" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike8" to="Player" method="_on_Spike_stumbled"]
+[connection signal="stumbled" from="World/Spikes/Spike8" to="." method="_on_Spike_stumbled"]
 [connection signal="is_can_zoom_out" from="World/Zones/IsCanZoomOut" to="Player" method="_on_IsCanZoomOut_is_can_zoom_out"]

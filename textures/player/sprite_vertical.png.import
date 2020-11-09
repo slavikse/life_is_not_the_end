@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/favicon.png-05a5f25b7b35b567a640a7daf7751a8e.stex"
+path="res://.import/sprite_vertical.png-c972f7a7744f50e55dc3a61b8f77d891.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://favicon.png"
-dest_files=[ "res://.import/favicon.png-05a5f25b7b35b567a640a7daf7751a8e.stex" ]
+source_file="res://textures/player/sprite_vertical.png"
+dest_files=[ "res://.import/sprite_vertical.png-c972f7a7744f50e55dc3a61b8f77d891.stex" ]
 
 [params]
 
