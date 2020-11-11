@@ -18,7 +18,6 @@ onready var animation_scale_node := $AnimationScale as AnimationPlayer
 onready var animation_move_node := $AnimationMove as AnimationPlayer
 
 
-# TODO определить, что тело в покое, т.е. упало и больше не двигается и тогда восстановить игрока.
 func _physics_process(_delta: float) -> void:
     if is_stumbled:
         return
@@ -61,18 +60,7 @@ func _on_IsCanZoomOut_is_can_zoom_out(flag: bool) -> void:
         scale = shape.force_to_small_shape(animation_scale_node)
 
 
-# TODO в месте соприкосновения вставить спрайт удара, чтобы игрок понимал, что произошло
 # TODO звуковой эффект столкновения
 func _on_Spike_stumbled() -> void:
     visible = false
     is_stumbled = true
-
-
-# TODO восстановить управление и переместить в новую позицию
-# TODO анимация поднятия
-# TODO удалить мертвеца
-func external_risen(dead_position: Vector2) -> void:
-    position = dead_position
-
-    visible = true
-    is_stumbled = false

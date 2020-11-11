@@ -33,11 +33,11 @@ func play_animations(animation_move_node: AnimationPlayer) -> void:
         animation_move_node.play('corner')
 
     else:
-        var h_0 = HORIZONTAL_VELOCITIES[0]
-        var h_1 = HORIZONTAL_VELOCITIES[1]
+        var h_0 := float(HORIZONTAL_VELOCITIES[0])
+        var h_1 := float(HORIZONTAL_VELOCITIES[1])
 
-        var v_0 = VERTICAL_VELOCITIES[0]
-        var v_1 = VERTICAL_VELOCITIES[1]
+        var v_0 := float(VERTICAL_VELOCITIES[0])
+        var v_1 := float(VERTICAL_VELOCITIES[1])
 
         if h_0 != HORIZONTAL_VELOCITY_DEFAULT and h_1 != HORIZONTAL_VELOCITY_DEFAULT:
             animation_move_node.play('horizontal')

@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "corner"
 length = 0.001
 tracks/0/type = "value"
@@ -52,7 +52,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -67,7 +67,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -82,7 +82,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 2 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -133,7 +133,7 @@ anims/shape_decrease = SubResource( 1 )
 anims/shape_increase = SubResource( 2 )
 
 [node name="AnimationMove" type="AnimationPlayer" parent="."]
-anims/corner = SubResource( 5 )
-anims/horizontal = SubResource( 6 )
-anims/idle = SubResource( 7 )
-anims/vertical = SubResource( 8 )
+anims/corner = SubResource( 3 )
+anims/horizontal = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/vertical = SubResource( 6 )

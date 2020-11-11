@@ -1,5 +1,3 @@
-# N - Normal Shape | S - Small Shape
-
 const N_SPEED := 70.0
 const N_INITIAL_SPEED := N_SPEED / 1.5
 const N_MAX_SPEED := N_SPEED * 7.5
@@ -9,6 +7,8 @@ const S_SPEED := 85.0
 const S_INITIAL_SPEED := S_SPEED / 1.8
 const S_MAX_SPEED := S_SPEED * 8.0
 const S_SPEED_DECREASE := S_SPEED * 1.8
+
+# N - Normal Shape | S - Small Shape
 
 var is_left_pressed := false
 var is_right_pressed := false
