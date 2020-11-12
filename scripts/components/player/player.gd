@@ -17,18 +17,19 @@ onready var sprite_node := $Sprite as Sprite
 onready var animation_scale_node := $AnimationScale as AnimationPlayer
 onready var animation_move_node := $AnimationMove as AnimationPlayer
 
+onready var psi_beam_node := $PsiBeam as PsiBeam
+
 
 func _physics_process(_delta: float) -> void:
     if is_stumbled:
         return
 
-    moving()
-    jumping()
-
-    animations.playing(velocity, animation_move_node, sprite_node)
-
     if is_can_zoom_out:
         shape.switch_scale(animation_scale_node)
+
+    moving()
+    jumping()
+    psi_beam()
 
     velocity = move_and_slide(velocity, FLOOR)
 
@@ -50,6 +51,14 @@ func jumping() -> void:
         velocity.y = jump.ceiling(velocity.y, shape.is_normal_shape)
 
     velocity.y = jump.continuous_jumping(velocity.y, shape.is_normal_shape)
+
+
+func psi_beam() -> void:
+    animations.play(velocity, animation_move_node, sprite_node)
+
+    var center_y := position.y - 4 * 8 if shape.is_normal_shape else position.y - 2 * 8;
+    var player_center := Vector2(position.x, center_y)
+    psi_beam_node.play(animation_move_node, sprite_node, player_center)
 
 
 # TODO звуковой эффект

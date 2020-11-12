@@ -13,15 +13,21 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/components/player/player.gd"
+}, {
+"base": "Node2D",
+"class": "PsiBeam",
+"language": "GDScript",
+"path": "res://scripts/components/psi_beam/psi_beam.gd"
 } ]
 _global_script_class_icons={
-"Player": ""
+"Player": "",
+"PsiBeam": ""
 }
 
 [application]
 
-config/name="Life is not the end"
-config/description="Your newfound life will be returned!"
+config/name="life.is.not.the.end"
+config/description="A randomly acquired life will be returned!"
 run/main_scene="res://scenes/Main.tscn"
 boot_splash/image="res://boot_splash.png"
 boot_splash/fullsize=false
@@ -46,7 +52,6 @@ gdscript/warnings/unsafe_call_argument=true
 
 window/size/width=1920
 window/size/height=1080
-window/size/resizable=false
 window/ios/hide_home_indicator=false
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
@@ -121,6 +126,11 @@ ui_reload_current_scene={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
+ui_psi_beam_shot={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -128,7 +138,9 @@ ui_reload_current_scene={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="DeadPlayer"
 2d_physics/layer_4="Spike"
-2d_physics/layer_5="Ball"
+2d_physics/layer_5="PsiBeam"
+2d_physics/layer_6="PsiBullet"
+2d_physics/layer_7="Block"
 
 [rendering]
 

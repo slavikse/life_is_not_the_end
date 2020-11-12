@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/components/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/components/traps/Spike.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/levels/level_01.gd" type="Script" id=3]
 [ext_resource path="res://textures/level/tilesheet_complete.png" type="Texture" id=4]
 [ext_resource path="res://scenes/components/zones/IsCanZoomOut.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/blocks/Block_01.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -136,6 +137,12 @@ shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 352, 448 )
+
+[node name="Node2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 584, 240 )
+
+[node name="Node2D" parent="Node2D" instance=ExtResource( 6 )]
+position = Vector2( -88, 128 )
 [connection signal="stumbled" from="World/Spikes/Spike" to="." method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike" to="Player" method="_on_Spike_stumbled"]
 [connection signal="stumbled" from="World/Spikes/Spike2" to="." method="_on_Spike_stumbled"]

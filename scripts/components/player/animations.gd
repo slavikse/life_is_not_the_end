@@ -5,9 +5,9 @@ const VERTICAL_VELOCITY_DEFAULT := 60.0 # Величина влияния гра
 const VERTICAL_VELOCITIES := [VERTICAL_VELOCITY_DEFAULT, VERTICAL_VELOCITY_DEFAULT]
 
 
-func playing(velocity: Vector2, animation_move_node: AnimationPlayer, sprite_node: Sprite) -> void:
+func play(velocity: Vector2, animation_move_node: AnimationPlayer, sprite_node: Sprite) -> void:
     var y_floored := velocities_collecting(velocity)
-    play_animations(animation_move_node)
+    play_animation(animation_move_node)
     flip_h_and_v(velocity, y_floored, sprite_node)
 
 
@@ -22,7 +22,7 @@ func velocities_collecting(velocity: Vector2) -> float:
     return y_floored
 
 
-func play_animations(animation_move_node: AnimationPlayer) -> void:
+func play_animation(animation_move_node: AnimationPlayer) -> void:
     var is_moving_horizontal := HORIZONTAL_VELOCITIES.has(HORIZONTAL_VELOCITY_DEFAULT)
     var is_moving_vertical := VERTICAL_VELOCITIES.has(VERTICAL_VELOCITY_DEFAULT)
 
