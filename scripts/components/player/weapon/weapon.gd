@@ -1,10 +1,13 @@
 extends Node2D
 
-class_name PsiBeam
+class_name Weapon
 
-export(PackedScene) var PsiBulletScene: PackedScene
+export(PackedScene) var BulletScene: PackedScene
 
-onready var root_node := $'/root' as Viewport
+onready var level_node := $'/root/Level' as Level
+
+const acceleration_speed := Vector2(1000.0, 1000.0)
+var current_rotation_degrees := -1
 
 
 func play(animation_move_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:
@@ -61,11 +64,14 @@ func play(animation_move_node: AnimationPlayer, sprite_node: Sprite, player_cent
 
     set_rotation_degrees(rotation_degrees)
 
-    if can_show(rotation_degrees):
-        must_be_called(player_center, acceleration_vector)
+    if current_rotation_degrees != rotation_degrees:
+        current_rotation_degrees = rotation_degrees
+
+        if can_shoot(rotation_degrees):
+            shoot(player_center, acceleration_vector)
 
 
-func can_show(rotation_degrees: int) -> bool:
+func can_shoot(rotation_degrees: int) -> bool:
     if rotation_degrees == -1:
         hide()
         return false
@@ -74,12 +80,9 @@ func can_show(rotation_degrees: int) -> bool:
     return true
 
 
-# TODO пуля будет разрушаться об препядствие
-# TODO скрипт внутри пули, чтобы ее уничтожить через некоторое время.
-func must_be_called(player_center: Vector2, acceleration_vector: Vector2) -> void:
-    if Input.is_action_just_released('ui_psi_beam_shot'):
-        var psi_bullet_node := PsiBulletScene.instance() as RigidBody2D
-        psi_bullet_node.position = player_center
-        psi_bullet_node.set_linear_velocity(acceleration_vector * Vector2(1000, 1000))
+func shoot(player_center: Vector2, acceleration_vector: Vector2) -> void:
+    var bullet_node := BulletScene.instance() as RigidBody2D
+    bullet_node.position = player_center
+    bullet_node.set_linear_velocity(acceleration_vector * acceleration_speed)
 
-        root_node.add_child(psi_bullet_node)
+    level_node.add_child(bullet_node)

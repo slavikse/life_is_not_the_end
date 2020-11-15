@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 class_name Player
 
-var move := preload('./move.gd').new()
-var jump := preload('./jump.gd').new()
-var animations := preload('./animations.gd').new()
-var shape := preload('./shape.gd').new()
+var move := preload('./movement/move.gd').new()
+var jump := preload('./movement/jump.gd').new()
+var shape := preload('./transform/shape.gd').new()
+var animations := preload('./transform/animations.gd').new()
 
 const FLOOR := Vector2.UP
 var velocity := Vector2.ZERO;
@@ -16,8 +16,7 @@ var is_can_zoom_out := true
 onready var sprite_node := $Sprite as Sprite
 onready var animation_scale_node := $AnimationScale as AnimationPlayer
 onready var animation_move_node := $AnimationMove as AnimationPlayer
-
-onready var psi_beam_node := $PsiBeam as PsiBeam
+onready var weapon_node := $Weapon as Weapon
 
 
 func _physics_process(_delta: float) -> void:
@@ -29,13 +28,11 @@ func _physics_process(_delta: float) -> void:
 
     moving()
     jumping()
-    psi_beam()
+    shoot()
 
     velocity = move_and_slide(velocity, FLOOR)
 
 
-# TODO звук шага вызывать через плеер анимации с помощью обратного вызова на ключевом кадре
-# https://docs.godotengine.org/ru/stable/tutorials/animation/introduction_2d.html#advanced-call-method-tracks
 func moving() -> void:
     velocity.x = move.moving(velocity.x, shape.is_normal_shape)
 
@@ -53,23 +50,21 @@ func jumping() -> void:
     velocity.y = jump.continuous_jumping(velocity.y, shape.is_normal_shape)
 
 
-func psi_beam() -> void:
+func shoot() -> void:
     animations.play(velocity, animation_move_node, sprite_node)
 
     var center_y := position.y - 4 * 8 if shape.is_normal_shape else position.y - 2 * 8;
     var player_center := Vector2(position.x, center_y)
-    psi_beam_node.play(animation_move_node, sprite_node, player_center)
+    weapon_node.play(animation_move_node, sprite_node, player_center)
 
 
-# TODO звуковой эффект
-func _on_IsCanZoomOut_is_can_zoom_out(flag: bool) -> void:
+func zoom_out(flag: bool) -> void:
     is_can_zoom_out = flag
 
     if not is_can_zoom_out and shape.is_normal_shape:
         scale = shape.force_to_small_shape(animation_scale_node)
 
 
-# TODO звуковой эффект столкновения
-func _on_Spike_stumbled() -> void:
+func game_over() -> void:
     visible = false
     is_stumbled = true

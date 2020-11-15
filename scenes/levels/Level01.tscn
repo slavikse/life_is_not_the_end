@@ -5,8 +5,9 @@
 [ext_resource path="res://scripts/levels/level_01.gd" type="Script" id=3]
 [ext_resource path="res://textures/level/tilesheet_complete.png" type="Texture" id=4]
 [ext_resource path="res://scenes/components/zones/IsCanZoomOut.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/components/blocks/Block_01.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/blocks/Block.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/components/zones/GameArea.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -55,14 +56,16 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 40.0
-
 [node name="Level" type="Node2D"]
+position = Vector2( -224, -24 )
 script = ExtResource( 3 )
 DeadPlayerScene = ExtResource( 7 )
 
-[node name="World" type="TileMap" parent="."]
+[node name="GameArea" parent="." instance=ExtResource( 8 )]
+light_mask = 0
+position = Vector2( -40, -32 )
+
+[node name="World3" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 collision_friction = 0.0
 collision_mask = 0
@@ -72,91 +75,68 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Spikes" type="Node2D" parent="World"]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
+[node name="Spikes" type="Node2D" parent="World3"]
 
-[node name="Spike" parent="World/Spikes" instance=ExtResource( 2 )]
+[node name="Spike" parent="World3/Spikes" instance=ExtResource( 2 )]
 position = Vector2( -32, 448 )
 
-[node name="Spike2" parent="World/Spikes" instance=ExtResource( 2 )]
+[node name="Spike9" parent="World3/Spikes" instance=ExtResource( 2 )]
+position = Vector2( 192, -232 )
+
+[node name="Spike2" parent="World3/Spikes" instance=ExtResource( 2 )]
 position = Vector2( -64, -64 )
 
-[node name="Spike3" parent="World/Spikes" instance=ExtResource( 2 )]
+[node name="Spike3" parent="World3/Spikes" instance=ExtResource( 2 )]
 position = Vector2( -216, -320 )
 rotation = 3.14159
 
-[node name="Spike4" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( -432, -320 )
+[node name="Spike4" parent="World3/Spikes" instance=ExtResource( 2 )]
+position = Vector2( -432, -318 )
 rotation = 3.14159
 
-[node name="Spike5" parent="World/Spikes" instance=ExtResource( 2 )]
+[node name="Spike5" parent="World3/Spikes" instance=ExtResource( 2 )]
 position = Vector2( -896, -96 )
 rotation = 1.57079
 
-[node name="Spike6" parent="World/Spikes" instance=ExtResource( 2 )]
+[node name="Spike6" parent="World3/Spikes" instance=ExtResource( 2 )]
 position = Vector2( -352, 192 )
 
-[node name="Spike7" parent="World/Spikes" instance=ExtResource( 2 )]
+[node name="Spike7" parent="World3/Spikes" instance=ExtResource( 2 )]
 position = Vector2( 400, -64 )
 
-[node name="Spike8" parent="World/Spikes" instance=ExtResource( 2 )]
+[node name="Spike8" parent="World3/Spikes" instance=ExtResource( 2 )]
 position = Vector2( 664, 256 )
 
-[node name="Zones" type="Node2D" parent="World"]
+[node name="Zones" type="Node2D" parent="World3"]
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
-[node name="IsCanZoomOut" parent="World/Zones" instance=ExtResource( 5 )]
+[node name="IsCanZoomOut" parent="World3/Zones" instance=ExtResource( 5 )]
 position = Vector2( 128, 448 )
 
-[node name="Ball" type="RigidBody2D" parent="."]
-position = Vector2( 128, 16 )
-collision_layer = 16
-collision_mask = 23
-gravity_scale = 5.0
-can_sleep = false
-linear_damp = 0.0
-angular_velocity = 1.0
-angular_damp = 0.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
+[node name="World" type="Node2D" parent="."]
 
-[node name="Polygon2D" type="Polygon2D" parent="Ball"]
-position = Vector2( -48, -8 )
-polygon = PoolVector2Array( 48, -32, 24, -24, 8, 0, 8, 16, 24, 40, 48, 48, 72, 40, 88, 16, 88, 0, 72, -24 )
+[node name="Block_01" parent="World" instance=ExtResource( 6 )]
+position = Vector2( 512, -256 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource( 3 )
+[node name="Block_07" parent="World" instance=ExtResource( 6 )]
+position = Vector2( 192, -168 )
+
+[node name="Block_02" parent="World" instance=ExtResource( 6 )]
+position = Vector2( 592, -256 )
+
+[node name="Block_03" parent="World" instance=ExtResource( 6 )]
+position = Vector2( 584, -352 )
+
+[node name="Block_04" parent="World" instance=ExtResource( 6 )]
+position = Vector2( 736, -288 )
+
+[node name="Block_05" parent="World" instance=ExtResource( 6 )]
+position = Vector2( 704, -192 )
+
+[node name="Block_06" parent="World" instance=ExtResource( 6 )]
+position = Vector2( 808, -152 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 352, 448 )
-
-[node name="Node2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 584, 240 )
-
-[node name="Node2D" parent="Node2D" instance=ExtResource( 6 )]
-position = Vector2( -88, 128 )
-[connection signal="stumbled" from="World/Spikes/Spike" to="." method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike2" to="." method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike2" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike3" to="." method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike3" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike4" to="." method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike4" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike5" to="." method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike5" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike6" to="." method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike6" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike7" to="." method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike7" to="Player" method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike8" to="." method="_on_Spike_stumbled"]
-[connection signal="stumbled" from="World/Spikes/Spike8" to="Player" method="_on_Spike_stumbled"]
-[connection signal="is_can_zoom_out" from="World/Zones/IsCanZoomOut" to="Player" method="_on_IsCanZoomOut_is_can_zoom_out"]
+position = Vector2( 512, -64 )

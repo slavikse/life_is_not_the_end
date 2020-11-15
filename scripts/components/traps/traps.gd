@@ -1,8 +1,9 @@
-extends Area2D
+extends RigidBody2D
 
-signal stumbled
+onready var level_node := $'/root/Level' as Level
 
 
-func _on_Spike_body_entered(body: KinematicBody2D) -> void:
-    if body:
-        emit_signal('stumbled')
+func _on_Area2D_body_entered(player_node: Player) -> void:
+    if player_node:
+        player_node.game_over()
+        level_node.game_over()
