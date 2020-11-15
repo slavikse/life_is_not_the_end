@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "Block",
+"language": "GDScript",
+"path": "res://scripts/components/blocks/block.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Bullet",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://scripts/components/player/weapon/weapon.gd"
 } ]
 _global_script_class_icons={
+"Block": "",
 "Bullet": "",
 "Level": "",
 "Player": "",
