@@ -13,6 +13,7 @@ script = ExtResource( 3 )
 DeadPlayerScene = ExtResource( 7 )
 
 [node name="GameArea" parent="." instance=ExtResource( 8 )]
+visible = false
 light_mask = 0
 position = Vector2( -40, -32 )
 

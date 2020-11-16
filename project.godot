@@ -44,12 +44,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="life.is.not.the.end"
+config/name="Life Is Not The End"
 config/description="A randomly acquired life will be returned!"
 run/main_scene="res://scenes/Main.tscn"
 boot_splash/image="res://boot_splash.png"
 boot_splash/fullsize=false
 config/icon="res://favicon.png"
+config/windows_native_icon="res://favicon.ico"
 
 [autoload]
 
@@ -147,12 +148,26 @@ ui_reload_current_scene={
 
 [layer_names]
 
+2d_physics/layer_1="-"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="DeadPlayer"
 2d_physics/layer_4="Spike"
 2d_physics/layer_5="Bullet"
 2d_physics/layer_6="GameArea"
 2d_physics/layer_7="Block"
+2d_physics/layer_8="-"
+2d_physics/layer_9="-"
+2d_physics/layer_10="-"
+2d_physics/layer_11="-"
+2d_physics/layer_12="-"
+2d_physics/layer_13="-"
+2d_physics/layer_14="-"
+2d_physics/layer_15="-"
+2d_physics/layer_16="-"
+2d_physics/layer_17="-"
+2d_physics/layer_18="-"
+2d_physics/layer_19="-"
+2d_physics/layer_20="-"
 
 [rendering]
 
