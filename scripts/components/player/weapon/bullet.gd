@@ -9,4 +9,5 @@ func destroy() -> void:
 
 func _on_Area2D_body_entered(body: Block) -> void:
     if body:
+        body.reduce_health()
         destroy()
