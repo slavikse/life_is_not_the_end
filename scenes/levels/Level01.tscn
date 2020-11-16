@@ -9,22 +9,16 @@
 [ext_resource path="res://scenes/components/zones/GameArea.tscn" type="PackedScene" id=8]
 
 [node name="Level" type="Node2D"]
-position = Vector2( -224, -24 )
 script = ExtResource( 3 )
 DeadPlayerScene = ExtResource( 7 )
 
 [node name="GameArea" parent="." instance=ExtResource( 8 )]
-visible = false
 light_mask = 0
 position = Vector2( -40, -32 )
 
 [node name="World" type="Node2D" parent="."]
 
 [node name="Blocks" type="Node2D" parent="World"]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="Block_01" parent="World/Blocks" instance=ExtResource( 6 )]
 position = Vector2( 512, 0 )
@@ -380,6 +374,8 @@ __meta__ = {
 
 [node name="IsCanZoomOut" parent="World/Zones" instance=ExtResource( 5 )]
 position = Vector2( 128, 448 )
+
+[node name="Bullets" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512, -64 )

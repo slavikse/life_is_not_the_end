@@ -101,7 +101,7 @@ tracks/0/keys = {
 [node name="Player" type="KinematicBody2D"]
 z_index = 1
 collision_layer = 2147483650
-collision_mask = 2147483721
+collision_mask = 2147483720
 script = ExtResource( 1 )
 
 [node name="Weapon" parent="." instance=ExtResource( 6 )]
@@ -119,10 +119,12 @@ __meta__ = {
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
+light_mask = 0
 polygon = PoolVector2Array( -16, 0, 16, 0, 16, -8, 24, -8, 24, -16, 31, -16, 31, -48, 24, -48, 24, -56, 16, -56, 16, -64, -16, -64, -16, -56, -24, -56, -24, -48, -31, -48, -31, -16, -24, -16, -24, -8, -16, -8 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
+light_mask = 0
 position = Vector2( 0, -32 )
 current = true
 process_mode = 0

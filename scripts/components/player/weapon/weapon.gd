@@ -4,9 +4,9 @@ class_name Weapon
 
 export(PackedScene) var BulletScene: PackedScene
 
-onready var level_node := $'/root/Level' as Level
+onready var bullets_node := $'/root/Level/Bullets' as Node2D
 
-const acceleration_speed := Vector2(1000.0, 1000.0)
+const ACCELERATION_SPEED := Vector2(1000.0, 1000.0)
 var current_rotation_degrees := -1
 
 
@@ -81,8 +81,8 @@ func can_shoot(rotation_degrees: int) -> bool:
 
 
 func shoot(player_center: Vector2, acceleration_vector: Vector2) -> void:
-    var bullet_node := BulletScene.instance() as RigidBody2D
+    var bullet_node := BulletScene.instance() as Bullet
     bullet_node.position = player_center
-    bullet_node.set_linear_velocity(acceleration_vector * acceleration_speed)
+    bullet_node.set_linear_velocity(acceleration_vector * ACCELERATION_SPEED)
 
-    level_node.add_child(bullet_node)
+    bullets_node.add_child(bullet_node)

@@ -8,9 +8,10 @@ var shape := preload('./transform/shape.gd').new()
 var animations := preload('./transform/animations.gd').new()
 
 const FLOOR := Vector2.UP
-var velocity := Vector2.ZERO;
+const OFFSET_NORMAL_SHAPE := 4 * 8
+const OFFSET_SMALL_SHAPE := 2 * 8
 
-var is_stumbled := false
+var velocity := Vector2.ZERO;
 var is_can_zoom_out := true
 
 onready var sprite_node := $Sprite as Sprite
@@ -20,7 +21,7 @@ onready var weapon_node := $Weapon as Weapon
 
 
 func _physics_process(_delta: float) -> void:
-    if is_stumbled:
+    if not visible:
         return
 
     if is_can_zoom_out:
@@ -53,7 +54,7 @@ func jumping() -> void:
 func shoot() -> void:
     animations.play(velocity, animation_move_node, sprite_node)
 
-    var center_y := position.y - 4 * 8 if shape.is_normal_shape else position.y - 2 * 8;
+    var center_y := position.y - OFFSET_NORMAL_SHAPE if shape.is_normal_shape else position.y - OFFSET_SMALL_SHAPE;
     var player_center := Vector2(position.x, center_y)
     weapon_node.play(animation_move_node, sprite_node, player_center)
 
@@ -67,4 +68,3 @@ func zoom_out(flag: bool) -> void:
 
 func game_over() -> void:
     visible = false
-    is_stumbled = true
