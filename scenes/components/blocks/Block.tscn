@@ -43,6 +43,6 @@ polygon = PoolVector2Array( 0, 8, 0, 0, 8, 0, 8, 8 )
 
 [node name="Invulnerable" type="Polygon2D" parent="."]
 visible = false
-position = Vector2( 17, -13 )
+position = Vector2( 17, -18 )
 color = Color( 0.184314, 0.184314, 0.184314, 1 )
-polygon = PoolVector2Array( -6, -18, -6, -11, 36, -11, 36, -18 )
+polygon = PoolVector2Array( -4, -18, -4, -10, 34, -10, 34, -18 )
