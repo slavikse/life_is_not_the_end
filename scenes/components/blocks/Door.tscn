@@ -1,14 +1,33 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/components/blocks/door.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="Animation" id=3]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -64, -64 ), Vector2( -64, 0 ), Vector2( 0, 0 ) ]
+}
+
 [node name="Door" type="StaticBody2D"]
+position = Vector2( -64, -64 )
 collision_layer = 2147483649
-collision_mask = 22
+collision_mask = 30
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0.627451, 0.396078, 0, 1 )
@@ -20,6 +39,5 @@ light_mask = 0
 position = Vector2( 32, -32 )
 shape = SubResource( 1 )
 
-[node name="Lock" type="Polygon2D" parent="."]
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( 24, -40, 24, -24, 40, -24, 40, -40 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/open = SubResource( 3 )

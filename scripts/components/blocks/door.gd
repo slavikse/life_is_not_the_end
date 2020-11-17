@@ -2,6 +2,8 @@ extends StaticBody2D
 
 class_name Door
 
-# TODO принимать ключ от персонажа.
-# TODO анимация закрытия двери, когда нужно закрыть по таймеру.
-# TODO анимация открытия двери с помощью ключа.
+onready var animation_player_node := $AnimationPlayer as AnimationPlayer
+
+
+func open() -> void:
+    animation_player_node.play('open')

@@ -10,3 +10,6 @@ func _on_GameArea_body_exited(body: Node2D) -> void:
 
     elif body is Bullet:
         (body as Bullet).destroy()
+
+    elif body is Spike:
+        (body as Spike).destroy()

@@ -6,7 +6,7 @@ export(int, 4) var health := 4
 export(bool) var is_invulnerable := false
 
 onready var hp_node := $HP as Node2D
-onready var invulnerable_node := $Invulnerable as Node2D
+onready var invulnerable_node := $Invulnerable as Polygon2D
 
 onready var children_count := hp_node.get_child_count()
 onready var children := hp_node.get_children()

@@ -8,7 +8,6 @@ const FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y := 16
 const DECREASE_ACCELERATION := 0.6
 
 onready var player_node := $'/root/Level/Player' as Player
-
 onready var sprite_node := $Sprite as Sprite
 onready var collision_polygon_node := $CollisionPolygon2D as CollisionPolygon2D
 
