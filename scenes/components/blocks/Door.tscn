@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "open"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -40,4 +40,4 @@ position = Vector2( 32, -32 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/open = SubResource( 3 )
+anims/open = SubResource( 2 )

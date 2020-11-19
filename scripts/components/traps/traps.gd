@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-class_name Spike
+class_name Shuriken
 
 onready var level_node := $'/root/Level' as Level
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_died.png-ff6d784e4b090fd95a472802b8ce075c.stex"
+path="res://.import/state_4.png-5dfdad72d19a092134af30e0641fb47b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/sprite_died.png"
-dest_files=[ "res://.import/sprite_died.png-ff6d784e4b090fd95a472802b8ce075c.stex" ]
+source_file="res://textures/candle/state_4.png"
+dest_files=[ "res://.import/state_4.png-5dfdad72d19a092134af30e0641fb47b.stex" ]
 
 [params]
 

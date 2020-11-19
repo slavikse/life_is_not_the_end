@@ -4,11 +4,14 @@
 [ext_resource path="res://scenes/components/player/weapon/Bullet.tscn" type="PackedScene" id=2]
 
 [node name="Weapon" type="Node2D"]
+visible = false
 light_mask = 0
 script = ExtResource( 1 )
 BulletScene = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( 0, -32 )
 color = Color( 0.811765, 0.847059, 0.862745, 0.196078 )
 offset = Vector2( 8, -16 )
 polygon = PoolVector2Array( -16, 16, 0, 16, 0, 48, -16, 48 )

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/components/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/components/traps/Spike.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/traps/Shuriken.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/levels/level_01.gd" type="Script" id=3]
 [ext_resource path="res://scenes/components/rooms/ClosedRoom.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/components/zones/ForceZoomOut.tscn" type="PackedScene" id=5]
@@ -16,6 +16,7 @@ script = ExtResource( 3 )
 DeadPlayerScene = ExtResource( 7 )
 
 [node name="GameArea" parent="." instance=ExtResource( 8 )]
+visible = false
 light_mask = 0
 position = Vector2( -72, -128 )
 
@@ -345,40 +346,47 @@ is_invulnerable = true
 position = Vector2( 896, -128 )
 is_invulnerable = true
 
-[node name="Spikes" type="Node2D" parent="World"]
+[node name="Shurikens" type="Node2D" parent="World"]
+position = Vector2( 336, -96 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Spike" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( -32, 448 )
+[node name="Shuriken" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( 0, 16 )
 
-[node name="Spike9" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( 192, -232 )
+[node name="Shuriken2" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( 424, -112 )
 
-[node name="Spike2" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( -64, -64 )
+[node name="Shuriken3" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( 320, 336 )
 
-[node name="Spike3" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( -216, -320 )
-rotation = 3.14159
+[node name="Shuriken4" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -112, 336 )
 
-[node name="Spike4" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( -432, -318 )
-rotation = 3.14159
+[node name="Shuriken5" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -400, 16 )
 
-[node name="Spike5" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( -896, -96 )
-rotation = 1.57079
+[node name="Shuriken7" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -864, 16 )
 
-[node name="Spike6" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( -352, 192 )
+[node name="Shuriken6" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -1016, 528 )
 
-[node name="Spike7" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( 400, -64 )
+[node name="Shuriken8" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -1192, -240 )
 
-[node name="Spike8" parent="World/Spikes" instance=ExtResource( 2 )]
-position = Vector2( 664, 256 )
+[node name="Shuriken9" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -760, 272 )
+
+[node name="Shuriken10" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -624, 144 )
+
+[node name="Shuriken11" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -520, -304 )
+
+[node name="Shuriken12" parent="World/Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -768, -304 )
 
 [node name="Zones" type="Node2D" parent="World"]
 __meta__ = {
@@ -387,7 +395,7 @@ __meta__ = {
 }
 
 [node name="IsCanZoomOut" parent="World/Zones" instance=ExtResource( 5 )]
-position = Vector2( 128, 448 )
+position = Vector2( 192, 448 )
 
 [node name="ClosedRoom" parent="World" instance=ExtResource( 4 )]
 position = Vector2( 640, -64 )

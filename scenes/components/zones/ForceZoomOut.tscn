@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/components/zones/zoom_out_area.gd" type="Script" id=1]
+[ext_resource path="res://textures/zones/reduction_zone.png" type="Texture" id=2]
 
 [node name="ForceZoomOut" type="Area2D"]
 light_mask = 0
+position = Vector2( 64, 0 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
@@ -12,18 +14,16 @@ monitorable = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-light_mask = 0
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( 16, -48, 0, -64, 64, -64, 48, -48 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -32, -32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 light_mask = 0
-position = Vector2( 8, 0 )
-polygon = PoolVector2Array( 8, -64, 40, -64, 40, 0, 8, 0 )
+position = Vector2( -56, 0 )
+polygon = PoolVector2Array( -8, -64, 56, -64, 56, 0, -8, 0 )
 [connection signal="body_entered" from="." to="." method="_on_ForceZoomOut_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_ForceZoomOut_body_exited"]

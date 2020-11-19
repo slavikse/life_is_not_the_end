@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_horizontal.png-6f010dcfda86b44f79d5006e03958c60.stex"
+path="res://.import/protection.png-034424a86be349becf2d88a9528607cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/sprite_horizontal.png"
-dest_files=[ "res://.import/sprite_horizontal.png-6f010dcfda86b44f79d5006e03958c60.stex" ]
+source_file="res://textures/blocks/protection.png"
+dest_files=[ "res://.import/protection.png-034424a86be349becf2d88a9528607cd.stex" ]
 
 [params]
 
