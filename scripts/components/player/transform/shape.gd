@@ -17,6 +17,6 @@ func switch_scale(animation_scale_node: AnimationPlayer) -> void:
 
 func force_to_small_shape(animation_scale_node: AnimationPlayer) -> Vector2:
     is_normal_shape = false
-    animation_scale_node.stop()
+    animation_scale_node.play('shape_decrease')
 
     return SMALL_SHAPE

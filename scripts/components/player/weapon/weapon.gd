@@ -4,10 +4,10 @@ class_name Weapon
 
 export(PackedScene) var BulletScene: PackedScene
 
-onready var bullets_node := $'/root/Level/Bullets' as Node2D
-
 const ACCELERATION_SPEED := Vector2(1000.0, 1000.0)
 var current_rotation_degrees := -1
+
+onready var bullets_node := $'/root/Level/Bullets' as Node2D
 
 
 func play(animation_move_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:

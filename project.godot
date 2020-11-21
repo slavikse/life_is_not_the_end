@@ -24,10 +24,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/components/blocks/candle.gd"
 }, {
-"base": "StaticBody2D",
+"base": "Node2D",
 "class": "Door",
 "language": "GDScript",
 "path": "res://scripts/components/blocks/door.gd"
+}, {
+"base": "Area2D",
+"class": "Exit",
+"language": "GDScript",
+"path": "res://scripts/components/blocks/exit.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
@@ -54,6 +59,7 @@ _global_script_class_icons={
 "Bullet": "",
 "Candle": "",
 "Door": "",
+"Exit": "",
 "Level": "",
 "Player": "",
 "Shuriken": "",
@@ -77,7 +83,7 @@ GlobalScene="*res://scenes/components/global/GlobalReload.tscn"
 
 [debug]
 
-settings/crash_handler/message="Please include this when reporting the bug on life.is.not.the.end@yandex.ru"
+settings/crash_handler/message="Please include this when reporting the bug on pixsynt@yandex.ru"
 gdscript/completion/autocomplete_setters_and_getters=true
 gdscript/warnings/unused_class_variable=true
 gdscript/warnings/unsafe_property_access=true
@@ -175,7 +181,7 @@ ui_reload_current_scene={
 2d_physics/layer_7="Block"
 2d_physics/layer_8="Candle"
 2d_physics/layer_9="Exit"
-2d_physics/layer_10="-"
+2d_physics/layer_10="Fire"
 2d_physics/layer_11="-"
 2d_physics/layer_12="-"
 2d_physics/layer_13="-"

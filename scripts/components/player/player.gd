@@ -24,12 +24,10 @@ func _physics_process(_delta: float) -> void:
     if not visible:
         return
 
-    if is_can_zoom_out:
-        shape.switch_scale(animation_scale_node)
-
     moving()
     jumping()
     shoot()
+    zoom()
 
     velocity = move_and_slide(velocity, FLOOR)
 
@@ -59,11 +57,16 @@ func shoot() -> void:
     weapon_node.play(animation_move_node, sprite_node, player_center)
 
 
+func zoom() -> void:
+    if is_can_zoom_out:
+        shape.switch_scale(animation_scale_node)
+
+    elif shape.is_normal_shape:
+        scale = shape.force_to_small_shape(animation_scale_node)
+
+
 func zoom_out(flag: bool) -> void:
     is_can_zoom_out = flag
-
-    if not is_can_zoom_out and shape.is_normal_shape:
-        scale = shape.force_to_small_shape(animation_scale_node)
 
 
 func game_over() -> void:

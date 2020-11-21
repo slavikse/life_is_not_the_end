@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/state_0.png-6067a1202c6ed3a00745d8a03b6e5a18.stex"
+path="res://.import/closed_left.png-5c2d8440f6a44b7b30f359a3a69c96cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/candle/state_0.png"
-dest_files=[ "res://.import/state_0.png-6067a1202c6ed3a00745d8a03b6e5a18.stex" ]
+source_file="res://textures/blocks/door/closed_left.png"
+dest_files=[ "res://.import/closed_left.png-5c2d8440f6a44b7b30f359a3a69c96cf.stex" ]
 
 [params]
 

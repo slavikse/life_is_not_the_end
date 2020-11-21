@@ -1,7 +1,18 @@
 extends Area2D
 
+class_name Exit
 
-# TODO
-func _on_Exit_body_entered(body: Player) -> void:
-    if body:
-        print('Пройдено', body)
+onready var animation_player_node := $AnimationPlayer as AnimationPlayer
+
+
+func open() -> void:
+    animation_player_node.play('open')
+
+
+# Предположительно ошибка в Godot. Сюда приходит уведомление только с типом Player.
+# Если указать тип Player вызовет ошибку циклической ссылки.
+func _on_Exit_body_entered(player_node: KinematicBody2D) -> void:
+    if player_node:
+        #warning-ignore:unsafe_method_access
+        print('Пройдено', player_node)
+        # TODO

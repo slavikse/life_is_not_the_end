@@ -2,11 +2,11 @@ extends StaticBody2D
 
 class_name Block
 
-export(int, 3) var health := 3
+export(int, 4) var health := 4
 export(bool) var is_invulnerable := false
 
 onready var hp_node := $HP as Node2D
-onready var block_protection_node := $BlockProtection as Sprite
+onready var protection_node := $Protection as Sprite
 
 onready var hp_children_count := hp_node.get_child_count()
 onready var hp_children := hp_node.get_children()
@@ -16,7 +16,7 @@ func _ready() -> void:
     update_health_display()
 
     if is_invulnerable:
-        block_protection_node.show()
+        protection_node.show()
 
 
 func update_health_display() -> void:
