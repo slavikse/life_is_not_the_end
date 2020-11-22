@@ -10,7 +10,7 @@
 [ext_resource path="res://textures/blocks/block_destroy/12.png" type="Texture" id=8]
 [ext_resource path="res://textures/blocks/block_destroy/22.png" type="Texture" id=9]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "destroy"
 length = 0.3
 step = 0.05
@@ -157,4 +157,4 @@ texture = ExtResource( 5 )
 texture = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/destroy = SubResource( 2 )
+anims/destroy = SubResource( 1 )

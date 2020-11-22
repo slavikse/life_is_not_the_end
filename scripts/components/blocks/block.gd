@@ -9,6 +9,7 @@ export(PackedScene) var BlockDestroyScene: PackedScene
 onready var blocks_node := $'/root/Level/Blocks' as Node2D
 onready var hp_node := $HP as Node2D
 onready var protection_node := $Protection as Sprite
+onready var collision_polygon_node := $CollisionPolygon2D as CollisionPolygon2D
 
 onready var hp_children_count := hp_node.get_child_count()
 onready var hp_children := hp_node.get_children()
@@ -45,6 +46,7 @@ func reduce_health() -> void:
 
 func swap_blocks_and_destroing() -> void:
     hide()
+    collision_polygon_node.queue_free()
 
     var block_destroy_node := BlockDestroyScene.instance() as Node2D
     block_destroy_node.position = position
@@ -54,8 +56,8 @@ func swap_blocks_and_destroing() -> void:
     animation_player.play('destroy')
     yield(animation_player, 'animation_finished')
 
-    queue_free()
     block_destroy_node.queue_free()
+    queue_free()
 
 
 func force_destroy() -> void:
