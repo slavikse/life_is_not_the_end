@@ -10,7 +10,6 @@ script = ExtResource( 1 )
 BulletScene = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
 position = Vector2( 0, -32 )
 color = Color( 0.811765, 0.847059, 0.862745, 0.196078 )
 offset = Vector2( 8, -16 )

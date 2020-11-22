@@ -6,12 +6,9 @@
 
 [node name="ExitRoom" type="Node2D"]
 rotation = 3.14159
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Door" parent="." instance=ExtResource( 1 )]
-position = Vector2( 96.0001, -31.9998 )
+position = Vector2( 64, 0.000162125 )
 
 [node name="Block" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -64 )
@@ -41,5 +38,5 @@ position = Vector2( 128, 0 )
 is_invulnerable = true
 
 [node name="Exit" parent="." instance=ExtResource( 3 )]
-position = Vector2( 128, -128 )
+position = Vector2( 96.0002, -95.9998 )
 rotation = -3.14159

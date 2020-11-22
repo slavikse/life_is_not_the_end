@@ -85,4 +85,4 @@ func shoot(player_center: Vector2, acceleration_vector: Vector2) -> void:
     bullet_node.position = player_center
     bullet_node.set_linear_velocity(acceleration_vector * ACCELERATION_SPEED)
 
-    bullets_node.add_child(bullet_node)
+    bullets_node.call_deferred('add_child', bullet_node)

@@ -11,15 +11,17 @@
 [ext_resource path="res://scenes/components/blocks/Candle.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Node2D"]
+position = Vector2( -56, 8 )
 script = ExtResource( 3 )
 DeadPlayerScene = ExtResource( 7 )
 
 [node name="GameArea" parent="." instance=ExtResource( 8 )]
 visible = false
 light_mask = 0
-position = Vector2( -72, -128 )
+position = Vector2( 64, -184 )
 
 [node name="Blocks" type="Node2D" parent="."]
+position = Vector2( 32, 32 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -331,6 +333,9 @@ position = Vector2( 896, -192 )
 [node name="Block_05" parent="Blocks" instance=ExtResource( 6 )]
 position = Vector2( 576, 0 )
 
+[node name="Block_106" parent="Blocks" instance=ExtResource( 6 )]
+position = Vector2( 376, -264 )
+
 [node name="Block_06" parent="Blocks" instance=ExtResource( 6 )]
 position = Vector2( 896, 0 )
 is_invulnerable = true
@@ -350,7 +355,7 @@ __meta__ = {
 }
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 2 )]
-position = Vector2( -17, -108 )
+position = Vector2( 71, -180 )
 
 [node name="Shuriken13" parent="Shurikens" instance=ExtResource( 2 )]
 position = Vector2( -67, -589 )
@@ -389,7 +394,7 @@ position = Vector2( -465, -386 )
 position = Vector2( -468, -743 )
 
 [node name="Zones" type="Node2D" parent="."]
-position = Vector2( 224, -448 )
+position = Vector2( -448, -385 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -399,12 +404,12 @@ position = Vector2( 576, 385 )
 scale = Vector2( 4, 4 )
 
 [node name="Candle" parent="." instance=ExtResource( 9 )]
-position = Vector2( 672, -72 )
+position = Vector2( 576, 0 )
 
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="ExitRoom" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1088, -512 )
+position = Vector2( 1120, -480 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 496, -64 )

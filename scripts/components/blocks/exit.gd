@@ -13,6 +13,5 @@ func open() -> void:
 # Если указать тип Player вызовет ошибку циклической ссылки.
 func _on_Exit_body_entered(player_node: KinematicBody2D) -> void:
     if player_node:
-        #warning-ignore:unsafe_method_access
-        print('Пройдено', player_node)
-        # TODO
+        # TODO разрушение после того, как игрой зайдет в тардис и полетит.
+        get_tree().call_group('Block', 'force_destroy')
