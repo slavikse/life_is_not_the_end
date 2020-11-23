@@ -7,6 +7,7 @@ export(PackedScene) var DeadPlayerScene: PackedScene
 onready var is_character_not_added := true
 
 
+# external call
 func game_over() -> void:
     if is_character_not_added:
         is_character_not_added = false

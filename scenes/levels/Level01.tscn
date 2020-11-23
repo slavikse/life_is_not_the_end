@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/components/blocks/Block.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/components/zones/GameArea.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/components/blocks/Candle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/components/rooms/dependences/Candle.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Node2D"]
 position = Vector2( -56, 8 )
@@ -283,7 +283,6 @@ position = Vector2( 576, 320 )
 
 [node name="Block_81" parent="Blocks" instance=ExtResource( 6 )]
 position = Vector2( 704, 128 )
-is_invulnerable = true
 
 [node name="Block_73" parent="Blocks" instance=ExtResource( 6 )]
 position = Vector2( 832, 448 )
@@ -338,18 +337,15 @@ position = Vector2( 376, -264 )
 
 [node name="Block_06" parent="Blocks" instance=ExtResource( 6 )]
 position = Vector2( 896, 0 )
-is_invulnerable = true
 
 [node name="Block_85" parent="Blocks" instance=ExtResource( 6 )]
 position = Vector2( 896, -64 )
-is_invulnerable = true
 
 [node name="Block_86" parent="Blocks" instance=ExtResource( 6 )]
 position = Vector2( 896, -128 )
-is_invulnerable = true
 
 [node name="Shurikens" type="Node2D" parent="."]
-position = Vector2( 336, -120 )
+position = Vector2( -391, -153 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -358,7 +354,10 @@ __meta__ = {
 position = Vector2( 71, -180 )
 
 [node name="Shuriken13" parent="Shurikens" instance=ExtResource( 2 )]
-position = Vector2( -67, -589 )
+position = Vector2( 500, -461 )
+
+[node name="Shuriken16" parent="Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -634, -774 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 2 )]
 position = Vector2( 399, -167 )
@@ -367,7 +366,7 @@ position = Vector2( 399, -167 )
 position = Vector2( 320, 336 )
 
 [node name="Shuriken4" parent="Shurikens" instance=ExtResource( 2 )]
-position = Vector2( -77, -65 )
+position = Vector2( -58, 14 )
 
 [node name="Shuriken5" parent="Shurikens" instance=ExtResource( 2 )]
 position = Vector2( -400, 16 )
@@ -388,13 +387,22 @@ position = Vector2( -760, 272 )
 position = Vector2( -624, 144 )
 
 [node name="Shuriken11" parent="Shurikens" instance=ExtResource( 2 )]
-position = Vector2( -465, -386 )
+position = Vector2( -448, -385 )
+
+[node name="Shuriken15" parent="Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -588, -316 )
+
+[node name="Shuriken14" parent="Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -343, -552 )
 
 [node name="Shuriken12" parent="Shurikens" instance=ExtResource( 2 )]
-position = Vector2( -468, -743 )
+position = Vector2( -176, -240 )
+
+[node name="Shuriken17" parent="Shurikens" instance=ExtResource( 2 )]
+position = Vector2( -140, -615 )
 
 [node name="Zones" type="Node2D" parent="."]
-position = Vector2( -448, -385 )
+position = Vector2( -128, -130 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -409,7 +417,7 @@ position = Vector2( 576, 0 )
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="ExitRoom" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1120, -480 )
+position = Vector2( 640, -256 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 496, -64 )
+position = Vector2( 490, -19 )

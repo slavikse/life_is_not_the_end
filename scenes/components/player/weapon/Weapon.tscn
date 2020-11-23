@@ -7,6 +7,9 @@
 visible = false
 light_mask = 0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 BulletScene = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

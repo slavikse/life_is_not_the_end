@@ -10,6 +10,8 @@ onready var closed_right_shutters_opened_node := $ClosedRight/Sprite/ShuttersOpe
 onready var shutters_animation_player_node := $ShuttersAnimationPlayer as AnimationPlayer
 onready var door_animation_player_node := $DoorAnimationPlayer as AnimationPlayer
 
+
+# external call
 func open() -> void:
     shutters_closed_node.hide()
 

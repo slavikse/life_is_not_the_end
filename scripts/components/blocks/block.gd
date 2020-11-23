@@ -2,49 +2,45 @@ extends StaticBody2D
 
 class_name Block
 
-export(int, 4) var health := 4
-export(bool) var is_invulnerable := false
+const MAX_HEALTH := 4
+
+export(int, 4) var health := 0
+export(bool) var is_protected := false
 export(PackedScene) var BlockDestroyScene: PackedScene
 
 onready var blocks_node := $'/root/Level/Blocks' as Node2D
-onready var hp_node := $HP as Node2D
-onready var protection_node := $Protection as Sprite
+onready var protected_node := $Protected as Sprite
+onready var animation_player_node := $AnimationPlayer as AnimationPlayer
 onready var collision_polygon_node := $CollisionPolygon2D as CollisionPolygon2D
-
-onready var hp_children_count := hp_node.get_child_count()
-onready var hp_children := hp_node.get_children()
 
 
 func _ready() -> void:
     update_health_display()
 
-    if is_invulnerable:
-        protection_node.show()
+    if is_protected:
+        protected_node.show()
 
 
 func update_health_display() -> void:
-    for index in hp_children_count:
-        if index < health:
-            hp_children[index].show()
-
-        else:
-            hp_children[index].hide()
+    if health > 0:
+        animation_player_node.play('hp%s' % health)
 
 
-func reduce_health() -> void:
-    if is_invulnerable:
+# external call
+func increse_health() -> void:
+    if is_protected:
         return
 
-    health -= 1
+    health += 1
 
-    if health > 0:
-        update_health_display()
+    if health == MAX_HEALTH:
+        swap_blocks()
 
     else:
-        swap_blocks_and_destroing()
+        update_health_display()
 
 
-func swap_blocks_and_destroing() -> void:
+func swap_blocks() -> void:
     hide()
     collision_polygon_node.queue_free()
 
@@ -60,8 +56,10 @@ func swap_blocks_and_destroing() -> void:
     queue_free()
 
 
-func force_destroy() -> void:
-    health = 0
+# external call
+func force_swap() -> void:
+    health = MAX_HEALTH
 
     update_health_display()
-    swap_blocks_and_destroing()
+    yield(get_tree().create_timer(0.3), 'timeout')
+    swap_blocks()

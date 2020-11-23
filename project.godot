@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Shuriken",
 "language": "GDScript",
-"path": "res://scripts/components/traps/traps.gd"
+"path": "res://scripts/components/traps/shuriken.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
@@ -192,6 +192,10 @@ ui_reload_current_scene={
 2d_physics/layer_18="-"
 2d_physics/layer_19="-"
 2d_physics/layer_20="-"
+
+[physics]
+
+common/physics_fps=120
 
 [rendering]
 

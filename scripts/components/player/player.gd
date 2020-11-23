@@ -14,10 +14,10 @@ const OFFSET_SMALL_SHAPE := 2 * 8
 var velocity := Vector2.ZERO;
 var is_can_zoom_out := true
 
+onready var weapon_node := $Weapon as Weapon
 onready var sprite_node := $Sprite as Sprite
 onready var animation_scale_node := $AnimationScale as AnimationPlayer
 onready var animation_move_node := $AnimationMove as AnimationPlayer
-onready var weapon_node := $Weapon as Weapon
 
 
 func _physics_process(_delta: float) -> void:
@@ -65,9 +65,11 @@ func zoom() -> void:
         scale = shape.force_to_small_shape(animation_scale_node)
 
 
+# external call
 func zoom_out(flag: bool) -> void:
     is_can_zoom_out = flag
 
 
+# external call
 func game_over() -> void:
     visible = false

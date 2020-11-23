@@ -1,14 +1,14 @@
-const N_JUMP_POWER := 180.0
-const N_JUMP_UP_MULTIPLIER := 0.8
-const N_GRAVITY := 60.0
+const N_JUMP_POWER := 190.0 / 2.0
+const N_JUMP_UP_MULTIPLIER := 0.95
+const N_GRAVITY := 60.0 / 2.0
 const N_JUMP_DOWN_MULTIPLIER := 1.01
-const N_ROOF := 750.0
+const N_ROOF := 750.0 * 1.2
 
-const S_JUMP_POWER := 190.0
+const S_JUMP_POWER := 180.0 / 2.0
 const S_JUMP_UP_MULTIPLIER := 0.95
-const S_GRAVITY := 60.0
-const S_JUMP_DOWN_MULTIPLIER := 1.00
-const S_ROOF := 1010.0
+const S_GRAVITY := 60.0 / 2.0
+const S_JUMP_DOWN_MULTIPLIER := 1.007
+const S_ROOF := 1010.0 * 1.02
 
 # JUMP_UP_MULTIPLIER - Должно быть меньше или равно 1.0
 # JUMP_DOWN_MULTIPLIER - Должно быть больше или равно 1.0

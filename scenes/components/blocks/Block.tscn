@@ -1,12 +1,71 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/components/blocks/block.gd" type="Script" id=1]
-[ext_resource path="res://textures/blocks/block/protection.png" type="Texture" id=2]
-[ext_resource path="res://textures/blocks/block/2hp.png" type="Texture" id=3]
-[ext_resource path="res://textures/blocks/block/3hp.png" type="Texture" id=4]
-[ext_resource path="res://textures/blocks/block/1hp.png" type="Texture" id=5]
-[ext_resource path="res://textures/blocks/block/4hp.png" type="Texture" id=6]
+[ext_resource path="res://textures/blocks/block/protected.png" type="Texture" id=2]
 [ext_resource path="res://scenes/components/blocks/BlockDestroy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://textures/blocks/block/stencil.png" type="Texture" id=8]
+[ext_resource path="res://textures/blocks/block/hp.png" type="Texture" id=9]
+[ext_resource path="res://textures/blocks/block/bg.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=2]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HP:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.5, 0.5 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HP:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HP:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HP:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 2, 2 ) ]
+}
 
 [node name="Block" type="StaticBody2D" groups=[
 "Block",
@@ -16,25 +75,19 @@ collision_mask = 2147483678
 script = ExtResource( 1 )
 BlockDestroyScene = ExtResource( 7 )
 
-[node name="HP" type="Node2D" parent="."]
-
-[node name="HP1" type="Sprite" parent="HP"]
+[node name="BG" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 5 )
+texture = ExtResource( 10 )
 
-[node name="HP2" type="Sprite" parent="HP"]
+[node name="HP" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 9 )
+
+[node name="Stencil" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
+texture = ExtResource( 8 )
 
-[node name="HP3" type="Sprite" parent="HP"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-
-[node name="HP4" type="Sprite" parent="HP"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
-
-[node name="Protection" type="Sprite" parent="."]
+[node name="Protected" type="Sprite" parent="."]
 visible = false
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
@@ -43,3 +96,9 @@ texture = ExtResource( 2 )
 visible = false
 position = Vector2( -13, 14 )
 polygon = PoolVector2Array( -19, -46, 45, -46, 45, 18, -19, 18 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hp1 = SubResource( 2 )
+anims/hp2 = SubResource( 3 )
+anims/hp3 = SubResource( 4 )
+anims/hp4 = SubResource( 5 )

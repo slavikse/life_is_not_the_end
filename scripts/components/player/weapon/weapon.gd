@@ -10,6 +10,7 @@ var current_rotation_degrees := -1
 onready var bullets_node := $'/root/Level/Bullets' as Node2D
 
 
+# external call
 func play(animation_move_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:
     var is_idle := animation_move_node.current_animation == 'idle'
     var is_corner := animation_move_node.current_animation == 'corner'

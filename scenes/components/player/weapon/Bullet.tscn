@@ -4,10 +4,13 @@
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 16
-collision_mask = 225
+collision_mask = 249
 gravity_scale = 0.0
 can_sleep = false
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2( 0, 4 )
@@ -25,9 +28,9 @@ gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
 angular_damp = 0.0
-priority = 1.0
+priority = 2.0
 collision_layer = 16
-collision_mask = 225
+collision_mask = 249
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
 visible = false
