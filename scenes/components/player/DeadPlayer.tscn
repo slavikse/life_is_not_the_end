@@ -5,7 +5,7 @@
 
 [node name="DeadPlayer" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 201
+collision_mask = 200
 mass = 1.53061
 gravity_scale = 20.0
 can_sleep = false
@@ -23,5 +23,6 @@ offset = Vector2( 0, -16 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
+light_mask = 0
 position = Vector2( 0, 32 )
 polygon = PoolVector2Array( -16, 0, 16, 0, 16, -8, 24, -8, 24, -16, 31, -16, 31, -48, 24, -48, 24, -56, 16, -56, 16, -63, -16, -63, -16, -56, -24, -56, -24, -48, -31, -48, -31, -16, -24, -16, -24, -8, -16, -8 )

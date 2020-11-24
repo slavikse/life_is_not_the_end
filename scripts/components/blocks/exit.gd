@@ -2,17 +2,18 @@ extends Area2D
 
 class_name Exit
 
+var is_can_out := false
+
 onready var animation_player_node := $AnimationPlayer as AnimationPlayer
-
-
-# Предположительно ошибка в Godot. Сюда приходит уведомление только с типом Player.
-# Если указать тип Player вызовет ошибку циклической ссылки.
-func _on_Exit_body_entered(player_node: KinematicBody2D) -> void:
-    if player_node:
-        # TODO разрушение после того, как игрой зайдет в тардис и полетит.
-        get_tree().call_group('Block', 'force_swap')
 
 
 # external call
 func open() -> void:
+    is_can_out = true
     animation_player_node.play('open')
+
+
+func _on_Exit_body_entered(player_node: Player) -> void:
+    if player_node and is_can_out:
+        # TODO разрушение после того, как игрой зайдет в тардис и полетит.
+        get_tree().call_group('Block', 'force_swap')

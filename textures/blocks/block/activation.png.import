@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/state_3.png-c2ab16753f93430731f3a64aa3b44406.stex"
+path="res://.import/activation.png-84b216a786fc56af1e9e0361b0e90897.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/rooms/dependences/candle/state_3.png"
-dest_files=[ "res://.import/state_3.png-c2ab16753f93430731f3a64aa3b44406.stex" ]
+source_file="res://textures/blocks/block/activation.png"
+dest_files=[ "res://.import/activation.png-84b216a786fc56af1e9e0361b0e90897.stex" ]
 
 [params]
 

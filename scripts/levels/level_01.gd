@@ -12,5 +12,5 @@ func game_over() -> void:
     if is_character_not_added:
         is_character_not_added = false
 
-        var dead_player_node := DeadPlayerScene.instance() as RigidBody2D
+        var dead_player_node := DeadPlayerScene.instance() as DeadPlayer
         call_deferred('add_child', dead_player_node)

@@ -1,11 +1,13 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/components/blocks/block.gd" type="Script" id=1]
-[ext_resource path="res://textures/blocks/block/protected.png" type="Texture" id=2]
 [ext_resource path="res://scenes/components/blocks/BlockDestroy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://textures/blocks/block/stencil.png" type="Texture" id=8]
 [ext_resource path="res://textures/blocks/block/hp.png" type="Texture" id=9]
 [ext_resource path="res://textures/blocks/block/bg.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
 
 [sub_resource type="Animation" id=2]
 length = 0.2
@@ -87,15 +89,9 @@ texture = ExtResource( 9 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="Protected" type="Sprite" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2( -13, 14 )
-polygon = PoolVector2Array( -19, -46, 45, -46, 45, 18, -19, 18 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hp1 = SubResource( 2 )

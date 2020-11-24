@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "StaticBody2D",
+"class": "Activation",
+"language": "GDScript",
+"path": "res://scripts/components/blocks/activation.gd"
+}, {
+"base": "StaticBody2D",
 "class": "Block",
 "language": "GDScript",
 "path": "res://scripts/components/blocks/block.gd"
@@ -19,15 +24,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/components/player/weapon/bullet.gd"
 }, {
-"base": "StaticBody2D",
-"class": "Candle",
+"base": "RigidBody2D",
+"class": "DeadPlayer",
 "language": "GDScript",
-"path": "res://scripts/components/blocks/candle.gd"
-}, {
-"base": "Node2D",
-"class": "Door",
-"language": "GDScript",
-"path": "res://scripts/components/blocks/door.gd"
+"path": "res://scripts/components/player/dead_player.gd"
 }, {
 "base": "Area2D",
 "class": "Exit",
@@ -55,10 +55,10 @@ _global_script_classes=[ {
 "path": "res://scripts/components/player/weapon/weapon.gd"
 } ]
 _global_script_class_icons={
+"Activation": "",
 "Block": "",
 "Bullet": "",
-"Candle": "",
-"Door": "",
+"DeadPlayer": "",
 "Exit": "",
 "Level": "",
 "Player": "",
@@ -172,16 +172,16 @@ ui_reload_current_scene={
 
 [layer_names]
 
-2d_physics/layer_1="Door"
+2d_physics/layer_1="ForceZoomOut"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="DeadPlayer"
 2d_physics/layer_4="Shuriken"
 2d_physics/layer_5="Bullet"
 2d_physics/layer_6="GameArea"
 2d_physics/layer_7="Block"
-2d_physics/layer_8="Candle"
+2d_physics/layer_8="Activation"
 2d_physics/layer_9="Exit"
-2d_physics/layer_10="Fire"
+2d_physics/layer_10="-"
 2d_physics/layer_11="-"
 2d_physics/layer_12="-"
 2d_physics/layer_13="-"

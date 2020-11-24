@@ -1,10 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/components/blocks/exit.gd" type="Script" id=1]
-[ext_resource path="res://textures/rooms/dependences/exit/opened.png" type="Texture" id=2]
-[ext_resource path="res://textures/rooms/dependences/exit/closed.png" type="Texture" id=3]
-
-
+[ext_resource path="res://textures/exit/opened.png" type="Texture" id=2]
+[ext_resource path="res://textures/exit/closed.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -26,6 +24,7 @@ tracks/0/keys = {
 }
 
 [node name="Exit" type="Area2D"]
+scale = Vector2( 2, 2 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
@@ -35,7 +34,7 @@ collision_mask = 2147483650
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
-"_editor_description_": "Тардис"
+"_editor_description_": ""
 }
 
 [node name="Closed" type="Sprite" parent="."]

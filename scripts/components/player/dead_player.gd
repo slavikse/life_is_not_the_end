@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name DeadPlayer
+
 const FOR_NORMAL_SHAPE_CENTER_Y_GRAVITY := 4.0 * 8.0
 const FOR_SMALL_SHAPE_CENTER_Y_GRAVITY := 2.0 * 8.0
 
