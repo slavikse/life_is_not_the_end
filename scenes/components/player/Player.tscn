@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/components/player/player.gd" type="Script" id=1]
 [ext_resource path="res://textures/player/idle.png" type="Texture" id=2]
@@ -38,7 +38,54 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "corner"
+resource_name = "shape_normal_to_zero"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "shape_small_to_zero"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "shape_zero_to_normal"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -53,7 +100,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -68,7 +115,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -83,7 +130,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 2 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -112,7 +159,7 @@ position = Vector2( 0, -32 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 offset = Vector2( -2.38419e-07, -16 )
 __meta__ = {
 "_editor_description_": "	
@@ -138,12 +185,15 @@ smoothing_speed = 10.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="AnimationScale" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayerScale" type="AnimationPlayer" parent="."]
 anims/shape_decrease = SubResource( 1 )
 anims/shape_increase = SubResource( 2 )
+anims/shape_normal_to_zero = SubResource( 3 )
+anims/shape_small_to_zero = SubResource( 4 )
+anims/shape_zero_to_normal = SubResource( 5 )
 
-[node name="AnimationMove" type="AnimationPlayer" parent="."]
-anims/corner = SubResource( 3 )
-anims/horizontal = SubResource( 4 )
-anims/idle = SubResource( 5 )
-anims/vertical = SubResource( 6 )
+[node name="AnimationPlayerMove" type="AnimationPlayer" parent="."]
+anims/corner = SubResource( 6 )
+anims/horizontal = SubResource( 7 )
+anims/idle = SubResource( 8 )
+anims/vertical = SubResource( 9 )

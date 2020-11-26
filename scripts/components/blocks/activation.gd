@@ -13,4 +13,4 @@ func _on_Area2D_body_entered(bullet_node: Bullet) -> void:
         is_activated = true
 
         animation_player_node.play('open')
-        exit_node.open()
+        exit_node.external_open()

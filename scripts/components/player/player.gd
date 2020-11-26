@@ -13,14 +13,25 @@ const OFFSET_SMALL_SHAPE := 2 * 8
 
 var velocity := Vector2.ZERO;
 var is_can_zoom_out := true
+var is_level_complete := false
 
 onready var weapon_node := $Weapon as Weapon
 onready var sprite_node := $Sprite as Sprite
-onready var animation_scale_node := $AnimationScale as AnimationPlayer
-onready var animation_move_node := $AnimationMove as AnimationPlayer
+onready var animation_player_scale_node := $AnimationPlayerScale as AnimationPlayer
+onready var animation_player_move_node := $AnimationPlayerMove as AnimationPlayer
+
+
+func _ready() -> void:
+    scale = Vector2(0, 0)
+    animation_player_scale_node.play('shape_zero_to_normal')
 
 
 func _physics_process(_delta: float) -> void:
+    if is_level_complete:
+        Input.action_release('ui_up')
+        Input.action_release('ui_left')
+        Input.action_release('ui_right')
+
     if not visible:
         return
 
@@ -50,26 +61,38 @@ func jumping() -> void:
 
 
 func shoot() -> void:
-    animations.play(velocity, animation_move_node, sprite_node)
+    animations.play(velocity, animation_player_move_node, sprite_node)
 
     var center_y := position.y - OFFSET_NORMAL_SHAPE if shape.is_normal_shape else position.y - OFFSET_SMALL_SHAPE;
     var player_center := Vector2(position.x, center_y)
-    weapon_node.play(animation_move_node, sprite_node, player_center)
+    weapon_node.external_play(animation_player_move_node, sprite_node, player_center)
 
 
 func zoom() -> void:
     if is_can_zoom_out:
-        shape.switch_scale(animation_scale_node)
+        shape.switch_scale(animation_player_scale_node)
 
     elif shape.is_normal_shape:
-        scale = shape.force_to_small_shape(animation_scale_node)
+        scale = shape.force_to_small_shape(animation_player_scale_node)
 
 
-# external call
-func zoom_out(flag: bool) -> void:
+func external_zoom_out(flag: bool) -> void:
     is_can_zoom_out = flag
 
 
-# external call
-func game_over() -> void:
+# TODO
+func external_level_complete() -> void:
+    is_level_complete = true
+
+    if shape.is_normal_shape:
+        animation_player_scale_node.play('shape_normal_to_zero')
+
+    else:
+        animation_player_scale_node.play('shape_small_to_zero')
+
+    yield(animation_player_scale_node, 'animation_finished')
+    visible = false
+
+
+func external_game_over() -> void:
     visible = false

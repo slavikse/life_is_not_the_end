@@ -21,8 +21,7 @@ func update_health_display() -> void:
         animation_player_node.play('hp%s' % health)
 
 
-# external call
-func increse_health() -> void:
+func external_increse_health() -> void:
     health += 1
     update_health_display()
 
@@ -38,18 +37,9 @@ func swap_blocks() -> void:
     block_destroy_node.position = position
     blocks_node.call_deferred('add_child', block_destroy_node)
 
-    var animation_player := block_destroy_node.get_node('AnimationPlayer') as AnimationPlayer
-    animation_player.play('destroy')
-    yield(animation_player, 'animation_finished')
+    var block_destroy_animation_player_node := block_destroy_node.get_node('AnimationPlayer') as AnimationPlayer
+    block_destroy_animation_player_node.play('destroy')
+    yield(block_destroy_animation_player_node, 'animation_finished')
 
     block_destroy_node.queue_free()
     queue_free()
-
-
-# external call
-func force_swap() -> void:
-    health = MAX_HEALTH
-    update_health_display()
-
-    yield(get_tree().create_timer(0.2), 'timeout')
-    swap_blocks()

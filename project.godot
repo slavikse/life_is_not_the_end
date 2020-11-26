@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
-"path": "res://scripts/levels/level_01.gd"
+"path": "res://scripts/level.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -78,7 +78,6 @@ config/windows_native_icon="res://favicon.ico"
 
 [autoload]
 
-global_state="*res://scripts/components/global/global_state.gd"
 GlobalScene="*res://scenes/components/global/GlobalReload.tscn"
 
 [debug]

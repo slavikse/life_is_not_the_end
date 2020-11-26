@@ -7,10 +7,9 @@ onready var level_node := $'/root/Level' as Level
 
 func _on_Area2D_body_entered(player_node: Player) -> void:
     if player_node:
-        player_node.game_over()
-        level_node.game_over()
+        player_node.external_game_over()
+        level_node.external_game_over()
 
 
-# external call
-func destroy() -> void:
+func external_destroy() -> void:
     queue_free()

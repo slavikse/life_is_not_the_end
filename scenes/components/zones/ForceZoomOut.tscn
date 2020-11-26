@@ -5,6 +5,7 @@
 
 [node name="ForceZoomOut" type="Area2D"]
 light_mask = 0
+scale = Vector2( 3, 3 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0

@@ -4,16 +4,21 @@ class_name Exit
 
 var is_can_out := false
 
+onready var tardis_opened_node := $Tardis/Opened as Sprite
+onready var tardis_door_node := $Tardis/Door as Sprite
+
 onready var animation_player_node := $AnimationPlayer as AnimationPlayer
 
 
-# external call
-func open() -> void:
+func external_open() -> void:
     is_can_out = true
+    tardis_opened_node.show()
+    tardis_door_node.show()
+
+    yield(get_tree().create_timer(0.3), 'timeout')
     animation_player_node.play('open')
 
 
 func _on_Exit_body_entered(player_node: Player) -> void:
     if player_node and is_can_out:
-        # TODO разрушение после того, как игрой зайдет в тардис и полетит.
-        get_tree().call_group('Block', 'force_swap')
+        player_node.external_level_complete()

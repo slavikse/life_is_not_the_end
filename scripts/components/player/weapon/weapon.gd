@@ -10,12 +10,11 @@ var current_rotation_degrees := -1
 onready var bullets_node := $'/root/Level/Bullets' as Node2D
 
 
-# external call
-func play(animation_move_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:
-    var is_idle := animation_move_node.current_animation == 'idle'
-    var is_corner := animation_move_node.current_animation == 'corner'
-    var is_horizontal := animation_move_node.current_animation == 'horizontal'
-    var is_vertical := animation_move_node.current_animation == 'vertical'
+func external_play(animation_player_move_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:
+    var is_idle := animation_player_move_node.current_animation == 'idle'
+    var is_corner := animation_player_move_node.current_animation == 'corner'
+    var is_horizontal := animation_player_move_node.current_animation == 'horizontal'
+    var is_vertical := animation_player_move_node.current_animation == 'vertical'
 
     var is_left := sprite_node.flip_h
     var is_bottom := sprite_node.flip_v
@@ -65,7 +64,7 @@ func play(animation_move_node: AnimationPlayer, sprite_node: Sprite, player_cent
 
     set_rotation_degrees(rotation_degrees)
 
-    if current_rotation_degrees != rotation_degrees:
+    if current_rotation_degrees != rotation_degrees and rotation_degrees != -1:
         current_rotation_degrees = rotation_degrees
 
         if can_shoot(rotation_degrees):
