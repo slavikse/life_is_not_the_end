@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://scripts/components/player/player.gd" type="Script" id=1]
-[ext_resource path="res://textures/player/idle.png" type="Texture" id=2]
-[ext_resource path="res://textures/player/horizontal.png" type="Texture" id=3]
-[ext_resource path="res://textures/player/corner.png" type="Texture" id=4]
-[ext_resource path="res://textures/player/vertical.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/player/scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/player/textures/idle.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/player/textures/horizontal.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/player/textures/corner.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/player/textures/vertical.png" type="Texture" id=5]
 [ext_resource path="res://scenes/components/player/weapon/Weapon.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -159,7 +159,7 @@ position = Vector2( 0, -32 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 offset = Vector2( -2.38419e-07, -16 )
 __meta__ = {
 "_editor_description_": "	

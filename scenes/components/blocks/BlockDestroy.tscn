@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://textures/blocks/block_destroy/01.png" type="Texture" id=1]
-[ext_resource path="res://textures/blocks/block_destroy/00.png" type="Texture" id=3]
-[ext_resource path="res://textures/blocks/block_destroy/11.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/blocks/textures/block_destroy/01.png" type="Texture" id=1]
+[ext_resource path="res://scenes/components/blocks/textures/block_destroy/00.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/blocks/textures/block_destroy/11.png" type="Texture" id=7]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "destroy"

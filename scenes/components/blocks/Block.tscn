@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scripts/components/blocks/block.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/blocks/scripts/block.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/blocks/BlockDestroy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://textures/blocks/block/stencil.png" type="Texture" id=8]
-[ext_resource path="res://textures/blocks/block/hp.png" type="Texture" id=9]
-[ext_resource path="res://textures/blocks/block/bg.png" type="Texture" id=10]
+[ext_resource path="res://scenes/components/blocks/textures/block/stencil.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/blocks/textures/block/hp.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/blocks/textures/block/bg.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )

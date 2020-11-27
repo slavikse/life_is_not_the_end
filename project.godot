@@ -12,47 +12,47 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "Activation",
 "language": "GDScript",
-"path": "res://scripts/components/blocks/activation.gd"
+"path": "res://scenes/components/blocks/scripts/activation.gd"
 }, {
 "base": "StaticBody2D",
 "class": "Block",
 "language": "GDScript",
-"path": "res://scripts/components/blocks/block.gd"
+"path": "res://scenes/components/blocks/scripts/block.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://scripts/components/player/weapon/bullet.gd"
+"path": "res://scenes/components/player/weapon/scripts/bullet.gd"
 }, {
 "base": "RigidBody2D",
 "class": "DeadPlayer",
 "language": "GDScript",
-"path": "res://scripts/components/player/dead_player.gd"
+"path": "res://scenes/components/player/scripts/dead_player.gd"
 }, {
 "base": "Area2D",
 "class": "Exit",
 "language": "GDScript",
-"path": "res://scripts/components/blocks/exit.gd"
+"path": "res://scenes/components/blocks/scripts/exit.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
-"path": "res://scripts/level.gd"
+"path": "res://scenes/levels/scripts/level.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://scripts/components/player/player.gd"
+"path": "res://scenes/components/player/scripts/player.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Shuriken",
 "language": "GDScript",
-"path": "res://scripts/components/traps/shuriken.gd"
+"path": "res://scenes/components/traps/shuriken/scripts/shuriken.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
-"path": "res://scripts/components/player/weapon/weapon.gd"
+"path": "res://scenes/components/player/weapon/scripts/weapon.gd"
 } ]
 _global_script_class_icons={
 "Activation": "",
@@ -73,6 +73,8 @@ config/description="A randomly acquired life will be returned!"
 run/main_scene="res://scenes/Main.tscn"
 boot_splash/image="res://boot_splash.png"
 boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.0627451, 0.12549, 0.152941, 1 )
 config/icon="res://favicon.png"
 config/windows_native_icon="res://favicon.ico"
 
@@ -205,4 +207,5 @@ quality/filters/anisotropic_filter_level=1
 quality/subsurface_scattering/quality=2
 quality/subsurface_scattering/follow_surface=true
 quality/voxel_cone_tracing/high_quality=true
+environment/default_clear_color=Color( 0.14902, 0.196078, 0.219608, 1 )
 environment/default_environment="res://default_env.tres"
