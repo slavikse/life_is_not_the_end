@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/components/traps/shuriken/scripts/shuriken.gd" type="Script" id=1]
-[ext_resource path="res://scenes/components/traps/shuriken/textures/shuriken.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/traps/shuriken/shuriken.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/traps/shuriken/shuriken.png" type="Texture" id=2]
+
 
 
 

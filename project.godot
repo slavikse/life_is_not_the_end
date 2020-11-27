@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "Activation",
 "language": "GDScript",
-"path": "res://scenes/components/blocks/scripts/activation.gd"
+"path": "res://scenes/components/blocks/activation/activation.gd"
 }, {
 "base": "StaticBody2D",
 "class": "Block",
 "language": "GDScript",
-"path": "res://scenes/components/blocks/scripts/block.gd"
+"path": "res://scenes/components/blocks/block/block.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Bullet",
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Exit",
 "language": "GDScript",
-"path": "res://scenes/components/blocks/scripts/exit.gd"
+"path": "res://scenes/components/blocks/exit/exit.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Shuriken",
 "language": "GDScript",
-"path": "res://scenes/components/traps/shuriken/scripts/shuriken.gd"
+"path": "res://scenes/components/traps/shuriken/shuriken.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
@@ -207,5 +207,4 @@ quality/filters/anisotropic_filter_level=1
 quality/subsurface_scattering/quality=2
 quality/subsurface_scattering/follow_surface=true
 quality/voxel_cone_tracing/high_quality=true
-environment/default_clear_color=Color( 0.14902, 0.196078, 0.219608, 1 )
 environment/default_environment="res://default_env.tres"

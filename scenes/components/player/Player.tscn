@@ -155,6 +155,7 @@ __meta__ = {
 }
 
 [node name="Weapon" parent="." instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 0, -32 )
 
 [node name="Sprite" type="Sprite" parent="."]
