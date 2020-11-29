@@ -21,7 +21,8 @@ onready var weapon_node := $Weapon as Weapon
 onready var sprite_node := $Sprite as Sprite
 onready var scale_animation_node := $Scale as AnimationPlayer
 onready var move_animation_node := $Move as AnimationPlayer
-onready var hit_floor_audio_node := $HitFloor as AudioStreamPlayer
+onready var hit_floor_audio_node := $HitFloor as AudioStreamPlayer2D
+onready var zoom_audio_node := $Zoom as AudioStreamPlayer2D
 
 
 func _ready() -> void:
@@ -30,6 +31,8 @@ func _ready() -> void:
 
     #warning-ignore: UNSAFE_PROPERTY_ACCESS
     hit_floor_audio_node.stream.loop = false
+    #warning-ignore: UNSAFE_PROPERTY_ACCESS
+    zoom_audio_node.stream.loop = false
 
 
 func _physics_process(_delta: float) -> void:
@@ -89,10 +92,14 @@ func shoot() -> void:
 
 func zoom() -> void:
     if is_can_zoom_out:
-        shape.switch_scale(scale_animation_node)
+        var is_resize := shape.switch_scale(scale_animation_node)
+
+        if is_resize:
+            zoom_audio_node.play()
 
     elif shape.is_normal_shape:
         scale = shape.force_to_small_shape(scale_animation_node)
+        zoom_audio_node.play()
 
 
 func external_zoom_out(flag: bool) -> void:

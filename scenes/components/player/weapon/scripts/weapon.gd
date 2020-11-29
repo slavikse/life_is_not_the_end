@@ -7,7 +7,7 @@ export(PackedScene) var BulletScene: PackedScene
 const ACCELERATION_SPEED := Vector2(1000.0, 1000.0)
 var current_rotation_degrees := -1
 
-onready var shot_audio_node := $Shot as AudioStreamPlayer
+onready var shot_audio_node := $Shot as AudioStreamPlayer2D
 onready var bullets_node := $'/root/Level/Bullets' as Node2D
 
 
@@ -91,5 +91,5 @@ func shoot(player_center: Vector2, acceleration_vector: Vector2) -> void:
     bullet_node.position = player_center
     bullet_node.set_linear_velocity(acceleration_vector * ACCELERATION_SPEED)
 
-    bullets_node.call_deferred('add_child', bullet_node)
     shot_audio_node.play()
+    bullets_node.call_deferred('add_child', bullet_node)

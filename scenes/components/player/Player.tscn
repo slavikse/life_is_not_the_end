@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/components/player/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/player/textures/idle.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/components/player/textures/vertical.png" type="Texture" id=5]
 [ext_resource path="res://scenes/components/player/weapon/Weapon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/components/player/sounds/floor.ogg" type="AudioStream" id=7]
+[ext_resource path="res://scenes/components/player/sounds/zoom.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.1
@@ -200,6 +201,12 @@ anims/horizontal = SubResource( 7 )
 anims/idle = SubResource( 8 )
 anims/vertical = SubResource( 9 )
 
-[node name="HitFloor" type="AudioStreamPlayer" parent="."]
+[node name="HitFloor" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 bus = "Player"
+area_mask = 0
+
+[node name="Zoom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+bus = "Player"
+area_mask = 0

@@ -18,6 +18,7 @@ color = Color( 0, 0, 0, 0.196078 )
 offset = Vector2( 8, -16 )
 polygon = PoolVector2Array( -16, 16, -8, 16, 0, 16, 0, 48, -16, 48 )
 
-[node name="Shot" type="AudioStreamPlayer" parent="."]
+[node name="Shot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 bus = "Player"
+area_mask = 0

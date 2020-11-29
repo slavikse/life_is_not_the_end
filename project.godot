@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "Block",
 "language": "GDScript",
-"path": "res://scenes/components/blocks/block/block.gd"
+"path": "res://scenes/components/blocks/block/scripts/block.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Bullet",
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Exit",
 "language": "GDScript",
-"path": "res://scenes/components/blocks/exit/exit.gd"
+"path": "res://scenes/components/blocks/exit/scripts/exit.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
@@ -70,7 +70,7 @@ _global_script_class_icons={
 
 config/name="Life Is Not The End"
 config/description="A randomly acquired life will be returned!"
-run/main_scene="res://scenes/StartScene.tscn"
+run/main_scene="res://scenes/Start.tscn"
 boot_splash/image="res://boot_splash.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -80,8 +80,7 @@ config/windows_native_icon="res://favicon.ico"
 
 [autoload]
 
-GlobalSceneController="*res://scenes/global/GlobalSceneController.tscn"
-GlobalMusicController="*res://scenes/global/GlobalMusicController.tscn"
+GlobalController="*res://scenes/global/GlobalController.tscn"
 
 [debug]
 

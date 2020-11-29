@@ -11,10 +11,15 @@ const DECREASE_ACCELERATION := 0.6
 
 onready var sprite_node := $Sprite as Sprite
 onready var collision_node := $Collision as CollisionPolygon2D
+onready var death_audio_node := $Death as AudioStreamPlayer2D
 onready var player_node := $'/root/Level/Player' as Player
 
 
 func _ready() -> void:
+    #warning-ignore: UNSAFE_PROPERTY_ACCESS
+    death_audio_node.stream.loop = false
+    death_audio_node.play()
+
     if player_node.shape.is_normal_shape:
         position = Vector2(player_node.position.x, player_node.position.y - FOR_NORMAL_SHAPE_CENTER_Y_GRAVITY)
 

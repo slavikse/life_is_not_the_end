@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/components/blocks/exit/exit.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/blocks/exit/scripts/exit.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/blocks/exit/textures/opened.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/blocks/exit/sounds/activate.ogg" type="AudioStream" id=3]
 [ext_resource path="res://scenes/components/blocks/exit/textures/closed.png" type="Texture" id=4]
 [ext_resource path="res://scenes/components/blocks/exit/textures/door.png" type="Texture" id=9]
 
@@ -67,4 +68,9 @@ shape = SubResource( 1 )
 
 [node name="Open" type="AnimationPlayer" parent="."]
 anims/open = SubResource( 2 )
+
+[node name="Opening" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+bus = "Effect"
+area_mask = 0
 [connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]

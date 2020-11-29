@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scenes/components/blocks/block/block.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/blocks/block/scripts/block.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/blocks/block/sounds/increse_health.ogg" type="AudioStream" id=2]
+[ext_resource path="res://scenes/components/blocks/block/sounds/swap_blocks.ogg" type="AudioStream" id=3]
 [ext_resource path="res://scenes/components/blocks/block_destroy/BlockDestroy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/components/blocks/block/textures/stencil.png" type="Texture" id=8]
 [ext_resource path="res://scenes/components/blocks/block/textures/hp.png" type="Texture" id=9]
 [ext_resource path="res://scenes/components/blocks/block/textures/bg.png" type="Texture" id=10]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -98,9 +101,11 @@ anims/hp3 = SubResource( 4 )
 anims/hp4 = SubResource( 5 )
 
 [node name="IncreseHealth" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
 bus = "Effect"
 area_mask = 0
 
 [node name="SwapBlocks" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 bus = "Effect"
 area_mask = 0
