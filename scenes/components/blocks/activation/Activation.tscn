@@ -40,14 +40,14 @@ texture = ExtResource( 3 )
 [node name="Stencil" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Open" type="AnimationPlayer" parent="."]
 anims/open = SubResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area" type="Area2D" parent="."]
 visible = false
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
@@ -56,6 +56,6 @@ angular_damp = 0.0
 collision_layer = 128
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Collision" type="CollisionShape2D" parent="Area"]
 shape = SubResource( 1 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area2D_body_entered"]

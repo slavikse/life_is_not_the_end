@@ -156,5 +156,5 @@ texture = ExtResource( 3 )
 rotation = 3.14159
 texture = ExtResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Destroy" type="AnimationPlayer" parent="."]
 anims/destroy = SubResource( 1 )

@@ -7,14 +7,20 @@ export(PackedScene) var BulletScene: PackedScene
 const ACCELERATION_SPEED := Vector2(1000.0, 1000.0)
 var current_rotation_degrees := -1
 
+onready var shot_audio_node := $Shot as AudioStreamPlayer
 onready var bullets_node := $'/root/Level/Bullets' as Node2D
 
 
-func external_play(animation_player_move_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:
-    var is_idle := animation_player_move_node.current_animation == 'idle'
-    var is_corner := animation_player_move_node.current_animation == 'corner'
-    var is_horizontal := animation_player_move_node.current_animation == 'horizontal'
-    var is_vertical := animation_player_move_node.current_animation == 'vertical'
+func _ready() -> void:
+    #warning-ignore: UNSAFE_PROPERTY_ACCESS
+    shot_audio_node.stream.loop = false
+
+
+func external_shot(move_animation_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:
+    var is_idle := move_animation_node.current_animation == 'idle'
+    var is_corner := move_animation_node.current_animation == 'corner'
+    var is_horizontal := move_animation_node.current_animation == 'horizontal'
+    var is_vertical := move_animation_node.current_animation == 'vertical'
 
     var is_left := sprite_node.flip_h
     var is_bottom := sprite_node.flip_v
@@ -64,7 +70,7 @@ func external_play(animation_player_move_node: AnimationPlayer, sprite_node: Spr
 
     set_rotation_degrees(rotation_degrees)
 
-    if current_rotation_degrees != rotation_degrees and rotation_degrees != -1:
+    if current_rotation_degrees != rotation_degrees:
         current_rotation_degrees = rotation_degrees
 
         if can_shoot(rotation_degrees):
@@ -86,3 +92,4 @@ func shoot(player_center: Vector2, acceleration_vector: Vector2) -> void:
     bullet_node.set_linear_velocity(acceleration_vector * ACCELERATION_SPEED)
 
     bullets_node.call_deferred('add_child', bullet_node)
+    shot_audio_node.play()

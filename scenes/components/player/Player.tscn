@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/components/player/scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/player/textures/idle.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/components/player/textures/corner.png" type="Texture" id=4]
 [ext_resource path="res://scenes/components/player/textures/vertical.png" type="Texture" id=5]
 [ext_resource path="res://scenes/components/player/weapon/Weapon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/player/sounds/floor.ogg" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.1
@@ -167,12 +168,12 @@ __meta__ = {
 	"
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="Collision" type="CollisionPolygon2D" parent="."]
 visible = false
 light_mask = 0
 polygon = PoolVector2Array( -16, 0, 16, 0, 16, -8, 24, -8, 24, -16, 31, -16, 31, -48, 24, -48, 24, -56, 16, -56, 16, -63, -16, -63, -16, -56, -24, -56, -24, -48, -31, -48, -31, -16, -24, -16, -24, -8, -16, -8 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 visible = false
 light_mask = 0
 position = Vector2( 0, -32 )
@@ -186,15 +187,19 @@ smoothing_speed = 10.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="AnimationPlayerScale" type="AnimationPlayer" parent="."]
+[node name="Scale" type="AnimationPlayer" parent="."]
 anims/shape_decrease = SubResource( 1 )
 anims/shape_increase = SubResource( 2 )
 anims/shape_normal_to_zero = SubResource( 3 )
 anims/shape_small_to_zero = SubResource( 4 )
 anims/shape_zero_to_normal = SubResource( 5 )
 
-[node name="AnimationPlayerMove" type="AnimationPlayer" parent="."]
+[node name="Move" type="AnimationPlayer" parent="."]
 anims/corner = SubResource( 6 )
 anims/horizontal = SubResource( 7 )
 anims/idle = SubResource( 8 )
 anims/vertical = SubResource( 9 )
+
+[node name="HitFloor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "Player"

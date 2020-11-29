@@ -6,7 +6,7 @@ var is_can_out := false
 
 onready var tardis_opened_node := $Tardis/Opened as Sprite
 onready var tardis_door_node := $Tardis/Door as Sprite
-onready var animation_player_node := $AnimationPlayer as AnimationPlayer
+onready var open_animation_node := $Open as AnimationPlayer
 
 
 func external_open() -> void:
@@ -15,7 +15,7 @@ func external_open() -> void:
     tardis_door_node.show()
 
     yield(get_tree().create_timer(0.3), 'timeout')
-    animation_player_node.play('open')
+    open_animation_node.play('open')
 
 
 func _on_Exit_body_entered(player_node: Player) -> void:

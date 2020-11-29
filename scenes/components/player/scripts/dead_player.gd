@@ -10,7 +10,7 @@ const FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y := 16
 const DECREASE_ACCELERATION := 0.6
 
 onready var sprite_node := $Sprite as Sprite
-onready var collision_polygon_node := $CollisionPolygon2D as CollisionPolygon2D
+onready var collision_node := $Collision as CollisionPolygon2D
 onready var player_node := $'/root/Level/Player' as Player
 
 
@@ -25,7 +25,7 @@ func _ready() -> void:
         sprite_node.position.y = FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y
         sprite_node.scale = player_node.shape.NORMAL_SHAPE
 
-        collision_polygon_node.position.y = FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y
-        collision_polygon_node.scale = player_node.shape.SMALL_SHAPE
+        collision_node.position.y = FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y
+        collision_node.scale = player_node.shape.SMALL_SHAPE
 
     set_linear_velocity(player_node.velocity * DECREASE_ACCELERATION)

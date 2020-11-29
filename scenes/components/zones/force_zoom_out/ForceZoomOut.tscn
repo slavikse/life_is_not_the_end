@@ -18,7 +18,7 @@ script = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="Collision" type="CollisionPolygon2D" parent="."]
 visible = false
 light_mask = 0
 position = Vector2( -24, 32 )

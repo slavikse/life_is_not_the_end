@@ -7,8 +7,10 @@ const MAX_HEALTH := 4
 export(int, 4) var health := 0
 export(PackedScene) var BlockDestroyScene: PackedScene
 
-onready var animation_player_node := $AnimationPlayer as AnimationPlayer
-onready var collision_shape_node := $CollisionShape2D as CollisionShape2D
+onready var health_animation_node := $Health as AnimationPlayer
+onready var collision_node := $Collision as CollisionShape2D
+onready var increase_health_audio_node := $IncreseHealth as AudioStreamPlayer2D
+onready var swap_blocks_audio_node := $SwapBlocks as AudioStreamPlayer2D
 onready var blocks_node := $'/root/Level/Blocks' as Node2D
 
 
@@ -18,12 +20,13 @@ func _ready() -> void:
 
 func update_health_display() -> void:
     if health > 0 and health <= MAX_HEALTH:
-        animation_player_node.play('hp%s' % health)
+        health_animation_node.play('hp%s' % health)
 
 
 func external_increse_health() -> void:
     health += 1
     update_health_display()
+#    increase_health_audio_node.play()
 
     if health == MAX_HEALTH:
         swap_blocks()
@@ -31,15 +34,17 @@ func external_increse_health() -> void:
 
 func swap_blocks() -> void:
     hide()
-    collision_shape_node.queue_free()
+    collision_node.queue_free()
 
     var block_destroy_node := BlockDestroyScene.instance() as Node2D
     block_destroy_node.position = position
     blocks_node.call_deferred('add_child', block_destroy_node)
 
-    var block_destroy_animation_player_node := block_destroy_node.get_node('AnimationPlayer') as AnimationPlayer
-    block_destroy_animation_player_node.play('destroy')
-    yield(block_destroy_animation_player_node, 'animation_finished')
+    var destroy_animation_node := block_destroy_node.get_node('Destroy') as AnimationPlayer
+    destroy_animation_node.play('destroy')
+    yield(destroy_animation_node, 'animation_finished')
+
+#    swap_blocks_audio_node.play()
 
     block_destroy_node.queue_free()
     queue_free()

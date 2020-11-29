@@ -5,9 +5,9 @@ const VERTICAL_VELOCITY_DEFAULT := 60.0 / 2.0 # Величина влияния 
 const VERTICAL_VELOCITIES := [VERTICAL_VELOCITY_DEFAULT, VERTICAL_VELOCITY_DEFAULT]
 
 
-func play(velocity: Vector2, animation_move_node: AnimationPlayer, sprite_node: Sprite) -> void:
+func play(velocity: Vector2, move_animation_node: AnimationPlayer, sprite_node: Sprite) -> void:
     var y_floored := velocities_collecting(velocity)
-    play_animation(animation_move_node)
+    play_animation(move_animation_node)
     flip_h_and_v(velocity, y_floored, sprite_node)
 
 
@@ -22,15 +22,15 @@ func velocities_collecting(velocity: Vector2) -> float:
     return y_floored
 
 
-func play_animation(animation_move_node: AnimationPlayer) -> void:
+func play_animation(move_animation_node: AnimationPlayer) -> void:
     var is_moving_horizontal := HORIZONTAL_VELOCITIES.has(HORIZONTAL_VELOCITY_DEFAULT)
     var is_moving_vertical := VERTICAL_VELOCITIES.has(VERTICAL_VELOCITY_DEFAULT)
 
     if is_moving_horizontal and is_moving_vertical:
-        animation_move_node.play('idle')
+        move_animation_node.play('idle')
 
     elif not is_moving_horizontal and not is_moving_vertical:
-        animation_move_node.play('corner')
+        move_animation_node.play('corner')
 
     else:
         var h_0 := float(HORIZONTAL_VELOCITIES[0])
@@ -40,10 +40,10 @@ func play_animation(animation_move_node: AnimationPlayer) -> void:
         var v_1 := float(VERTICAL_VELOCITIES[1])
 
         if h_0 != HORIZONTAL_VELOCITY_DEFAULT and h_1 != HORIZONTAL_VELOCITY_DEFAULT:
-            animation_move_node.play('horizontal')
+            move_animation_node.play('horizontal')
 
         elif v_0 != VERTICAL_VELOCITY_DEFAULT and v_1 != VERTICAL_VELOCITY_DEFAULT:
-            animation_move_node.play('vertical')
+            move_animation_node.play('vertical')
 
 
 func flip_h_and_v(velocity: Vector2, y_floored: float, sprite_node: Sprite) -> void:
