@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/components/player/weapon/scripts/bullet.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/player/weapon/textures/bullet.png" type="Texture" id=2]
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 16
@@ -13,16 +14,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Polygon2D" parent="."]
-position = Vector2( 0, 4 )
-color = Color( 0.811765, 0.847059, 0.862745, 1 )
-polygon = PoolVector2Array( -4, -8, 4, -8, 4, 0, -4, 0 )
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 visible = false
-light_mask = 0
 position = Vector2( 4, 4 )
-polygon = PoolVector2Array( -8, -8, 0, -8, 0, 0, -8, 0 )
+polygon = PoolVector2Array( -4, -9, -7, -8, -8, -7, -9, -4, -8, -1, -7, 0, -4, 1, -1, 0, 0, -1, 1, -4, 0, -7, -1, -8 )
 
 [node name="Area" type="Area2D" parent="."]
 gravity_vec = Vector2( 0, 0 )
@@ -36,5 +35,5 @@ collision_mask = 224
 [node name="Collision" type="CollisionPolygon2D" parent="Area"]
 visible = false
 position = Vector2( 4, 4 )
-polygon = PoolVector2Array( -8, -8, 0, -8, 0, 0, -8, 0 )
+polygon = PoolVector2Array( -4, -9, -7, -8, -8, -7, -9, -4, -8, -1, -7, 0, -4, 1, -1, 0, 0, -1, 1, -4, 0, -7, -1, -8 )
 [connection signal="body_entered" from="Area" to="." method="_on_Area2D_body_entered"]

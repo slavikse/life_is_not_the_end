@@ -19,6 +19,7 @@ var is_level_complete := false
 
 onready var weapon_node := $Weapon as Weapon
 onready var sprite_node := $Sprite as Sprite
+onready var collision_node := $Collision as CollisionPolygon2D
 onready var scale_animation_node := $Scale as AnimationPlayer
 onready var move_animation_node := $Move as AnimationPlayer
 onready var hit_floor_audio_node := $HitFloor as AudioStreamPlayer2D
@@ -106,6 +107,11 @@ func external_zoom_out(flag: bool) -> void:
     is_can_zoom_out = flag
 
 
+func external_game_over() -> void:
+    collision_node.set_deferred('disabled', true)
+    visible = false
+
+
 func external_level_complete() -> void:
     is_level_complete = true
 
@@ -118,6 +124,4 @@ func external_level_complete() -> void:
     yield(scale_animation_node, 'animation_finished')
     visible = false
 
-
-func external_game_over() -> void:
-    visible = false
+    GlobalController.external_next_level()
