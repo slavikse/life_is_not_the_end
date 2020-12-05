@@ -17,11 +17,6 @@ onready var blocks_node := $'/root/Level/Blocks' as Node2D
 func _ready() -> void:
     update_health_display()
 
-    #warning-ignore: UNSAFE_PROPERTY_ACCESS
-    increase_health_audio_node.stream.loop = false
-    #warning-ignore: UNSAFE_PROPERTY_ACCESS
-    swap_blocks_audio_node.stream.loop = false
-
 
 func update_health_display() -> void:
     if health > 0 and health <= MAX_HEALTH:

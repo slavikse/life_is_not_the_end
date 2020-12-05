@@ -11,11 +11,6 @@ onready var shot_audio_node := $Shot as AudioStreamPlayer2D
 onready var bullets_node := $'/root/Level/Bullets' as Node2D
 
 
-func _ready() -> void:
-    #warning-ignore: UNSAFE_PROPERTY_ACCESS
-    shot_audio_node.stream.loop = false
-
-
 func external_shot(move_animation_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:
     var is_idle := move_animation_node.current_animation == 'idle'
     var is_corner := move_animation_node.current_animation == 'corner'

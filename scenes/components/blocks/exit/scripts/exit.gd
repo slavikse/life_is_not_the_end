@@ -7,12 +7,8 @@ var is_can_out := false
 onready var tardis_opened_node := $Tardis/Opened as Sprite
 onready var tardis_door_node := $Tardis/Door as Sprite
 onready var open_animation_node := $Open as AnimationPlayer
-onready var opening_audio_node := $Opening as AudioStreamPlayer2D
-
-
-func _ready() -> void:
-    #warning-ignore: UNSAFE_PROPERTY_ACCESS
-    opening_audio_node.stream.loop = false
+onready var opening_audio_node := $Opening as AudioStreamPlayer
+onready var exit_audio_node := $Exit as AudioStreamPlayer2D
 
 
 func external_open() -> void:
@@ -27,4 +23,5 @@ func external_open() -> void:
 
 func _on_Exit_body_entered(player_node: Player) -> void:
     if player_node and is_can_out:
+        exit_audio_node.play()
         player_node.external_level_complete()

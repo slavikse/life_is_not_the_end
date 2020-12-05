@@ -16,8 +16,6 @@ onready var player_node := $'/root/Level/Player' as Player
 
 
 func _ready() -> void:
-    #warning-ignore: UNSAFE_PROPERTY_ACCESS
-    death_audio_node.stream.loop = false
     death_audio_node.play()
 
     if player_node.shape.is_normal_shape:

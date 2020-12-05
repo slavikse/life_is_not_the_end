@@ -2,14 +2,14 @@ extends KinematicBody2D
 
 class_name Player
 
+const FLOOR := Vector2.UP
+const OFFSET_NORMAL_SHAPE := 4 * 8
+const OFFSET_SMALL_SHAPE := 2 * 8
+
 var move := preload('./movement/move.gd').new()
 var jump := preload('./movement/jump.gd').new()
 var shape := preload('./transform/shape.gd').new()
 var animations := preload('./transform/animations.gd').new()
-
-const FLOOR := Vector2.UP
-const OFFSET_NORMAL_SHAPE := 4 * 8
-const OFFSET_SMALL_SHAPE := 2 * 8
 
 var velocity := Vector2.ZERO;
 # 1 - Когда только что приземлился. Больше 1, когда стоит на полу.
@@ -22,18 +22,13 @@ onready var sprite_node := $Sprite as Sprite
 onready var collision_node := $Collision as CollisionPolygon2D
 onready var scale_animation_node := $Scale as AnimationPlayer
 onready var move_animation_node := $Move as AnimationPlayer
-onready var hit_floor_audio_node := $HitFloor as AudioStreamPlayer2D
+onready var floor_audio_node := $Floor as AudioStreamPlayer2D
 onready var zoom_audio_node := $Zoom as AudioStreamPlayer2D
 
 
 func _ready() -> void:
     scale = Vector2(0, 0)
     scale_animation_node.play('shape_zero_to_normal')
-
-    #warning-ignore: UNSAFE_PROPERTY_ACCESS
-    hit_floor_audio_node.stream.loop = false
-    #warning-ignore: UNSAFE_PROPERTY_ACCESS
-    zoom_audio_node.stream.loop = false
 
 
 func _physics_process(_delta: float) -> void:
@@ -77,7 +72,7 @@ func has_landing() -> void:
         is_landed_counter += 1
 
         if is_landed_counter == 1:
-            hit_floor_audio_node.play()
+            floor_audio_node.play()
 
     else:
         is_landed_counter = 0
@@ -124,4 +119,5 @@ func external_level_complete() -> void:
     yield(scale_animation_node, 'animation_finished')
     visible = false
 
+    yield(get_tree().create_timer(0.3), 'timeout')
     GlobalController.external_next_level()

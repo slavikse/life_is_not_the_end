@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/components/blocks/exit/scripts/exit.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/blocks/exit/textures/opened.png" type="Texture" id=2]
-[ext_resource path="res://scenes/components/blocks/exit/sounds/activate.ogg" type="AudioStream" id=3]
+[ext_resource path="res://scenes/components/blocks/exit/sounds/opening.wav" type="AudioStream" id=3]
 [ext_resource path="res://scenes/components/blocks/exit/textures/closed.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/blocks/exit/sounds/exit.wav" type="AudioStream" id=5]
 [ext_resource path="res://scenes/components/blocks/exit/textures/door.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -69,8 +70,14 @@ shape = SubResource( 1 )
 [node name="Open" type="AnimationPlayer" parent="."]
 anims/open = SubResource( 2 )
 
-[node name="Opening" type="AudioStreamPlayer2D" parent="."]
+[node name="Opening" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+mix_target = 1
+bus = "Effect"
+
+[node name="Exit" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource( 5 )
 bus = "Effect"
 area_mask = 0
 [connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]
