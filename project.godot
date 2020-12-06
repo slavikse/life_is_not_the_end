@@ -80,7 +80,7 @@ config/windows_native_icon="res://favicon.ico"
 [autoload]
 
 GlobalController="*res://scenes/global/GlobalController.tscn"
-GlobalMenu="*res://scenes/Main.tscn"
+GlobalMenu="*res://scenes/global/GlobalMenu.tscn"
 
 [debug]
 
