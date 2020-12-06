@@ -1,17 +1,14 @@
 extends Node2D
 
-const levels := [1, 2, 3]
+const levels := [1]
 # Индекс музыки сопоставляется с индексом уровня. Если не поменялся, значит продолжает играть текущий трек.
-const embients := [1, 1, 1]
+const embients := [1]
 
-# TODO при смене уровня через меню уровней (плитка с уровнями), нужно изменить значения и здесь!
 var change_level_number := -1
 var previous_embient_number := -1
 
 var is_need_change_level := false
 var is_need_reload_level := false
-
-var external_is_not_level_started := false
 
 onready var loader_node := $Loader as Node2D
 onready var embient_audio_node := $Embient as AudioStreamPlayer
@@ -38,7 +35,6 @@ func reload_level() -> void:
 
 
 func change_scene() -> void:
-    external_is_not_level_started = true
     #warning-ignore: RETURN_VALUE_DISCARDED
     get_tree().change_scene('res://scenes/levels/level_%s/Level.tscn' % change_level_number)
     loader_node.hide()
@@ -76,8 +72,6 @@ func show_loader(position: Vector2) -> void:
 func external_start_level(level_number: int) -> void:
     change_level_number = level_number
     is_need_change_level = true
-    # TODO работает?
-    show_loader(Vector2())
 
 
 func external_next_level() -> void:
