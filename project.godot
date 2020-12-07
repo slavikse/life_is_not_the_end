@@ -70,7 +70,7 @@ _global_script_class_icons={
 
 config/name="Life Is Not The End"
 config/description="A randomly acquired life will be returned!"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/Start.tscn"
 boot_splash/image="res://brand.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.14902, 0.196078, 0.219608, 1 )
@@ -80,7 +80,7 @@ config/windows_native_icon="res://favicon.ico"
 [autoload]
 
 GlobalController="*res://scenes/global/GlobalController.tscn"
-GlobalMenu="*res://scenes/global/GlobalMenu.tscn"
+GlobalMain="*res://scenes/global/GlobalMain.tscn"
 
 [debug]
 

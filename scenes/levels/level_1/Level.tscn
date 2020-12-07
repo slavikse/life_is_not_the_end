@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/levels/level_1/rooms/Room.tscn" type="PackedScene" id=12]
 
 [node name="Level" type="Node2D"]
-position = Vector2( 48, 1016 )
+position = Vector2( 0, 2000 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

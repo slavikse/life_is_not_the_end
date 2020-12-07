@@ -4,9 +4,10 @@ const levels := [1]
 # Индекс музыки сопоставляется с индексом уровня. Если не поменялся, значит продолжает играть текущий трек.
 const embients := [1]
 
-var change_level_number := -1
+var change_level_number := 1
 var previous_embient_number := -1
 
+var is_game_started := false
 var is_need_change_level := false
 var is_need_reload_level := false
 
@@ -16,6 +17,7 @@ onready var embient_audio_node := $Embient as AudioStreamPlayer
 
 func _ready() -> void:
     loader_node.hide()
+    play_embient()
 
 
 func _process(_delta: float) -> void:
@@ -25,8 +27,9 @@ func _process(_delta: float) -> void:
     elif is_need_change_level:
         change_level()
 
-    if Input.is_action_just_pressed('ui_reload_current_scene'):
-        reload_level_next_tick()
+    if is_game_started:
+        if Input.is_action_just_pressed('ui_reload_current_scene'):
+            reload_level_next_tick()
 
 
 func reload_level() -> void:
@@ -37,6 +40,7 @@ func reload_level() -> void:
 func change_scene() -> void:
     #warning-ignore: RETURN_VALUE_DISCARDED
     get_tree().change_scene('res://scenes/levels/level_%s/Level.tscn' % change_level_number)
+    is_game_started = true
     loader_node.hide()
 
 
@@ -69,6 +73,7 @@ func show_loader(position: Vector2) -> void:
     loader_node.show()
 
 
+# TODO сохранять максимальный уровень прохождения на диске и восстанавливать при запуске игры
 func external_start_level(level_number: int) -> void:
     change_level_number = level_number
     is_need_change_level = true
@@ -78,6 +83,5 @@ func external_next_level() -> void:
     if change_level_number < levels.size():
         external_start_level(change_level_number + 1)
 
-    # TODO выход в меню. последний уровень завершён
     else:
-        external_start_level(change_level_number)
+        GlobalMain.external_menu_show()
