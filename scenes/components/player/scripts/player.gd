@@ -120,4 +120,6 @@ func external_level_complete() -> void:
     visible = false
 
     yield(get_tree().create_timer(0.3), 'timeout')
-    GlobalController.external_next_level()
+
+    if GlobalController:
+        GlobalController.external_next_level()

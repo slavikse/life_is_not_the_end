@@ -16,9 +16,6 @@
 [node name="Level" type="Node2D"]
 position = Vector2( 0, 2000 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 DeadPlayerScene = ExtResource( 11 )
 
 [node name="BackgroundLight" parent="." instance=ExtResource( 10 )]
@@ -45,22 +42,13 @@ monitorable = false
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 3 )]
 position = Vector2( 96, -200 )
 
-[node name="Activation" parent="." instance=ExtResource( 8 )]
-position = Vector2( 48, 32 )
-
-[node name="Exit" parent="." instance=ExtResource( 4 )]
-position = Vector2( 216, -64 )
-
 [node name="Blocks" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Block" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 224, -32 )
 
 [node name="Block2" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 32, -160 )
+position = Vector2( 32, -240 )
 health = 3
 
 [node name="Shurikens" type="Node2D" parent="."]
@@ -69,10 +57,7 @@ __meta__ = {
 }
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 224, -432 )
-
-[node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 32, -224 )
+position = Vector2( 32, -304 )
 
 [node name="Bullets" type="Node2D" parent="."]
 __meta__ = {
@@ -80,5 +65,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Activation" parent="." instance=ExtResource( 8 )]
+position = Vector2( 32, 16 )
+
+[node name="Exit" parent="." instance=ExtResource( 4 )]
+position = Vector2( 216, -64 )
+
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 32, 0 )
+position = Vector2( 32, -16 )

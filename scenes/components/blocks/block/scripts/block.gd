@@ -7,11 +7,11 @@ const MAX_HEALTH := 4
 export(int, 4) var health := 0
 export(PackedScene) var BlockDestroyScene: PackedScene
 
+onready var blocks_node := get_parent() as Node2D
 onready var health_animation_node := $Health as AnimationPlayer
 onready var collision_node := $Collision as CollisionShape2D
 onready var increase_health_audio_node := $IncreseHealth as AudioStreamPlayer2D
 onready var swap_blocks_audio_node := $SwapBlocks as AudioStreamPlayer2D
-onready var blocks_node := $'/root/Level/Blocks' as Node2D
 
 
 func _ready() -> void:
