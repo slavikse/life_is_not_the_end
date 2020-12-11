@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/levels/level_1/rooms/Room.tscn" type="PackedScene" id=12]
 
 [node name="Level" type="Node2D"]
-position = Vector2( 0, 2000 )
+position = Vector2( 0, 10000 )
 script = ExtResource( 1 )
 DeadPlayerScene = ExtResource( 11 )
 

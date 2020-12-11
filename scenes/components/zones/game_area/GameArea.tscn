@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/components/zones/game_area/game_area.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2728, 1176 )
+extents = Vector2( 2640, 1448 )
 
 [node name="GameArea" type="Area2D"]
 light_mask = -2147483648

@@ -11,12 +11,11 @@ var is_game_started := false
 var is_need_change_level := false
 var is_need_reload_level := false
 
-onready var loader_node := $Loader as Node2D
 onready var embient_audio_node := $Embient as AudioStreamPlayer
 
 
+# TODO восстановление последнего доступного уровня с диска
 func _ready() -> void:
-    loader_node.hide()
     play_embient()
 
 
@@ -38,10 +37,9 @@ func reload_level() -> void:
 
 
 func change_scene() -> void:
-    #warning-ignore: RETURN_VALUE_DISCARDED
+    #warning-ignore:RETURN_VALUE_DISCARDED
     get_tree().change_scene('res://scenes/levels/level_%s/Level.tscn' % change_level_number)
     is_game_started = true
-    loader_node.hide()
 
 
 func change_level() -> void:
@@ -50,6 +48,7 @@ func change_level() -> void:
     play_embient()
 
 
+# TODO играть эмбиент текущего доступного (последнего) уровня.
 func play_embient() -> void:
     var embient_number := int(embients[change_level_number - 1])
 
@@ -63,14 +62,6 @@ func play_embient() -> void:
 
 func reload_level_next_tick() -> void:
     is_need_reload_level = true
-
-    var player_node := $'/root/Level/Player' as Player
-    show_loader(player_node.position)
-
-
-func show_loader(position: Vector2) -> void:
-    loader_node.position = position
-    loader_node.show()
 
 
 # TODO сохранять максимальный уровень прохождения на диске и восстанавливать при запуске игры
