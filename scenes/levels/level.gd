@@ -3,8 +3,7 @@ extends Node2D
 class_name Level
 
 export(PackedScene) var DeadPlayerScene: PackedScene
-
-var closed_doors := 2
+export(int) var closed_doors := 9
 
 onready var exit_node := $Exit as Exit
 onready var is_character_not_added := true
