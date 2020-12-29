@@ -7,7 +7,7 @@ var is_normal_shape := true
 func switch_scale(scale_animation_node: AnimationPlayer) -> bool:
     var is_resize := false
 
-    if Input.is_action_just_pressed('ui_transform'):
+    if Input.is_action_just_pressed('player_transform'):
         is_normal_shape = !is_normal_shape
         is_resize = true
 

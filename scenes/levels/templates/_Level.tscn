@@ -23,6 +23,18 @@ scale = Vector2( 1000, 1000 )
 [node name="BackgroundBlack" parent="." instance=ExtResource( 2 )]
 visible = false
 
+[node name="Activation" parent="." instance=ExtResource( 8 )]
+position = Vector2( 32, 32 )
+
+[node name="Exit" parent="." instance=ExtResource( 4 )]
+position = Vector2( 216, -64 )
+
+[node name="Bullets" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="Zones" type="Node2D" parent="."]
@@ -37,12 +49,6 @@ monitorable = false
 
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 3 )]
 position = Vector2( 96, -200 )
-
-[node name="Activation" parent="." instance=ExtResource( 8 )]
-position = Vector2( 32, 32 )
-
-[node name="Exit" parent="." instance=ExtResource( 4 )]
-position = Vector2( 216, -64 )
 
 [node name="Blocks" type="Node2D" parent="."]
 __meta__ = {
@@ -67,11 +73,7 @@ position = Vector2( 224, -432 )
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 32, -224 )
 
-[node name="Bullets" type="Node2D" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32, 0 )
+
+[node name="Node" type="Node" parent="."]

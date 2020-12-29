@@ -14,7 +14,6 @@ var is_need_reload_level := false
 onready var embient_audio_node := $Embient as AudioStreamPlayer
 
 
-# TODO восстановление последнего доступного уровня с диска
 func _ready() -> void:
     play_embient()
 
@@ -27,7 +26,7 @@ func _process(_delta: float) -> void:
         change_level()
 
     if is_game_started:
-        if Input.is_action_just_pressed('ui_reload_current_scene'):
+        if Input.is_action_just_pressed('game_reload_current_scene'):
             reload_level_next_tick()
 
 
@@ -48,7 +47,6 @@ func change_level() -> void:
     play_embient()
 
 
-# TODO играть эмбиент текущего доступного (последнего) уровня.
 func play_embient() -> void:
     var embient_number := int(embients[change_level_number - 1])
 

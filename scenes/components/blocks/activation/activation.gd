@@ -4,8 +4,8 @@ class_name Activation
 
 var is_activated := false
 
+onready var level_node := $'/root/Level' as Level
 onready var open_animation_node := $Open as AnimationPlayer
-onready var exit_node := $'/root/Level/Exit' as Exit
 
 
 func _on_Area2D_body_entered(bullet_node: Bullet) -> void:
@@ -13,4 +13,4 @@ func _on_Area2D_body_entered(bullet_node: Bullet) -> void:
         is_activated = true
 
         open_animation_node.play('open')
-        exit_node.external_open()
+        level_node.external_can_activate_exit()

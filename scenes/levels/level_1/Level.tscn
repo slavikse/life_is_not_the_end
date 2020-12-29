@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundBlack.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundLight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/levels/level_1/rooms/Room.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/components/common/Control.tscn" type="PackedScene" id=13]
 
 [node name="Level" type="Node2D"]
 position = Vector2( 0, 10000 )
@@ -23,6 +24,9 @@ scale = Vector2( 1000, 1000 )
 
 [node name="BackgroundBlack" parent="." instance=ExtResource( 2 )]
 visible = false
+
+[node name="Control" parent="." instance=ExtResource( 13 )]
+position = Vector2( -455, -301 )
 
 [node name="Rooms" type="Node2D" parent="."]
 
@@ -47,6 +51,9 @@ position = Vector2( 96, -200 )
 [node name="Block" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 224, -32 )
 
+[node name="Block3" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 32, 16 )
+
 [node name="Block2" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 32, -240 )
 health = 3
@@ -66,10 +73,10 @@ __meta__ = {
 }
 
 [node name="Activation" parent="." instance=ExtResource( 8 )]
-position = Vector2( 32, 16 )
+position = Vector2( 480, 16 )
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
-position = Vector2( 216, -64 )
+position = Vector2( 220, -64 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 32, -16 )
+position = Vector2( 33, -16 )

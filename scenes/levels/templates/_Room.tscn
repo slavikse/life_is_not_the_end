@@ -7,6 +7,9 @@
 
 [node name="Room" type="Node2D"]
 
+[node name="Activation" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 32 )
+
 [node name="Zones" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -14,9 +17,6 @@ __meta__ = {
 
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 2 )]
 position = Vector2( 96, -224 )
-
-[node name="Activation" parent="." instance=ExtResource( 3 )]
-position = Vector2( 32, 32 )
 
 [node name="Blocks" type="Node2D" parent="."]
 __meta__ = {

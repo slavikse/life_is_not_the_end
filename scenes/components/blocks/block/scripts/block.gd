@@ -2,10 +2,10 @@ extends StaticBody2D
 
 class_name Block
 
-const MAX_HEALTH := 4
-
 export(int, 4) var health := 0
 export(PackedScene) var BlockDestroyScene: PackedScene
+
+const MAX_HEALTH := 4
 
 onready var blocks_node := get_parent() as Node2D
 onready var health_animation_node := $Health as AnimationPlayer

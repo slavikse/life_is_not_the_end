@@ -33,9 +33,9 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
     if is_level_complete:
-        Input.action_release('ui_up')
-        Input.action_release('ui_left')
-        Input.action_release('ui_right')
+        Input.action_release('player_jump')
+        Input.action_release('player_left')
+        Input.action_release('player_right')
 
     if not visible:
         return

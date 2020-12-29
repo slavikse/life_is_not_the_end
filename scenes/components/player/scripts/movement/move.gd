@@ -28,16 +28,16 @@ func moving(x: float, is_normal_shape: bool) -> float:
 
 
 func controls() -> void:
-    if Input.is_action_just_pressed('ui_left'):
+    if Input.is_action_just_pressed('player_left'):
         is_left_pressed = true
 
-    if Input.is_action_just_pressed('ui_right'):
+    if Input.is_action_just_pressed('player_right'):
         is_right_pressed = true
 
-    if Input.is_action_just_released('ui_left'):
+    if Input.is_action_just_released('player_left'):
         is_left_pressed = false
 
-    if Input.is_action_just_released('ui_right'):
+    if Input.is_action_just_released('player_right'):
         is_right_pressed = false
 
 

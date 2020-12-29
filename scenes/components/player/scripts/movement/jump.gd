@@ -26,7 +26,7 @@ func jumping(y: float, is_normal_shape: bool) -> float:
     current_gravity = N_GRAVITY if is_normal_shape else S_GRAVITY
     current_jump_power = N_JUMP_POWER if is_normal_shape else S_JUMP_POWER
 
-    if Input.is_action_just_pressed('ui_up'):
+    if Input.is_action_just_pressed('player_jump'):
         is_jump_pressed = true
         y = -N_JUMP_POWER if is_normal_shape else -S_JUMP_POWER
 
@@ -41,7 +41,7 @@ func ceiling(y: float, is_normal_shape: bool) -> float:
 
 
 func continuous_jumping(y: float, is_normal_shape: bool) -> float:
-    if Input.is_action_just_released('ui_up'):
+    if Input.is_action_just_released('player_jump'):
         is_jump_pressed = false
 
     if is_jump_pressed:
