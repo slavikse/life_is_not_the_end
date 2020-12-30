@@ -3,10 +3,11 @@ extends Node2D
 class_name Level
 
 export(PackedScene) var DeadPlayerScene: PackedScene
-export(int) var closed_doors := 2
 
 onready var exit_node := $Exit as Exit
+onready var rooms_node := $Rooms as Node2D
 onready var is_character_not_added := true
+onready var closed_doors := rooms_node.get_child_count() + 1
 
 
 func external_can_activate_exit() -> void:

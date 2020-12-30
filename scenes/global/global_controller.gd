@@ -4,6 +4,9 @@ const levels := [1, 2]
 # Индекс музыки сопоставляется с индексом уровня. Если не поменялся, значит продолжает играть текущий трек.
 const embients := [1, 1]
 
+var level_file_name := "user://meta.bin"
+
+var maximum_level_number := -1
 var change_level_number := 1
 var previous_embient_number := -1
 
@@ -15,6 +18,7 @@ onready var embient_audio_node := $Embient as AudioStreamPlayer
 
 
 func _ready() -> void:
+    restore_save_game()
     play_embient()
 
 
@@ -28,6 +32,31 @@ func _process(_delta: float) -> void:
     if is_game_started:
         if Input.is_action_just_pressed('game_reload_current_scene'):
             reload_level_next_tick()
+
+
+func restore_save_game() -> void:
+    var file := File.new() as File
+
+    if file.file_exists(level_file_name):
+        #warning-ignore:RETURN_VALUE_DISCARDED
+        file.open(level_file_name, File.READ)
+        maximum_level_number = int(file.get_as_text())
+
+        if maximum_level_number > change_level_number:
+            change_level_number = maximum_level_number
+
+    file.close()
+
+
+func play_embient() -> void:
+    var embient_number := int(embients[change_level_number - 1])
+
+    if previous_embient_number != embient_number:
+        previous_embient_number = embient_number
+
+        var embient_audio := load('res://scenes/levels/level_%s/embient.ogg' % embient_number) as AudioStream
+        embient_audio_node.set_stream(embient_audio)
+        embient_audio_node.play()
 
 
 func reload_level() -> void:
@@ -47,25 +76,8 @@ func change_level() -> void:
     play_embient()
 
 
-func play_embient() -> void:
-    var embient_number := int(embients[change_level_number - 1])
-
-    if previous_embient_number != embient_number:
-        previous_embient_number = embient_number
-
-        var embient_audio := load('res://scenes/levels/level_%s/embient.ogg' % embient_number) as AudioStream
-        embient_audio_node.set_stream(embient_audio)
-        embient_audio_node.play()
-
-
 func reload_level_next_tick() -> void:
     is_need_reload_level = true
-
-
-# TODO сохранять максимальный уровень прохождения на диске и восстанавливать при запуске игры
-func external_start_level(level_number: int) -> void:
-    change_level_number = level_number
-    is_need_change_level = true
 
 
 func external_next_level() -> void:
@@ -74,3 +86,20 @@ func external_next_level() -> void:
 
     else:
         GlobalMain.external_menu_show()
+
+
+func external_start_level(level_number: int) -> void:
+    change_level_number = level_number
+    is_need_change_level = true
+
+    if level_number > maximum_level_number:
+        maximum_level_number = level_number
+        save_game()
+
+
+func save_game() -> void:
+    var file := File.new() as File
+    #warning-ignore:RETURN_VALUE_DISCARDED
+    file.open(level_file_name, File.WRITE)
+    file.store_string(str(maximum_level_number))
+    file.close()

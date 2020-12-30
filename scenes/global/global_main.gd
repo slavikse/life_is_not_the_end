@@ -3,7 +3,9 @@ extends Node2D
 var is_menu_shown := true
 var button_active_index := -1
 var is_overlay_shown := false
+
 var volume := 75
+var volume_file_name := "user://logs.bin"
 
 onready var camera_node := $Menu/Camera as Camera2D
 onready var play_node := $Menu/Actions/Play as Button
@@ -24,7 +26,11 @@ onready var credits_camera_node := $Credits/Camera as Camera2D
 onready var credits_return_node := $Credits/Return as Button
 
 
+# В меню LEVELS, будут открыты все уровени до (включительно) максимально доступного взятого с диска.
+# если игра начинается с уровня из этого списка или текущая игра переключается на другой уровень из списка,
+# то должно должно корректно отрабатывать.
 func _ready() -> void:
+    restore_save_game()
     next_button_active()
     _on_Volume_pressed(0)
 
@@ -55,6 +61,17 @@ func _process(_delta: float) -> void:
 
         else:
             _on_Start_pressed()
+
+
+func restore_save_game() -> void:
+    var file := File.new() as File
+
+    if file.file_exists(volume_file_name):
+        #warning-ignore:RETURN_VALUE_DISCARDED
+        file.open(volume_file_name, File.READ)
+        volume = int(file.get_as_text())
+
+    file.close()
 
 
 func ui_controls() -> void:
@@ -117,9 +134,8 @@ func _on_Start_pressed() -> void:
         game_start()
 
 
-# TODO продолжить уровень. восстановление последнего доступного уровня с диска
 func game_start() -> void:
-    GlobalController.external_start_level(1)
+    GlobalController.external_start_level(GlobalController.change_level_number)
     game_continue()
 
     yield(get_tree().create_timer(0.1), 'timeout')
@@ -145,6 +161,7 @@ func _on_Volume_pressed(value := 25) -> void:
         volume = 0
 
     options_volume_node.text = str(volume)
+    save_game()
 
     var bus_idx := AudioServer.get_bus_index("Master")
 
@@ -162,6 +179,14 @@ func _on_Volume_pressed(value := 25) -> void:
 
     elif volume == 100:
         AudioServer.set_bus_volume_db(bus_idx, 10)
+
+
+func save_game() -> void:
+    var file := File.new() as File
+    #warning-ignore:RETURN_VALUE_DISCARDED
+    file.open(volume_file_name, File.WRITE)
+    file.store_string(str(volume))
+    file.close()
 
 
 func _on_Levels_pressed() -> void:
@@ -214,6 +239,7 @@ func _on_Exit_pressed() -> void:
 
 
 # TODO показать что то, что игра пройдена. Спасибо за покупку игры и тд.
+# TODO вместо надписи продолжить, будет start и игра начнется с последнего уровня
 func external_menu_show() -> void:
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

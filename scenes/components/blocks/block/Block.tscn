@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/components/blocks/block/scripts/block.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/blocks/block/sounds/increse_health.wav" type="AudioStream" id=2]
@@ -7,9 +7,6 @@
 [ext_resource path="res://scenes/components/blocks/block/textures/stencil.png" type="Texture" id=8]
 [ext_resource path="res://scenes/components/blocks/block/textures/hp.png" type="Texture" id=9]
 [ext_resource path="res://scenes/components/blocks/block/textures/bg.png" type="Texture" id=10]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
 
 [sub_resource type="Animation" id=2]
 length = 0.2
@@ -78,7 +75,7 @@ script = ExtResource( 1 )
 BlockDestroyScene = ExtResource( 7 )
 
 [node name="BG" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 10 )
 
 [node name="HP" type="Sprite" parent="."]
@@ -89,9 +86,9 @@ texture = ExtResource( 9 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionPolygon2D" parent="."]
 visible = false
-shape = SubResource( 1 )
+polygon = PoolVector2Array( 24, -32, -24, -32, -24, -24, -32, -24, -32, 24, -24, 24, -24, 32, 24, 32, 24, 24, 32, 24, 32, -24, 24, -24 )
 
 [node name="Health" type="AnimationPlayer" parent="."]
 anims/hp1 = SubResource( 2 )
