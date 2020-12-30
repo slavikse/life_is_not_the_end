@@ -215,5 +215,7 @@ func _on_Exit_pressed() -> void:
 
 # TODO показать что то, что игра пройдена. Спасибо за покупку игры и тд.
 func external_menu_show() -> void:
+    Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
     camera_node.current = true
     is_menu_shown = true

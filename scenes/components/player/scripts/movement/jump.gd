@@ -1,14 +1,15 @@
-const N_JUMP_POWER := 190.0 / 2.0
+const N_JUMP_POWER := 90.0
 const N_JUMP_UP_MULTIPLIER := 0.95
-const N_GRAVITY := 60.0 / 2.0
 const N_JUMP_DOWN_MULTIPLIER := 1.01
-const N_ROOF := 750.0 * 1.2
+const N_ROOF := 900.0
 
-const S_JUMP_POWER := 180.0 / 2.0
-const S_JUMP_UP_MULTIPLIER := 0.95
-const S_GRAVITY := 60.0 / 2.0
-const S_JUMP_DOWN_MULTIPLIER := 1.007
-const S_ROOF := 1010.0 * 1.02
+const S_JUMP_POWER := 92.5
+const S_JUMP_UP_MULTIPLIER := 0.97
+const S_JUMP_DOWN_MULTIPLIER := 1.005
+const S_ROOF := 1030.0
+
+# При изменении, обновить VERTICAL_VELOCITY_DEFAULT.
+const GRAVITY := 25.0
 
 # JUMP_UP_MULTIPLIER - Должно быть меньше или равно 1.0
 # JUMP_DOWN_MULTIPLIER - Должно быть больше или равно 1.0
@@ -16,14 +17,14 @@ const S_ROOF := 1010.0 * 1.02
 # N - Normal Shape | S - Small Shape
 
 # Начальное состояние Normal Shape (N_): shape.gd -> is_normal_shape := true
-var current_gravity := N_GRAVITY
+var current_gravity := GRAVITY
 var current_jump_power := N_JUMP_POWER
 
 var is_jump_pressed := false
 
 
 func jumping(y: float, is_normal_shape: bool) -> float:
-    current_gravity = N_GRAVITY if is_normal_shape else S_GRAVITY
+    current_gravity = GRAVITY if is_normal_shape else GRAVITY
     current_jump_power = N_JUMP_POWER if is_normal_shape else S_JUMP_POWER
 
     if Input.is_action_just_pressed('player_jump'):
@@ -35,7 +36,7 @@ func jumping(y: float, is_normal_shape: bool) -> float:
 
 func ceiling(y: float, is_normal_shape: bool) -> float:
     is_jump_pressed = false
-    y = N_GRAVITY if is_normal_shape else S_GRAVITY
+    y = GRAVITY if is_normal_shape else GRAVITY
 
     return y
 

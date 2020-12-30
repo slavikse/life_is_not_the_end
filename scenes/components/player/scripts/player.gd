@@ -68,7 +68,7 @@ func jumping() -> void:
 
 
 func has_landing() -> void:
-    if round(velocity.y) == jump.N_GRAVITY:
+    if round(velocity.y) == jump.GRAVITY:
         is_landed_counter += 1
 
         if is_landed_counter == 1:

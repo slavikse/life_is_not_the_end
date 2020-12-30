@@ -1,7 +1,7 @@
 const HORIZONTAL_VELOCITY_DEFAULT := 0.0
 const HORIZONTAL_VELOCITIES := [HORIZONTAL_VELOCITY_DEFAULT, HORIZONTAL_VELOCITY_DEFAULT]
 
-const VERTICAL_VELOCITY_DEFAULT := 60.0 / 2.0 # Величина влияния гравитации для нормальной и малой форм.
+const VERTICAL_VELOCITY_DEFAULT := 25.0 # Величина влияния гравитации для нормальной и малой форм.
 const VERTICAL_VELOCITIES := [VERTICAL_VELOCITY_DEFAULT, VERTICAL_VELOCITY_DEFAULT]
 
 

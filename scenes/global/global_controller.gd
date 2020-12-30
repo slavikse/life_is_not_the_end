@@ -1,8 +1,8 @@
 extends Node2D
 
-const levels := [1]
+const levels := [1, 2]
 # Индекс музыки сопоставляется с индексом уровня. Если не поменялся, значит продолжает играть текущий трек.
-const embients := [1]
+const embients := [1, 1]
 
 var change_level_number := 1
 var previous_embient_number := -1

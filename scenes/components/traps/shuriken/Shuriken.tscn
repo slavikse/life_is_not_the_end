@@ -13,21 +13,19 @@ mass = 2.04082
 gravity_scale = 10.0
 can_sleep = false
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 visible = false
 light_mask = 0
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.2, 1.2 )
 polygon = PoolVector2Array( 16, 16, 0, 8, -16, 16, -8, 0, -16, -16, 0, -8, 16, -16, 8, 0 )
 
 [node name="Area" type="Area2D" parent="."]
+scale = Vector2( 0.6, 0.6 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0

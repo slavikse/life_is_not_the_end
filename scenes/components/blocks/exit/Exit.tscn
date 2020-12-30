@@ -27,6 +27,7 @@ tracks/0/keys = {
 }
 
 [node name="Exit" type="Area2D"]
+z_index = 1
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0

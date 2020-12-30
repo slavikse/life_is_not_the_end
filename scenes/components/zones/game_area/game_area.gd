@@ -4,10 +4,7 @@ onready var level_node := $'/root/Level' as Level
 
 
 func _on_GameArea_body_exited(body: Node2D) -> void:
-    if body is Bullet:
-        (body as Bullet).external_destroy()
-
-    elif body is Player:
+    if body is Player:
         (body as Player).external_game_over()
         level_node.external_game_over()
 
