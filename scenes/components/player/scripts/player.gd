@@ -11,6 +11,7 @@ var jump := preload('./movement/jump.gd').new()
 var shape := preload('./transform/shape.gd').new()
 var animations := preload('./transform/animations.gd').new()
 
+var is_first_entered := false
 var velocity := Vector2.ZERO;
 # 1 - Когда только что приземлился. Больше 1, когда стоит на полу.
 var is_landed_counter := 0
@@ -48,6 +49,10 @@ func _physics_process(_delta: float) -> void:
     velocity = move_and_slide(velocity, FLOOR)
 
 
+func _on_FirstEntered_timeout() -> void:
+    is_first_entered = true
+
+
 func moving() -> void:
     velocity.x = move.moving(velocity.x, shape.is_normal_shape)
 
@@ -71,7 +76,7 @@ func has_landing() -> void:
     if round(velocity.y) == jump.GRAVITY:
         is_landed_counter += 1
 
-        if is_landed_counter == 1:
+        if is_landed_counter == 1 and is_first_entered:
             floor_audio_node.play()
 
     else:

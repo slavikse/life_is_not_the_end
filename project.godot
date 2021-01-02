@@ -246,4 +246,3 @@ quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 quality/subsurface_scattering/quality=2
 quality/depth/hdr=false
-environment/default_environment="res://default_env.tres"

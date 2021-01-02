@@ -1,11 +1,12 @@
 extends Node2D
 
 var is_menu_shown := true
-var button_active_index := -1
 var is_overlay_shown := false
+var is_manual_level_selection := false
+var button_active_index := -1
 
 var volume := 75
-var volume_file_name := "user://logs.bin"
+var volume_file_name := "user://volume.bin"
 
 onready var camera_node := $Menu/Camera as Camera2D
 onready var play_node := $Menu/Actions/Play as Button
@@ -17,6 +18,8 @@ onready var buttons := [play_node, levels_node, options_node, credits_node, exit
 
 onready var levels_camera_node := $Levels/Camera as Camera2D
 onready var levels_return_node := $Levels/Return as Button
+onready var levels_container_node := $Levels/ScrollContainer/VBoxContainer as VBoxContainer
+onready var levels_level_node := levels_container_node.get_node('Level_01') as Button
 
 onready var options_camera_node := $Options/Camera as Camera2D
 onready var options_return_node := $Options/Return as Button
@@ -25,22 +28,24 @@ onready var options_volume_node := $Options/Volume as Button
 onready var credits_camera_node := $Credits/Camera as Camera2D
 onready var credits_return_node := $Credits/Return as Button
 
+onready var game_end_camera_node := $GameEnd/Camera as Camera2D
+onready var game_end_return_node := $GameEnd/Return as Button
 
-# В меню LEVELS, будут открыты все уровени до (включительно) максимально доступного взятого с диска.
-# если игра начинается с уровня из этого списка или текущая игра переключается на другой уровень из списка,
-# то должно должно корректно отрабатывать.
+
 func _ready() -> void:
-    restore_save_game()
+    adding_level_buttons()
+    restore_volume()
     next_button_active()
     _on_Volume_pressed(0)
 
 
 func _process(_delta: float) -> void:
     if is_overlay_shown:
-        if Input.is_action_just_pressed('ui_enter') or Input.is_action_just_pressed('ui_menu'):
+        if Input.is_action_just_pressed('ui_menu'):
             levels_return_node.emit_signal('pressed')
             options_return_node.emit_signal('pressed')
             credits_return_node.emit_signal('pressed')
+            game_end_return_node.emit_signal('pressed')
 
         if Input.is_action_just_pressed('ui_left'):
             _on_Volume_pressed(-25)
@@ -48,22 +53,56 @@ func _process(_delta: float) -> void:
         if Input.is_action_just_pressed('ui_right'):
             _on_Volume_pressed(25)
 
-        return
-
-    if is_menu_shown:
-        ui_controls()
-
-    if GlobalController.is_game_started and Input.is_action_just_pressed('ui_menu'):
-        is_menu_shown = !is_menu_shown
-
+    else:
         if is_menu_shown:
-            game_paused()
+            ui_controls()
+
+        if GlobalController.is_game_started:
+            if Input.is_action_just_pressed('ui_menu'):
+                is_menu_shown = !is_menu_shown
+
+                if is_menu_shown:
+                    game_paused()
+
+                else:
+                    _on_Start_pressed()
+
+            if is_manual_level_selection:
+                is_manual_level_selection = false
+                active_player_camera()
+
+
+func adding_level_buttons() -> void:
+    for level_button_index in GlobalController.LEVELS.size():
+        var levels_button_count := int(level_button_index) + 1
+
+        if levels_button_count < 2:
+            #warning-ignore:RETURN_VALUE_DISCARDED
+            levels_level_node.connect('pressed', self, '_on_Level_pressed', [levels_button_count])
+            continue
+
+        var level_button_cloned_node := levels_level_node.duplicate() as Button
+        #warning-ignore:RETURN_VALUE_DISCARDED
+        level_button_cloned_node.connect('pressed', self, '_on_Level_pressed', [levels_button_count])
+
+        if levels_button_count <= GlobalController.current_level_number:
+            level_button_cloned_node.disabled = false
+            level_button_cloned_node.mouse_filter = Control.MOUSE_FILTER_STOP
 
         else:
-            _on_Start_pressed()
+            level_button_cloned_node.disabled = true
+            level_button_cloned_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+        if levels_button_count < 10:
+            level_button_cloned_node.text = "Level 0%s" % str(levels_button_count)
+
+        else:
+            level_button_cloned_node.text = "Level %s" % str(levels_button_count)
+
+        levels_container_node.add_child(level_button_cloned_node)
 
 
-func restore_save_game() -> void:
+func restore_volume() -> void:
     var file := File.new() as File
 
     if file.file_exists(volume_file_name):
@@ -74,6 +113,7 @@ func restore_save_game() -> void:
     file.close()
 
 
+# TODO управление с клавиатуры для Levels. enter - должен открывать уровень
 func ui_controls() -> void:
     if Input.is_action_just_pressed('ui_arrow_top'):
         prev_button_active()
@@ -124,18 +164,10 @@ func game_paused() -> void:
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func _on_Start_pressed() -> void:
-    get_tree().paused = false
+func game_start(level := 0) -> void:
+    var current_level_number := GlobalController.current_level_number if level == 0 else level
 
-    if GlobalController.is_game_started:
-        game_continue()
-
-    else:
-        game_start()
-
-
-func game_start() -> void:
-    GlobalController.external_start_level(GlobalController.change_level_number)
+    GlobalController.external_start_level(current_level_number)
     game_continue()
 
     yield(get_tree().create_timer(0.1), 'timeout')
@@ -145,10 +177,37 @@ func game_start() -> void:
 func game_continue() -> void:
     is_menu_shown = false
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+    active_player_camera()
+
+
+func active_player_camera() -> void:
+    if GlobalController.is_game_started:
+        var level_node := $'/root'.get_node_or_null('Level') as Level
+
+        if level_node:
+            var player_camera_node := level_node.get_node('Player/Camera') as Camera2D
+            player_camera_node.current = true
+
+        else:
+            is_manual_level_selection = true
+
+
+func save_volume() -> void:
+    var file := File.new() as File
+    #warning-ignore:RETURN_VALUE_DISCARDED
+    file.open(volume_file_name, File.WRITE)
+    file.store_string(str(volume))
+    file.close()
+
+
+func _on_Start_pressed() -> void:
+    get_tree().paused = false
 
     if GlobalController.is_game_started:
-        var player_camera_node := $'/root/Level/Player/Camera' as Camera2D
-        player_camera_node.current = true
+        game_continue()
+
+    else:
+        game_start()
 
 
 func _on_Volume_pressed(value := 25) -> void:
@@ -161,7 +220,7 @@ func _on_Volume_pressed(value := 25) -> void:
         volume = 0
 
     options_volume_node.text = str(volume)
-    save_game()
+    save_volume()
 
     var bus_idx := AudioServer.get_bus_index("Master")
 
@@ -181,32 +240,43 @@ func _on_Volume_pressed(value := 25) -> void:
         AudioServer.set_bus_volume_db(bus_idx, 10)
 
 
-func save_game() -> void:
-    var file := File.new() as File
-    #warning-ignore:RETURN_VALUE_DISCARDED
-    file.open(volume_file_name, File.WRITE)
-    file.store_string(str(volume))
-    file.close()
+func _on_Return_pressed() -> void:
+    camera_node.current = true
+    is_overlay_shown = false
+    is_menu_shown = true
 
 
 func _on_Levels_pressed() -> void:
+    button_active_index = 1
+    change_button_active()
+
     levels_camera_node.current = true
     is_overlay_shown = true
 
 
+func _on_Level_pressed(level: int) -> void:
+    get_tree().paused = false
+    game_start(level)
+
+    is_overlay_shown = false
+    is_menu_shown = false
+    is_manual_level_selection = true
+
+
 func _on_Options_pressed() -> void:
+    button_active_index = 2
+    change_button_active()
+
     options_camera_node.current = true
     is_overlay_shown = true
 
 
 func _on_Credits_pressed() -> void:
+    button_active_index = 3
+    change_button_active()
+
     credits_camera_node.current = true
     is_overlay_shown = true
-
-
-func _on_Return_pressed() -> void:
-    camera_node.current = true
-    is_overlay_shown = false
 
 
 func _on_Author_pressed() -> void:
@@ -238,10 +308,9 @@ func _on_Exit_pressed() -> void:
     get_tree().quit()
 
 
-# TODO показать что то, что игра пройдена. Спасибо за покупку игры и тд.
-# TODO вместо надписи продолжить, будет start и игра начнется с последнего уровня
 func external_menu_show() -> void:
-    Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+    game_end_camera_node.current = true
+    is_overlay_shown = true
+    play_node.text = 'Play'
 
-    camera_node.current = true
-    is_menu_shown = true
+    Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

@@ -15,7 +15,7 @@
 [ext_resource path="res://scenes/components/common/Control.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=1]
-size = 64
+size = 80
 font_data = ExtResource( 12 )
 
 [node name="Level" type="Node2D"]
@@ -34,7 +34,7 @@ position = Vector2( 96, 16 )
 z_index = 1
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
-position = Vector2( 480, -80 )
+position = Vector2( 476, -80 )
 
 [node name="Bullets" type="Node2D" parent="."]
 z_index = 1
@@ -46,13 +46,10 @@ __meta__ = {
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="Activation2" parent="Rooms" instance=ExtResource( 8 )]
-position = Vector2( 96, -176 )
+position = Vector2( 32, -240 )
 z_index = 1
 
 [node name="Zones" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="GameArea" parent="Zones" instance=ExtResource( 5 )]
 visible = false
@@ -60,8 +57,8 @@ light_mask = 0
 monitorable = false
 
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 3 )]
-position = Vector2( 256, -272 )
-scale = Vector2( 4, 4 )
+position = Vector2( 288, -368 )
+scale = Vector2( 5, 5 )
 
 [node name="Blocks" type="Node2D" parent="."]
 z_index = 1
@@ -82,48 +79,74 @@ health = 2
 
 [node name="Block6" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 288, 144 )
+health = 1
 
 [node name="Block7" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 224, 208 )
-health = 1
+health = 2
 
 [node name="Block8" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 224, 144 )
-health = 1
+health = 3
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 352, -48 )
-
-[node name="Block2" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 32, -176 )
-health = 1
+health = 2
 
 [node name="Shurikens" type="Node2D" parent="."]
 z_index = 1
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 296, -32 )
-
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 96, -16 )
-
-[node name="Control" parent="." instance=ExtResource( 13 )]
-position = Vector2( -376, -296 )
-
-[node name="Tips" type="Node2D" parent="."]
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
+[node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 293, -35 )
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 96, -16 )
+
+[node name="Control" parent="." instance=ExtResource( 13 )]
+position = Vector2( -368, -304 )
+
+[node name="Tips" type="Node2D" parent="."]
+position = Vector2( -1, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Rerun" type="Label" parent="Tips"]
+margin_left = 66.0
+margin_top = -154.0
+margin_right = 130.0
+margin_bottom = -95.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RerunCounter" type="Label" parent="Tips/Rerun"]
+margin_left = -94.0
+margin_top = -36.0
+margin_right = 166.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "rerun counter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Controls" type="Label" parent="Tips"]
-margin_left = -376.0
-margin_top = -344.0
-margin_right = -168.0
-margin_bottom = -250.0
+margin_left = -368.0
+margin_top = -376.0
+margin_right = -160.0
+margin_bottom = -282.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "Controls"
@@ -132,10 +155,10 @@ __meta__ = {
 }
 
 [node name="OpeningDoor" type="Label" parent="Tips"]
-margin_left = -56.0
-margin_top = 32.0
-margin_right = 176.0
-margin_bottom = 126.0
+margin_left = -80.0
+margin_top = 29.0
+margin_right = 170.0
+margin_bottom = 123.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "opening door"
@@ -144,10 +167,10 @@ __meta__ = {
 }
 
 [node name="Trap" type="Label" parent="Tips"]
-margin_left = 256.0
-margin_top = -104.0
-margin_right = 464.0
-margin_bottom = -10.0
+margin_left = 198.0
+margin_top = -111.0
+margin_right = 406.0
+margin_bottom = -17.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "trap"
@@ -156,10 +179,10 @@ __meta__ = {
 }
 
 [node name="NextLevel" type="Label" parent="Tips"]
-margin_left = 520.0
-margin_top = -200.0
-margin_right = 880.0
-margin_bottom = -103.0
+margin_left = 516.0
+margin_top = -222.0
+margin_right = 876.0
+margin_bottom = -101.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "Door for
@@ -169,10 +192,10 @@ __meta__ = {
 }
 
 [node name="DestroyedPlatforms" type="Label" parent="Tips"]
-margin_left = 336.0
-margin_top = 72.0
-margin_right = 640.0
-margin_bottom = 169.0
+margin_left = 331.0
+margin_top = 57.0
+margin_right = 635.0
+margin_bottom = 178.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "destroyed
@@ -182,10 +205,10 @@ __meta__ = {
 }
 
 [node name="ReductionZone" type="Label" parent="Tips"]
-margin_left = 152.0
-margin_top = -400.0
-margin_right = 368.0
-margin_bottom = -306.0
+margin_left = 148.0
+margin_top = -388.0
+margin_right = 418.0
+margin_bottom = -294.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "reduction zone"
