@@ -1,16 +1,16 @@
 extends Node2D
 
+# \\\/// Изменяются вручную когда нужно изменить количество уровней и фоновую музыку.
+const LEVELS_COUNT := 2
+# Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
+const EMBIENTS_EACH := 1
+# ///\\\
+
 const LEVELS := []
 const EMBIENTS := []
 
 const LEVELS_FILE_NAME := "user://levels.bin"
 const RERUNS := {}
-
-# \\\ Изменяются вручную когда нужно изменить количество уровней и фоновую музыку ///
-var levels_count := 2
-# Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
-var embients_each := 1
-# ///\\\
 
 var current_level_number := 1
 var maximum_level_number := 1
@@ -44,13 +44,13 @@ func _process(_delta: float) -> void:
 func game_init() -> void:
     var embients_index := 1
 
-    for level_index in range(levels_count):
+    for level_index in range(LEVELS_COUNT):
         var level_index_next := level_index + 1
 
         LEVELS.append(level_index_next)
         EMBIENTS.append(embients_index)
 
-        if level_index_next % embients_each == 0 and embients_index + 1 <= levels_count:
+        if level_index_next % EMBIENTS_EACH == 0 and embients_index + 1 <= LEVELS_COUNT:
             embients_index += 1
 
 
@@ -66,8 +66,8 @@ func restore_level() -> void:
         if current_level_number == 0:
             current_level_number = 1
 
-        elif current_level_number > levels_count:
-            current_level_number = levels_count
+        elif current_level_number > LEVELS_COUNT:
+            current_level_number = LEVELS_COUNT
 
         maximum_level_number = current_level_number
 
@@ -152,7 +152,7 @@ func save_level() -> void:
 func external_next_level() -> void:
     var next_level_number := current_level_number + 1
 
-    if next_level_number <= levels_count:
+    if next_level_number <= LEVELS_COUNT:
         external_start_level(next_level_number)
 
     else:

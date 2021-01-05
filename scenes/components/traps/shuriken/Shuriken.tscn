@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/components/traps/shuriken/cut.wav" type="AudioStream" id=3]
 
 [node name="Shuriken" type="RigidBody2D"]
-z_index = 1
+z_index = 2
 z_as_relative = false
 collision_layer = 8
 collision_mask = 2147483870
