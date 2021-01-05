@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/blocks/activation/Activation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundLight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/levels/level_2/rooms/Room_1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/rooms/Room_1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/components/blocks/block/Block.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/components/zones/game_area/GameArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/components/blocks/exit/Exit.tscn" type="PackedScene" id=7]
@@ -48,7 +48,7 @@ light_mask = 0
 monitorable = false
 
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 13 )]
-position = Vector2( 672, 16 )
+position = Vector2( 288, 80 )
 
 [node name="Blocks" type="Node2D" parent="."]
 __meta__ = {
@@ -60,49 +60,33 @@ position = Vector2( 224, -48 )
 
 [node name="Block3" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 32, 16 )
-health = 3
+health = 2
 
 [node name="Block2" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 224, -304 )
-health = 1
+position = Vector2( 224, -368 )
+health = 3
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 5 )]
+position = Vector2( 288, -304 )
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 416, 208 )
 health = 1
-
-[node name="Block19" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 32, -176 )
 
 [node name="Block6" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( -32, 16 )
 health = 1
 
 [node name="Block8" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 480, 272 )
+position = Vector2( 544, 272 )
 health = 2
 
 [node name="Block9" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( -160, -112 )
 health = 1
 
-[node name="Block20" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 608, -304 )
-health = 3
-
-[node name="Block21" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 800, 208 )
-health = 1
-
-[node name="Block22" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 544, 16 )
-health = 2
-
-[node name="Block29" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 608, 208 )
-health = 1
-
 [node name="Block24" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 416, -48 )
+position = Vector2( 416, -112 )
 health = 3
 
 [node name="Block27" parent="Blocks" instance=ExtResource( 5 )]
@@ -113,23 +97,18 @@ position = Vector2( 672, -112 )
 health = 1
 
 [node name="Block15" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 480, -112 )
+position = Vector2( 480, -48 )
+health = 1
 
 [node name="Block16" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 672, 208 )
 
-[node name="Block18" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( -96, -240 )
-health = 2
-
 [node name="Block11" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 160, 208 )
 
-[node name="Block12" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 96, 208 )
-
 [node name="Block13" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( -32, -304 )
+position = Vector2( -32, -240 )
+health = 2
 
 [node name="Shurikens" type="Node2D" parent="."]
 __meta__ = {
@@ -137,19 +116,19 @@ __meta__ = {
 }
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 8 )]
-position = Vector2( 229, -355 )
+position = Vector2( 237, -419 )
 
 [node name="Shuriken5" parent="Shurikens" instance=ExtResource( 8 )]
-position = Vector2( 27, -227 )
+position = Vector2( -21, -291 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 8 )]
-position = Vector2( 611, -355 )
+position = Vector2( 531, -291 )
 
 [node name="Shuriken4" parent="Shurikens" instance=ExtResource( 8 )]
 position = Vector2( 667, -163 )
 
 [node name="Shuriken3" parent="Shurikens" instance=ExtResource( 8 )]
-position = Vector2( 419, -99 )
+position = Vector2( 427, -163 )
 
 [node name="Bullets" type="Node2D" parent="."]
 __meta__ = {
@@ -158,7 +137,7 @@ __meta__ = {
 }
 
 [node name="Activation" parent="." instance=ExtResource( 2 )]
-position = Vector2( -224, -432 )
+position = Vector2( 288, -368 )
 
 [node name="Exit" parent="." instance=ExtResource( 7 )]
 position = Vector2( 220, -80 )

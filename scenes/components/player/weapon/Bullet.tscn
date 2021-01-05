@@ -8,7 +8,7 @@ z_index = 3
 z_as_relative = false
 collision_layer = 16
 collision_mask = 8
-mass = 2.0
+mass = 15.0
 gravity_scale = 0.0
 can_sleep = false
 script = ExtResource( 1 )
@@ -17,16 +17,15 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.125, 0.125 )
+scale = Vector2( 0.187, 0.187 )
 texture = ExtResource( 2 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 visible = false
-position = Vector2( 2.5, 4.5 )
-polygon = PoolVector2Array( -4.5, -6.5, -4.5, -2.5, -0.5, -2.5, -0.5, -6.5 )
+position = Vector2( 4, 4 )
+polygon = PoolVector2Array( -7, -7, -7, -1, -1, -1, -1, -7 )
 
 [node name="Area" type="Area2D" parent="."]
-visible = false
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
@@ -36,6 +35,7 @@ collision_layer = 16
 collision_mask = 704
 
 [node name="Collision" type="CollisionPolygon2D" parent="Area"]
+visible = false
 position = Vector2( 4, 4 )
-polygon = PoolVector2Array( -6, -6, -6, -2, -2, -2, -2, -6 )
+polygon = PoolVector2Array( -7, -7, -7, -1, -1, -1, -1, -7 )
 [connection signal="body_entered" from="Area" to="." method="_on_Area2D_body_entered"]

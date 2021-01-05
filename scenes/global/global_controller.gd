@@ -46,6 +46,7 @@ func game_init() -> void:
 
     for level_index in range(levels_count):
         var level_index_next := level_index + 1
+
         LEVELS.append(level_index_next)
         EMBIENTS.append(embients_index)
 
@@ -103,6 +104,12 @@ func reload_level() -> void:
     save_rerun()
 
 
+func change_scene() -> void:
+    #warning-ignore:RETURN_VALUE_DISCARDED
+    get_tree().change_scene('res://scenes/levels/level_%s/Level.tscn' % current_level_number)
+    is_game_started = true
+
+
 func save_rerun() -> void:
     if RERUNS.get(current_level_number):
         RERUNS[current_level_number] += 1
@@ -117,12 +124,6 @@ func save_rerun() -> void:
     file.close()
 
 
-func change_scene() -> void:
-    #warning-ignore:RETURN_VALUE_DISCARDED
-    get_tree().change_scene('res://scenes/levels/level_%s/Level.tscn' % current_level_number)
-    is_game_started = true
-
-
 func change_level() -> void:
     is_need_change_level = false
     change_scene()
@@ -132,6 +133,7 @@ func change_level() -> void:
 func external_start_level(level_number: int) -> void:
     current_level_number = level_number
     is_need_change_level = true
+
     restore_rerun()
 
     if level_number > maximum_level_number:
@@ -156,4 +158,5 @@ func external_next_level() -> void:
     else:
         current_level_number = 1
         is_game_started = false
+
         GlobalMain.external_game_end()
