@@ -4,14 +4,20 @@ class_name Weapon
 
 export(PackedScene) var BulletScene: PackedScene
 
-const ACCELERATION_SPEED := Vector2(1000.0, 1000.0)
+const ACCELERATION_SPEED_NORMAL := 300.0
+const ACCELERATION_SPEED_SMALL := 400.0
 var current_rotation_degrees := -1
 
 onready var shot_audio_node := $Shot as AudioStreamPlayer2D
 onready var bullets_node := $'/root/Level/Bullets' as Node2D
 
 
-func external_shot(move_animation_node: AnimationPlayer, sprite_node: Sprite, player_center: Vector2) -> void:
+func external_shot(
+    move_animation_node: AnimationPlayer,
+    sprite_node: Sprite,
+    player_center: Vector2,
+    is_normal_shape: bool
+) -> void:
     var is_idle := move_animation_node.current_animation == 'idle'
     var is_corner := move_animation_node.current_animation == 'corner'
     var is_horizontal := move_animation_node.current_animation == 'horizontal'
@@ -69,7 +75,10 @@ func external_shot(move_animation_node: AnimationPlayer, sprite_node: Sprite, pl
         current_rotation_degrees = rotation_degrees
 
         if can_shoot(rotation_degrees):
-            shoot(player_center, acceleration_vector)
+            var acceleration := ACCELERATION_SPEED_NORMAL if is_normal_shape else ACCELERATION_SPEED_SMALL
+            var acceleration_speed := acceleration * acceleration_vector
+
+            shoot(player_center, acceleration_speed)
 
 
 func can_shoot(rotation_degrees: int) -> bool:
@@ -81,10 +90,11 @@ func can_shoot(rotation_degrees: int) -> bool:
     return true
 
 
-func shoot(player_center: Vector2, acceleration_vector: Vector2) -> void:
+func shoot(player_center: Vector2, acceleration_speed: Vector2) -> void:
     var bullet_node := BulletScene.instance() as Bullet
     bullet_node.position = player_center
-    bullet_node.set_linear_velocity(acceleration_vector * ACCELERATION_SPEED)
+
+    bullet_node.set_linear_velocity(acceleration_speed)
 
     shot_audio_node.play()
     bullets_node.call_deferred('add_child', bullet_node)

@@ -6,8 +6,6 @@
 z_index = 1
 z_as_relative = false
 script = ExtResource( 1 )
-levels_count = 2
-embients_each = 2
 
 [node name="Embient" type="AudioStreamPlayer" parent="."]
 pause_mode = 2

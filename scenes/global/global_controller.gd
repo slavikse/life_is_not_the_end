@@ -1,19 +1,20 @@
 extends Node2D
 
-# Индекс музыки сопоставляется с индексом уровня.
-# Если значение по индексу не меняется, значит трек продолжает играть.
-export var levels_count := 1
-export var embients_each := 1
-
 const LEVELS := []
 const EMBIENTS := []
 
 const LEVELS_FILE_NAME := "user://levels.bin"
 const RERUNS := {}
 
+# \\\ Изменяются вручную когда нужно изменить количество уровней и фоновую музыку ///
+var levels_count := 2
+# Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
+var embients_each := 1
+# ///\\\
+
 var current_level_number := 1
-var previous_embient_number := -1
-var maximum_level_number := -1
+var maximum_level_number := 1
+var previous_embient_number := 0
 
 var is_game_started := false
 var is_need_change_level := false
@@ -23,7 +24,7 @@ onready var embient_audio_node := $Embient as AudioStreamPlayer
 
 
 func _ready() -> void:
-    levels_init()
+    game_init()
     restore_level()
     restore_rerun()
     play_embient()
@@ -37,10 +38,10 @@ func _process(_delta: float) -> void:
         change_level()
 
     if is_game_started and Input.is_action_just_pressed('game_reload_current_scene'):
-        reload_level_next_tick()
+        is_need_reload_level = true
 
 
-func levels_init() -> void:
+func game_init() -> void:
     var embients_index := 1
 
     for level_index in range(levels_count):
@@ -48,7 +49,7 @@ func levels_init() -> void:
         LEVELS.append(level_index_next)
         EMBIENTS.append(embients_index)
 
-        if level_index_next % embients_each == 0:
+        if level_index_next % embients_each == 0 and embients_index + 1 <= levels_count:
             embients_index += 1
 
 
@@ -59,6 +60,14 @@ func restore_level() -> void:
         #warning-ignore:RETURN_VALUE_DISCARDED
         file.open(LEVELS_FILE_NAME, File.READ)
         current_level_number = int(file.get_as_text())
+
+        # Защита от пустого файла сохранения.
+        if current_level_number == 0:
+            current_level_number = 1
+
+        elif current_level_number > levels_count:
+            current_level_number = levels_count
+
         maximum_level_number = current_level_number
 
     file.close()
@@ -77,6 +86,7 @@ func restore_rerun() -> void:
 
 
 func play_embient() -> void:
+    # Начинает отсчет с 0, так как уровни начинаются с 1.
     var embient_number := int(EMBIENTS[current_level_number - 1])
 
     if previous_embient_number != embient_number:
@@ -119,8 +129,14 @@ func change_level() -> void:
     play_embient()
 
 
-func reload_level_next_tick() -> void:
-    is_need_reload_level = true
+func external_start_level(level_number: int) -> void:
+    current_level_number = level_number
+    is_need_change_level = true
+    restore_rerun()
+
+    if level_number > maximum_level_number:
+        maximum_level_number = level_number
+        save_level()
 
 
 func save_level() -> void:
@@ -131,19 +147,13 @@ func save_level() -> void:
     file.close()
 
 
-func external_start_level(level_number: int) -> void:
-    current_level_number = level_number
-    is_need_change_level = true
-
-    if level_number > maximum_level_number:
-        maximum_level_number = level_number
-        save_level()
-
-
 func external_next_level() -> void:
-    if current_level_number < LEVELS.size():
-        external_start_level(current_level_number + 1)
+    var next_level_number := current_level_number + 1
+
+    if next_level_number <= levels_count:
+        external_start_level(next_level_number)
 
     else:
         current_level_number = 1
-        GlobalMain.external_menu_show()
+        is_game_started = false
+        GlobalMain.external_game_end()

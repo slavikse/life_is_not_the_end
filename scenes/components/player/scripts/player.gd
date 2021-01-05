@@ -13,7 +13,7 @@ var animations := preload('./transform/animations.gd').new()
 
 var is_first_entered := false
 var velocity := Vector2.ZERO;
-# 1 - Когда только что приземлился. Больше 1, когда стоит на полу.
+# 1 - Когда только что приземлился. Больше 1, когда стоит на поверхности.
 var is_landed_counter := 0
 var is_can_zoom_out := true
 var is_level_complete := false
@@ -43,8 +43,10 @@ func _physics_process(_delta: float) -> void:
 
     moving()
     jumping()
-    shoot()
     zoom()
+
+    if is_first_entered:
+        shoot()
 
     velocity = move_and_slide(velocity, FLOOR)
 
@@ -88,7 +90,7 @@ func shoot() -> void:
 
     var center_y := position.y - OFFSET_NORMAL_SHAPE if shape.is_normal_shape else position.y - OFFSET_SMALL_SHAPE;
     var player_center := Vector2(position.x, center_y)
-    weapon_node.external_shot(move_animation_node, sprite_node, player_center)
+    weapon_node.external_shot(move_animation_node, sprite_node, player_center, shape.is_normal_shape)
 
 
 func zoom() -> void:

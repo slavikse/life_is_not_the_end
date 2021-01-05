@@ -1,20 +1,20 @@
-const N_JUMP_POWER := 90.0
-const N_JUMP_UP_MULTIPLIER := 0.95
-const N_JUMP_DOWN_MULTIPLIER := 1.01
-const N_ROOF := 900.0
+const N_JUMP_POWER := 80.0
+const N_JUMP_UP_MULTIPLIER := 0.92
+const N_JUMP_DOWN_MULTIPLIER := 1.001
+const N_ROOF := 800.0
 
-const S_JUMP_POWER := 92.5
-const S_JUMP_UP_MULTIPLIER := 0.97
-const S_JUMP_DOWN_MULTIPLIER := 1.005
-const S_ROOF := 1030.0
+const S_JUMP_POWER := 90.0
+const S_JUMP_UP_MULTIPLIER := 0.94
+const S_JUMP_DOWN_MULTIPLIER := 1.0001
+const S_ROOF := 1000.0
 
-# При изменении, обновить VERTICAL_VELOCITY_DEFAULT.
-const GRAVITY := 25.0
-
-# JUMP_UP_MULTIPLIER - Должно быть меньше или равно 1.0
-# JUMP_DOWN_MULTIPLIER - Должно быть больше или равно 1.0
+# JUMP_UP_MULTIPLIER - Должно быть >= 0.9 и <= 1.0
+# JUMP_DOWN_MULTIPLIER - Должно быть <= 0.9 и >= 1.0
 
 # N - Normal Shape | S - Small Shape
+
+# При изменении, обновить VERTICAL_VELOCITY_DEFAULT.
+const GRAVITY := 20.0
 
 # Начальное состояние Normal Shape (N_): shape.gd -> is_normal_shape := true
 var current_gravity := GRAVITY
