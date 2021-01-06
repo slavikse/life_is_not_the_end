@@ -307,6 +307,7 @@ func _on_Levels_pressed() -> void:
 
     levels_button_active_index = GlobalController.current_level_number - 1
     levels_buttons = levels_buttons_container_node.get_children()
+
     change_button_active(levels_button_active_index, levels_buttons)
 
     yield(get_tree().create_timer(0.001), 'timeout')

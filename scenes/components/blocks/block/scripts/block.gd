@@ -5,7 +5,7 @@ class_name Block
 export(int, 4) var health := 0
 export(PackedScene) var BlockDestroyScene: PackedScene
 
-const MAX_HEALTH := 4
+const MAX_HEALTH := 5
 
 onready var blocks_node := get_parent() as Node2D
 onready var health_animation_node := $Health as AnimationPlayer
@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 func update_health_display() -> void:
-    if health > 0 and health <= MAX_HEALTH:
+    if health > 0 and health < MAX_HEALTH:
         health_animation_node.play('hp%s' % health)
 
 

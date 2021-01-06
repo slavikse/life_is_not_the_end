@@ -4,7 +4,7 @@ class_name Weapon
 
 export(PackedScene) var BulletScene: PackedScene
 
-const ACCELERATION_SPEED_NORMAL := 300.0
+const ACCELERATION_SPEED_NORMAL := 200.0
 const ACCELERATION_SPEED_SMALL := 400.0
 var current_rotation_degrees := -1
 

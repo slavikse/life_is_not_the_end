@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/embient.ogg-0d6b256fb056898daa393c8f87878357.oggstr"
+
+[deps]
+
+source_file="res://scenes/levels/level_06/embient.ogg"
+dest_files=[ "res://.import/embient.ogg-0d6b256fb056898daa393c8f87878357.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

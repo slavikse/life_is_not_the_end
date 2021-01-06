@@ -4,7 +4,6 @@
 
 [node name="BackgroundBlack" type="Sprite"]
 scale = Vector2( 200, 200 )
-z_index = -100
 z_as_relative = false
 texture = ExtResource( 1 )
 __meta__ = {

@@ -1,0 +1,152 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/zones/backgrounds/BackgroundBlack.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/zones/force_zoom_out/ForceZoomOut.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/blocks/exit/Exit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/zones/game_area/GameArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/traps/shuriken/Shuriken.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/components/blocks/activation/Activation.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/components/blocks/block/Block.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/components/zones/backgrounds/BackgroundLight.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://fonts/Overlorder.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://scenes/rooms/Room_02.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/rooms/Room_03.tscn" type="PackedScene" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 12 )
+
+[node name="Level" type="Node2D"]
+position = Vector2( 0, 10000 )
+script = ExtResource( 1 )
+DeadPlayerScene = ExtResource( 11 )
+
+[node name="BackgroundLight" parent="." instance=ExtResource( 10 )]
+scale = Vector2( 1000, 1000 )
+
+[node name="BackgroundBlack" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Activation" parent="." instance=ExtResource( 8 )]
+position = Vector2( 288, -112 )
+z_index = 1
+
+[node name="Exit" parent="." instance=ExtResource( 4 )]
+position = Vector2( 476, 240 )
+
+[node name="Bullets" type="Node2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Rooms" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Room_02" parent="Rooms" instance=ExtResource( 13 )]
+position = Vector2( 576, 112 )
+
+[node name="Room_03" parent="Rooms" instance=ExtResource( 14 )]
+position = Vector2( 1152, -80 )
+
+[node name="Zones" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GameArea" parent="Zones" instance=ExtResource( 5 )]
+visible = false
+light_mask = 0
+monitorable = false
+
+[node name="ForceZoomOut" parent="Zones" instance=ExtResource( 3 )]
+position = Vector2( 160, -48 )
+
+[node name="Blocks" type="Node2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 480, 272 )
+
+[node name="Block3" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 416, -176 )
+health = 1
+
+[node name="Block2" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 32, -176 )
+health = 3
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 224, -176 )
+health = 2
+
+[node name="Block7" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 416, 144 )
+health = 1
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 32, 16 )
+health = 1
+
+[node name="Block8" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 96, 208 )
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 224, 80 )
+health = 1
+
+[node name="Shurikens" type="Node2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 32, -227 )
+
+[node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 232, -227 )
+
+[node name="Shuriken4" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 296, -163 )
+
+[node name="Shuriken3" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 416, 93 )
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 32, -16 )
+
+[node name="Tips" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="RerunTime" type="Timer" parent="Tips"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Rerun" type="Label" parent="Tips"]
+margin_left = 3.0
+margin_top = -155.0
+margin_right = 67.0
+margin_bottom = -96.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Tips/RerunTime" to="." method="_on_RerunTime_timeout"]

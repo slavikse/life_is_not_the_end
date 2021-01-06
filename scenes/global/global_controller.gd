@@ -1,9 +1,9 @@
 extends Node2D
 
 # \\\/// Изменяются вручную когда нужно изменить количество уровней и фоновую музыку.
-const LEVELS_COUNT := 2
+const LEVELS_COUNT := 5
 # Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
-const EMBIENTS_EACH := 1
+const EMBIENTS_EACH := 5
 # ///\\\
 
 const LEVELS := []
@@ -12,6 +12,7 @@ const EMBIENTS := []
 const LEVELS_FILE_NAME := "user://levels.bin"
 const RERUNS := {}
 
+# TODO 1
 var current_level_number := 1
 var maximum_level_number := 1
 var previous_embient_number := 0
@@ -93,7 +94,15 @@ func play_embient() -> void:
     if previous_embient_number != embient_number:
         previous_embient_number = embient_number
 
-        var embient_audio := load('res://scenes/levels/level_%s/embient.ogg' % embient_number) as AudioStream
+        var embient_path := ''
+
+        if current_level_number < 10:
+            embient_path = 'res://scenes/levels/level_0%s/embient.ogg' % embient_number
+
+        else:
+            embient_path = 'res://scenes/levels/level_%s/Level.tscn' % embient_number
+
+        var embient_audio := load(embient_path) as AudioStream
         embient_audio_node.set_stream(embient_audio)
         embient_audio_node.play()
 
@@ -105,8 +114,16 @@ func reload_level() -> void:
 
 
 func change_scene() -> void:
+    var level_path := ''
+
+    if current_level_number < 10:
+        level_path = 'res://scenes/levels/level_0%s/Level.tscn' % current_level_number
+
+    else:
+        level_path = 'res://scenes/levels/level_%s/Level.tscn' % current_level_number
+
     #warning-ignore:RETURN_VALUE_DISCARDED
-    get_tree().change_scene('res://scenes/levels/level_%s/Level.tscn' % current_level_number)
+    get_tree().change_scene(level_path)
     is_game_started = true
 
 
