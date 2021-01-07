@@ -1,10 +1,10 @@
 extends Node2D
 
-# \\\/// Изменяются вручную когда нужно изменить количество уровней и фоновую музыку.
-const LEVELS_COUNT := 5
+# \/ Изменяются вручную когда нужно изменить количество уровней и фоновую музыку.
+const LEVELS_COUNT := 6
 # Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
 const EMBIENTS_EACH := 5
-# ///\\\
+# /!\
 
 const LEVELS := []
 const EMBIENTS := []
@@ -12,9 +12,9 @@ const EMBIENTS := []
 const LEVELS_FILE_NAME := "user://levels.bin"
 const RERUNS := {}
 
-# TODO 1
 var current_level_number := 1
-var maximum_level_number := 1
+# TODO 1
+var maximum_level_number := 6
 var previous_embient_number := 0
 
 var is_game_started := false
@@ -52,7 +52,7 @@ func game_init() -> void:
         EMBIENTS.append(embients_index)
 
         if level_index_next % EMBIENTS_EACH == 0 and embients_index + 1 <= LEVELS_COUNT:
-            embients_index += 1
+            embients_index += EMBIENTS_EACH
 
 
 func restore_level() -> void:

@@ -70,18 +70,19 @@ func jumping() -> void:
         velocity.y = jump.ceiling(velocity.y, shape.is_normal_shape)
 
     velocity.y = jump.continuous_jumping(velocity.y, shape.is_normal_shape)
-
     has_landing()
 
 
 func has_landing() -> void:
-    if round(velocity.y) == jump.GRAVITY:
+    var y := round(velocity.y)
+
+    if y == jump.GRAVITY:
         is_landed_counter += 1
 
         if is_landed_counter == 1 and is_first_entered:
             floor_audio_node.play()
 
-    else:
+    elif y != jump.GRAVITY * 2:
         is_landed_counter = 0
 
 

@@ -100,7 +100,7 @@ position = Vector2( 301, -35 )
 position = Vector2( 96, -16 )
 
 [node name="Control" parent="." instance=ExtResource( 13 )]
-position = Vector2( -464, -240 )
+position = Vector2( -390, -183 )
 
 [node name="Tips" type="Node2D" parent="."]
 position = Vector2( -1, 0 )
@@ -136,10 +136,10 @@ __meta__ = {
 }
 
 [node name="Controls" type="Label" parent="Tips"]
-margin_left = -464.0
-margin_top = -320.0
-margin_right = -256.0
-margin_bottom = -226.0
+margin_left = -350.0
+margin_top = -258.0
+margin_right = -142.0
+margin_bottom = -164.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "Controls"

@@ -13,9 +13,21 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Line1" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( -168, -8 )
+polygon = PoolVector2Array( 112, 8, 112, 384, 128, 384, 128, 8 )
+
+[node name="Line2" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( 298, 3 )
+scale = Vector2( 1.40909, 1 )
+polygon = PoolVector2Array( -240, 384, 112, 384, 112, 368, -240, 368 )
+
 [node name="Title6" type="Label" parent="."]
+margin_left = 22.0
 margin_top = -2.0
-margin_right = 95.0
+margin_right = 117.0
 margin_bottom = 57.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -29,9 +41,9 @@ __meta__ = {
 }
 
 [node name="Value5" type="Label" parent="."]
-margin_left = 226.0
+margin_left = 184.0
 margin_top = -2.0
-margin_right = 246.0
+margin_right = 204.0
 margin_bottom = 57.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -40,11 +52,15 @@ custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
 text = "R"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title2" type="Label" parent="."]
-margin_top = 176.0
-margin_right = 100.0
-margin_bottom = 235.0
+margin_left = 17.0
+margin_top = 175.0
+margin_right = 117.0
+margin_bottom = 234.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -57,10 +73,10 @@ __meta__ = {
 }
 
 [node name="Value" type="Label" parent="."]
-margin_left = 216.0
-margin_top = 176.0
-margin_right = 246.0
-margin_bottom = 235.0
+margin_left = 184.0
+margin_top = 175.0
+margin_right = 214.0
+margin_bottom = 234.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -73,9 +89,10 @@ __meta__ = {
 }
 
 [node name="Title3" type="Label" parent="."]
-margin_top = 58.0
-margin_right = 80.0
-margin_bottom = 117.0
+margin_left = 37.0
+margin_top = 57.0
+margin_right = 117.0
+margin_bottom = 116.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -88,10 +105,10 @@ __meta__ = {
 }
 
 [node name="Value2" type="Label" parent="."]
-margin_left = 226.0
-margin_top = 58.0
-margin_right = 246.0
-margin_bottom = 117.0
+margin_left = 184.0
+margin_top = 57.0
+margin_right = 204.0
+margin_bottom = 116.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -99,11 +116,15 @@ custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
 text = "A"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title4" type="Label" parent="."]
-margin_top = 117.0
-margin_right = 90.0
-margin_bottom = 176.0
+margin_left = 27.0
+margin_top = 116.0
+margin_right = 117.0
+margin_bottom = 175.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -111,12 +132,15 @@ custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
 text = "RIGHT"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Value3" type="Label" parent="."]
-margin_left = 226.0
-margin_top = 117.0
-margin_right = 246.0
-margin_bottom = 176.0
+margin_left = 184.0
+margin_top = 116.0
+margin_right = 204.0
+margin_bottom = 175.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -129,9 +153,10 @@ __meta__ = {
 }
 
 [node name="Title5" type="Label" parent="."]
-margin_top = 235.0
-margin_right = 85.0
-margin_bottom = 294.0
+margin_left = 32.0
+margin_top = 234.0
+margin_right = 117.0
+margin_bottom = 293.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -141,22 +166,26 @@ align = 1
 valign = 1
 
 [node name="Value4" type="Label" parent="."]
-margin_left = 146.0
-margin_top = 235.0
-margin_right = 246.0
-margin_bottom = 294.0
+margin_left = 184.0
+margin_top = 234.0
+margin_right = 359.0
+margin_bottom = 293.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
-text = "SPACE"
+text = "SPACE / UP"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title7" type="Label" parent="."]
-margin_top = 294.0
-margin_right = 95.0
-margin_bottom = 353.0
+margin_left = 22.0
+margin_top = 293.0
+margin_right = 117.0
+margin_bottom = 352.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -164,12 +193,15 @@ custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
 text = "Menu"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Value6" type="Label" parent="."]
-margin_left = 186.0
-margin_top = 294.0
-margin_right = 246.0
-margin_bottom = 353.0
+margin_left = 184.0
+margin_top = 293.0
+margin_right = 244.0
+margin_bottom = 352.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )

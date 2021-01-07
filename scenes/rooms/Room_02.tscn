@@ -8,7 +8,7 @@
 [node name="Room" type="Node2D"]
 
 [node name="Activation" parent="." instance=ExtResource( 3 )]
-position = Vector2( 544, 32 )
+position = Vector2( 288, 96 )
 z_index = 1
 
 [node name="Zones" type="Node2D" parent="."]
@@ -17,7 +17,7 @@ __meta__ = {
 }
 
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 2 )]
-position = Vector2( 96, -224 )
+position = Vector2( 96, -160 )
 
 [node name="Blocks" type="Node2D" parent="."]
 z_index = 1
@@ -27,18 +27,17 @@ __meta__ = {
 
 [node name="Block" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 224, -32 )
-health = 2
 
 [node name="Block7" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 352, 32 )
-health = 1
+position = Vector2( 352, 96 )
+health = 2
 
 [node name="Block5" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 480, -96 )
+position = Vector2( 352, -32 )
 health = 2
 
 [node name="Block8" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 544, -352 )
+position = Vector2( 416, -288 )
 health = 1
 
 [node name="Block6" parent="Blocks" instance=ExtResource( 4 )]
@@ -47,16 +46,17 @@ position = Vector2( 288, -160 )
 [node name="Block2" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 32, 96 )
 
+[node name="Block9" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 96, 96 )
+health = 3
+
 [node name="Block3" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 32, -416 )
-health = 1
-
-[node name="Block9" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( -32, -224 )
 health = 2
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 288, -352 )
+health = 1
 
 [node name="Shurikens" type="Node2D" parent="."]
 z_index = 1
@@ -74,7 +74,7 @@ position = Vector2( 45, -467 )
 position = Vector2( 301, -403 )
 
 [node name="Shuriken9" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 493, -147 )
+position = Vector2( 365, -83 )
 
 [node name="Shuriken4" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 221, -123 )

@@ -50,6 +50,9 @@ monitorable = false
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 13 )]
 position = Vector2( 288, 80 )
 
+[node name="ForceZoomOut2" parent="Zones" instance=ExtResource( 13 )]
+position = Vector2( 224, -240 )
+
 [node name="Blocks" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -60,14 +63,19 @@ position = Vector2( 224, -48 )
 
 [node name="Block3" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 32, 16 )
-health = 2
+health = 3
 
 [node name="Block2" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 224, -368 )
+position = Vector2( 352, -432 )
+health = 4
+
+[node name="Block7" parent="Blocks" instance=ExtResource( 5 )]
+position = Vector2( 96, -432 )
 health = 3
 
 [node name="Block5" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 288, -304 )
+position = Vector2( 224, -368 )
+health = 1
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 416, 208 )
@@ -85,20 +93,23 @@ health = 2
 position = Vector2( -160, -112 )
 health = 1
 
+[node name="Block10" parent="Blocks" instance=ExtResource( 5 )]
+position = Vector2( -32, -112 )
+
 [node name="Block24" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 416, -112 )
 health = 3
 
 [node name="Block27" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 544, -240 )
+position = Vector2( 544, -304 )
+health = 1
 
 [node name="Block28" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 672, -112 )
 health = 1
 
 [node name="Block15" parent="Blocks" instance=ExtResource( 5 )]
-position = Vector2( 480, -48 )
-health = 1
+position = Vector2( 480, -112 )
 
 [node name="Block16" parent="Blocks" instance=ExtResource( 5 )]
 position = Vector2( 672, 208 )
@@ -116,16 +127,19 @@ __meta__ = {
 }
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 8 )]
-position = Vector2( 237, -419 )
+position = Vector2( 85, -483 )
+
+[node name="Shuriken6" parent="Shurikens" instance=ExtResource( 8 )]
+position = Vector2( 341, -483 )
 
 [node name="Shuriken5" parent="Shurikens" instance=ExtResource( 8 )]
 position = Vector2( -21, -291 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 8 )]
-position = Vector2( 531, -291 )
+position = Vector2( 555, -355 )
 
 [node name="Shuriken4" parent="Shurikens" instance=ExtResource( 8 )]
-position = Vector2( 667, -163 )
+position = Vector2( 683, -163 )
 
 [node name="Shuriken3" parent="Shurikens" instance=ExtResource( 8 )]
 position = Vector2( 427, -163 )
@@ -137,7 +151,7 @@ __meta__ = {
 }
 
 [node name="Activation" parent="." instance=ExtResource( 2 )]
-position = Vector2( 288, -368 )
+position = Vector2( 224, -432 )
 
 [node name="Exit" parent="." instance=ExtResource( 7 )]
 position = Vector2( 220, -80 )
