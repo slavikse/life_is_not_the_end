@@ -70,7 +70,7 @@ position = Vector2( 288, 16 )
 health = 1
 
 [node name="Block9" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( -32, -48 )
+position = Vector2( -96, -112 )
 health = 2
 
 [node name="Block5" parent="Blocks" instance=ExtResource( 9 )]

@@ -19,14 +19,14 @@ __meta__ = {
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 2 )]
 position = Vector2( 32, -160 )
 
-[node name="ForceZoomOut2" parent="Zones" instance=ExtResource( 2 )]
-position = Vector2( 224, 32 )
-
 [node name="ForceZoomOut3" parent="Zones" instance=ExtResource( 2 )]
 position = Vector2( 32, 224 )
 
+[node name="ForceZoomOut2" parent="Zones" instance=ExtResource( 2 )]
+position = Vector2( 288, 32 )
+
 [node name="ForceZoomOut4" parent="Zones" instance=ExtResource( 2 )]
-position = Vector2( -160, 32 )
+position = Vector2( -224, 32 )
 
 [node name="Blocks" type="Node2D" parent="."]
 z_index = 1
@@ -43,11 +43,11 @@ position = Vector2( 32, 96 )
 health = 2
 
 [node name="Block5" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( -32, 288 )
+position = Vector2( -32, 352 )
 health = 2
 
 [node name="Block6" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 96, 288 )
+position = Vector2( 96, 352 )
 health = 1
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
@@ -71,4 +71,4 @@ position = Vector2( 101, -19 )
 position = Vector2( -27, -19 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 29, -83 )
+position = Vector2( 21, -83 )

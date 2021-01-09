@@ -36,6 +36,7 @@ collision_layer = 256
 collision_mask = 2147483650
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_editor_description_": ""
 }
 
@@ -74,11 +75,11 @@ anims/open = SubResource( 2 )
 [node name="Opening" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 mix_target = 1
-bus = "Effect"
+bus = "Effects"
 
 [node name="Exit" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource( 5 )
-bus = "Effect"
+bus = "Effects"
 area_mask = 0
 [connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]

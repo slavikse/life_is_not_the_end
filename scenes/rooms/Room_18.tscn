@@ -17,7 +17,7 @@ __meta__ = {
 }
 
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 2 )]
-position = Vector2( 96, -224 )
+position = Vector2( 224, 96 )
 
 [node name="Blocks" type="Node2D" parent="."]
 z_index = 1
@@ -32,7 +32,16 @@ position = Vector2( 32, -96 )
 position = Vector2( 32, 32 )
 
 [node name="Block3" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 160, 160 )
+position = Vector2( 96, 288 )
+health = 2
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 96, 96 )
+health = 1
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 224, -32 )
+health = 1
 
 [node name="Shurikens" type="Node2D" parent="."]
 z_index = 1
@@ -41,7 +50,7 @@ __meta__ = {
 }
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 45, -19 )
+position = Vector2( 21, -147 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 5, -19 )
+position = Vector2( 109, -83 )

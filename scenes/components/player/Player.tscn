@@ -202,13 +202,15 @@ anims/idle = SubResource( 8 )
 anims/vertical = SubResource( 9 )
 
 [node name="Floor" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource( 7 )
-bus = "Player"
+bus = "Effects"
 area_mask = 0
 
 [node name="Zoom" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource( 8 )
-bus = "Player"
+bus = "Effects"
 area_mask = 0
 
 [node name="FirstEntered" type="Timer" parent="."]

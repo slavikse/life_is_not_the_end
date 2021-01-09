@@ -16,6 +16,10 @@ angular_velocity = 1.0
 angular_damp = 0.0
 applied_torque = 20.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 32 )
@@ -30,6 +34,7 @@ position = Vector2( 0, 32 )
 polygon = PoolVector2Array( -16, 0, 16, 0, 16, -8, 24, -8, 24, -16, 31, -16, 31, -48, 24, -48, 24, -56, 16, -56, 16, -63, -16, -63, -16, -56, -24, -56, -24, -48, -31, -48, -31, -16, -24, -16, -24, -8, -16, -8 )
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource( 2 )
-bus = "Player"
+bus = "Effects"
 area_mask = 2147483648

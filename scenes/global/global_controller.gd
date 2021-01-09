@@ -1,33 +1,33 @@
 extends Node2D
 
 # Изменяются вручную когда нужно изменить количество уровней и фоновую музыку.
-const LEVELS_COUNT := 10
+const LEVELS_COUNT := 11
 # Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
-const EMBIENTS_EACH := 5
+const AMBIENTS_EACH := 5
 
 const LEVELS := []
-const EMBIENTS := []
+const AMBIENTS := []
 
 const LEVELS_FILE_NAME := "user://levels.bin"
 const RERUNS := {}
 
 var current_level_number := 1
 # TODO 1
-var maximum_level_number := 10
-var previous_embient_number := 0
+var maximum_level_number := 11
+var previous_ambient_number := 0
 
 var is_game_started := false
 var is_need_change_level := false
 var is_need_reload_level := false
 
-onready var embient_audio_node := $Embient as AudioStreamPlayer
+onready var ambient_audio_node := $Ambient as AudioStreamPlayer
 
 
 func _ready() -> void:
     game_init()
     restore_level()
     restore_rerun()
-    play_embient()
+    play_ambient()
 
 
 func _process(_delta: float) -> void:
@@ -42,16 +42,16 @@ func _process(_delta: float) -> void:
 
 
 func game_init() -> void:
-    var embients_index := 1
+    var ambients_index := 1
 
     for level_index in range(LEVELS_COUNT):
         var level_index_next := level_index + 1
 
         LEVELS.append(level_index_next)
-        EMBIENTS.append(embients_index)
+        AMBIENTS.append(ambients_index)
 
-        if level_index_next % EMBIENTS_EACH == 0 and embients_index + 1 <= LEVELS_COUNT:
-            embients_index += EMBIENTS_EACH
+        if level_index_next % AMBIENTS_EACH == 0 and ambients_index + 1 <= LEVELS_COUNT:
+            ambients_index += AMBIENTS_EACH
 
 
 func restore_level() -> void:
@@ -86,24 +86,24 @@ func restore_rerun() -> void:
     file.close()
 
 
-func play_embient() -> void:
+func play_ambient() -> void:
     # Начинает отсчет с 0, так как уровни начинаются с 1.
-    var embient_number := int(EMBIENTS[current_level_number - 1])
+    var ambient_number := int(AMBIENTS[current_level_number - 1])
 
-    if previous_embient_number != embient_number:
-        previous_embient_number = embient_number
+    if previous_ambient_number != ambient_number:
+        previous_ambient_number = ambient_number
 
-        var embient_path := ''
+        var ambient_path := ''
 
         if current_level_number < 10:
-            embient_path = 'res://scenes/levels/level_0%s/embient.ogg' % embient_number
+            ambient_path = 'res://scenes/levels/level_0%s/ambient.ogg' % ambient_number
 
         else:
-            embient_path = 'res://scenes/levels/level_%s/Level.tscn' % embient_number
+            ambient_path = 'res://scenes/levels/level_%s/ambient.ogg' % ambient_number
 
-        var embient_audio := load(embient_path) as AudioStream
-        embient_audio_node.set_stream(embient_audio)
-        embient_audio_node.play()
+        var ambient_audio := load(ambient_path) as AudioStream
+        ambient_audio_node.set_stream(ambient_audio)
+        ambient_audio_node.play()
 
 
 func reload_level() -> void:
@@ -143,7 +143,7 @@ func save_rerun() -> void:
 func change_level() -> void:
     is_need_change_level = false
     change_scene()
-    play_embient()
+    play_ambient()
 
 
 func external_start_level(level_number: int) -> void:

@@ -26,7 +26,7 @@ position = Vector2( 224, -32 )
 
 [node name="Block8" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 96, 32 )
-health = 4
+health = 3
 
 [node name="Block7" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( -32, 224 )

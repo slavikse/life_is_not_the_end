@@ -13,6 +13,9 @@ mass = 2.04082
 gravity_scale = 10.0
 can_sleep = false
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 1.2, 1.2 )
@@ -46,7 +49,7 @@ polygon = PoolVector2Array( 24, -8, -8, -8, -8, -40, 24, -40 )
 [node name="Cut" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource( 3 )
-bus = "Effect"
+bus = "Effects"
 area_mask = 0
 
 [node name="Timer" type="Timer" parent="."]

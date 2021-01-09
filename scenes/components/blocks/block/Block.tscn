@@ -72,6 +72,9 @@ tracks/0/keys = {
 collision_layer = 2147483712
 collision_mask = 2147483678
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 BlockDestroyScene = ExtResource( 7 )
 
 [node name="BG" type="Sprite" parent="."]
@@ -98,10 +101,10 @@ anims/hp4 = SubResource( 4 )
 
 [node name="IncreseHealth" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
-bus = "Effect"
+bus = "Effects"
 area_mask = 0
 
 [node name="SwapBlocks" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-bus = "Effect"
+bus = "Effects"
 area_mask = 0

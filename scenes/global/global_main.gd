@@ -7,6 +7,7 @@ var is_manual_level_change := false
 # 0: Play, 1: Levels, 2: Options, 3: Credits
 var menu_button_active_index := 0
 var levels_button_active_index := 0
+var options_button_active_index := 0
 var credits_link_active_index := 0
 
 const LEVELS_BUTTONS_SCROLL_STEP := 46
@@ -14,8 +15,11 @@ var levels_buttons := []
 var credits_links := []
 
 const VOLUME_STEP := 25
-var volume := 75
-var volume_file_name := "user://volume.bin"
+const VOLUME_CHANNELS := ['Ambient', 'Effects']
+var ambient_volume := 75
+var ambient_volume_file_name := "user://ambient_volume.bin"
+var effects_volume := 75
+var effects_volume_file_name := "user://effects_volume.bin"
 
 onready var menu_camera_node := $Menu/Camera as Camera2D
 onready var menu_play_node := $Menu/Actions/Play as Button
@@ -33,7 +37,9 @@ onready var levels_buttons_container_node := $Levels/ScrollContainer/VBoxContain
 
 onready var options_camera_node := $Options/Camera as Camera2D
 onready var options_return_node := $Options/Return as Button
-onready var options_volume_node := $Options/Volume as Button
+onready var options_ambient_volume_node := $Options/AmbientVolume as Button
+onready var options_effects_volume_node := $Options/EffectsVolume as Button
+onready var options_buttons := [options_ambient_volume_node, options_effects_volume_node]
 
 onready var credits_camera_node := $Credits/Camera as Camera2D
 onready var credits_return_node := $Credits/Return as Button
@@ -44,9 +50,7 @@ onready var game_end_return_node := $GameEnd/Return as Button
 
 
 func _ready() -> void:
-    restore_volume()
-    _on_Volume_pressed(0)
-
+    restore_volumes()
     change_button_active(menu_button_active_index, menu_buttons)
 
 
@@ -73,15 +77,27 @@ func _process(_delta: float) -> void:
             ui_menu()
 
 
-func restore_volume() -> void:
-    var file := File.new() as File
+func restore_volumes() -> void:
+    ambient_volume = restore_volume(ambient_volume_file_name)
+    effects_volume = restore_volume(effects_volume_file_name)
 
-    if file.file_exists(volume_file_name):
+    for channel in VOLUME_CHANNELS:
+        _on_Volume_pressed(channel, 0)
+
+    options_button_active_index = 0
+
+
+func restore_volume(file_name: String) -> int:
+    var file := File.new() as File
+    var volume := 0
+
+    if file.file_exists(file_name):
         #warning-ignore:RETURN_VALUE_DISCARDED
-        file.open(volume_file_name, File.READ)
+        file.open(file_name, File.READ)
         volume = int(file.get_as_text())
 
     file.close()
+    return volume
 
 
 func return_from_submenu() -> void:
@@ -166,11 +182,20 @@ func change_button_active(button_active_index: int, buttons: Array) -> void:
 
 
 func ul_volume() -> void:
-    if Input.is_action_just_pressed('ui_left'):
-        _on_Volume_pressed(-25)
+    if Input.is_action_just_pressed('ui_arrow_top'):
+        options_button_active_index = prev_button_active(options_button_active_index, options_buttons)
+        change_button_active(options_button_active_index, options_buttons)
 
-    if Input.is_action_just_pressed('ui_right'):
-        _on_Volume_pressed(25)
+    elif Input.is_action_just_pressed('ui_arrow_bottom'):
+        options_button_active_index = next_button_active(options_button_active_index, options_buttons)
+        change_button_active(options_button_active_index, options_buttons)
+
+    else:
+        if Input.is_action_just_pressed('ui_left'):
+            _on_Volume_pressed(VOLUME_CHANNELS[options_button_active_index], -VOLUME_STEP)
+
+        if Input.is_action_just_pressed('ui_right'):
+            _on_Volume_pressed(VOLUME_CHANNELS[options_button_active_index], VOLUME_STEP)
 
 
 func ui_credits() -> void:
@@ -251,41 +276,73 @@ func game_start(level := 0) -> void:
     menu_play_node.text = 'RESUME'
 
 
-func _on_Volume_pressed(value := VOLUME_STEP) -> void:
-    volume += value
+func _on_AmbientVolume_pressed() -> void:
+    _on_Volume_pressed(VOLUME_CHANNELS[0], VOLUME_STEP)
 
+
+func _on_EffectsVolume_pressed() -> void:
+    _on_Volume_pressed(VOLUME_CHANNELS[1], VOLUME_STEP)
+
+
+func _on_Volume_pressed(bus_name: String, volume_value: int) -> void:
+    var file_name := ''
+    var volume := 0
+
+    if bus_name == 'Ambient':
+        options_button_active_index = 0
+        file_name = ambient_volume_file_name
+        ambient_volume += volume_value
+
+        volume = normalize_volume(ambient_volume)
+        ambient_volume = volume
+    elif bus_name == 'Effects':
+        options_button_active_index = 1
+        file_name = effects_volume_file_name
+        effects_volume += volume_value
+
+        volume = normalize_volume(effects_volume)
+        effects_volume = volume
+
+    change_button_active(options_button_active_index, options_buttons)
+    options_buttons[options_button_active_index].text = str(volume)
+
+    change_volume(bus_name, volume)
+    save_volume(file_name, volume)
+
+
+func normalize_volume(volume: int) -> int:
     if volume < 0:
-        volume = VOLUME_STEP * 4
+        volume = 100
 
-    elif volume > VOLUME_STEP * 4:
+    elif volume > 100:
         volume = 0
 
-    options_volume_node.text = str(volume)
+    return volume
 
-    save_volume()
 
-    var bus_idx := AudioServer.get_bus_index("Master")
+func change_volume(bus_name: String, volume: int) -> void:
+    var bus_idx := AudioServer.get_bus_index(bus_name)
 
     if volume == 0:
-        AudioServer.set_bus_volume_db(bus_idx, -80)
+        AudioServer.set_bus_volume_db(bus_idx, -80.0)
 
     elif volume == VOLUME_STEP:
-        AudioServer.set_bus_volume_db(bus_idx, -20)
+        AudioServer.set_bus_volume_db(bus_idx, -20.0)
 
     elif volume == VOLUME_STEP * 2:
-        AudioServer.set_bus_volume_db(bus_idx, -10)
+        AudioServer.set_bus_volume_db(bus_idx, -10.0)
 
     elif volume == VOLUME_STEP * 3:
-        AudioServer.set_bus_volume_db(bus_idx, 0)
+        AudioServer.set_bus_volume_db(bus_idx, 0.0)
 
     elif volume == VOLUME_STEP * 4:
-        AudioServer.set_bus_volume_db(bus_idx, 10)
+        AudioServer.set_bus_volume_db(bus_idx, 6.0)
 
 
-func save_volume() -> void:
+func save_volume(file_name: String, volume: int) -> void:
     var file := File.new() as File
     #warning-ignore:RETURN_VALUE_DISCARDED
-    file.open(volume_file_name, File.WRITE)
+    file.open(file_name, File.WRITE)
     file.store_string(str(volume))
     file.close()
 
@@ -353,6 +410,7 @@ func _on_Level_pressed(level: int) -> void:
 func _on_Options_pressed() -> void:
     menu_button_active_index = 2
     change_button_active(menu_button_active_index, menu_buttons)
+    change_button_active(options_button_active_index, options_buttons)
 
     options_camera_node.current = true
     is_submenu_shown = true

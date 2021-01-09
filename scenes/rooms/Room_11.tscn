@@ -30,7 +30,7 @@ position = Vector2( 96, 96 )
 health = 2
 
 [node name="Block8" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 288, 96 )
+position = Vector2( 224, 96 )
 health = 1
 
 [node name="Block9" parent="Blocks" instance=ExtResource( 4 )]
@@ -49,11 +49,11 @@ position = Vector2( -32, 32 )
 health = 1
 
 [node name="Block2" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( -224, -32 )
+position = Vector2( -160, -32 )
 health = 2
 
 [node name="Block3" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( -288, -96 )
+position = Vector2( -96, -160 )
 health = 3
 
 [node name="Shurikens" type="Node2D" parent="."]
@@ -63,7 +63,7 @@ __meta__ = {
 }
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( -283, -147 )
+position = Vector2( -91, -211 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( -27, -19 )

@@ -6,7 +6,10 @@
 z_index = 1
 z_as_relative = false
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Embient" type="AudioStreamPlayer" parent="."]
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-bus = "Embient"
+bus = "Ambient"

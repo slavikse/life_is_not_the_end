@@ -9,7 +9,8 @@
 light_mask = 0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 BulletScene = ExtResource( 2 )
 
@@ -23,6 +24,7 @@ offset = Vector2( 8, -16 )
 polygon = PoolVector2Array( -16, 16, -8, 16, 0, 16, 0, 48, -16, 48 )
 
 [node name="Shot" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource( 3 )
-bus = "Player"
+bus = "Effects"
 area_mask = 0
