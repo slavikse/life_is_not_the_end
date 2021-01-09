@@ -9,13 +9,13 @@
 [ext_resource path="res://scenes/components/blocks/exit/Exit.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/components/traps/shuriken/Shuriken.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://fonts/Overlorder.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundBlack.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/components/player/Player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/components/zones/force_zoom_out/ForceZoomOut.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=1]
-size = 80
+size = 18
 font_data = ExtResource( 10 )
 
 [node name="Level" type="Node2D"]
@@ -171,10 +171,9 @@ one_shot = true
 autostart = true
 
 [node name="Rerun" type="Label" parent="Tips"]
-margin_left = 3.0
-margin_top = -154.0
-margin_right = 67.0
-margin_bottom = -95.0
+margin_top = -126.0
+margin_right = 64.0
+margin_bottom = -94.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "0"

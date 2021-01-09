@@ -63,16 +63,13 @@ __meta__ = {
 position = Vector2( 85, -339 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( -3, -19 )
+position = Vector2( 13, -19 )
 
 [node name="Shuriken4" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 13, -51 )
+position = Vector2( 29, -51 )
 
 [node name="Shuriken5" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 29, -83 )
-
-[node name="Shuriken6" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 45, -115 )
+position = Vector2( 45, -83 )
 
 [node name="Shuriken3" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 77, -19 )
+position = Vector2( -43, 173 )

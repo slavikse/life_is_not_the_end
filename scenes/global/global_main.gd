@@ -9,7 +9,7 @@ var menu_button_active_index := 0
 var levels_button_active_index := 0
 var credits_link_active_index := 0
 
-const LEVELS_BUTTONS_SCROLL_STEP := 69
+const LEVELS_BUTTONS_SCROLL_STEP := 46
 var levels_buttons := []
 var credits_links := []
 
@@ -248,7 +248,7 @@ func game_start(level := 0) -> void:
     game_continue()
 
     yield(get_tree().create_timer(0.1), 'timeout')
-    menu_play_node.text = 'Resume'
+    menu_play_node.text = 'RESUME'
 
 
 func _on_Volume_pressed(value := VOLUME_STEP) -> void:
@@ -261,6 +261,7 @@ func _on_Volume_pressed(value := VOLUME_STEP) -> void:
         volume = 0
 
     options_volume_node.text = str(volume)
+
     save_volume()
 
     var bus_idx := AudioServer.get_bus_index("Master")
@@ -327,10 +328,10 @@ func update_levels_buttons() -> void:
         level_button_node.show()
 
         if levels_button_count < 10:
-            level_button_node.text = "Level 0%s" % str(levels_button_count)
+            level_button_node.text = "LEVEL 0%s" % str(levels_button_count)
 
         else:
-            level_button_node.text = "Level %s" % str(levels_button_count)
+            level_button_node.text = "LEVEL %s" % str(levels_button_count)
 
         if levels_button_count < GlobalController.maximum_level_number:
             var complete_node := level_button_node.get_node('Complete') as Polygon2D
@@ -385,7 +386,7 @@ func _on_EffectsLink_pressed() -> void:
 
 func _on_FontLink_pressed() -> void:
     #warning-ignore:RETURN_VALUE_DISCARDED
-    OS.shell_open('https://www.fonts-online.ru/font/Overlorder')
+    OS.shell_open('https://fontlibrary.org/en/font/pixel-operator')
 
 
 func _on_Author_pressed() -> void:
@@ -398,7 +399,7 @@ func _on_Exit_pressed() -> void:
 
 
 func external_game_end() -> void:
-    menu_play_node.text = 'Play'
+    menu_play_node.text = 'PLAY'
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
     menu_button_active_index = 0

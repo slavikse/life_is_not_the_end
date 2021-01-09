@@ -11,14 +11,14 @@
 [ext_resource path="res://scenes/components/blocks/block/Block.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundLight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=11]
-[ext_resource path="res://fonts/Overlorder.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://scenes/rooms/Room_08.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/rooms/Room_09.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/rooms/Room_11.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/rooms/Room_10.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=1]
-size = 80
+size = 18
 font_data = ExtResource( 12 )
 
 [node name="Level" type="Node2D"]
@@ -101,7 +101,7 @@ position = Vector2( -96, 208 )
 health = 4
 
 [node name="Block15" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( -96, 80 )
+position = Vector2( -160, 144 )
 health = 3
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 9 )]
@@ -159,9 +159,6 @@ position = Vector2( -160, -259 )
 [node name="Shuriken7" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( -160, -299 )
 
-[node name="Shuriken8" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( -160, -339 )
-
 [node name="Shuriken9" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 8, 29 )
 
@@ -186,9 +183,8 @@ one_shot = true
 autostart = true
 
 [node name="Rerun" type="Label" parent="Tips"]
-margin_left = 3.0
-margin_top = -275.0
-margin_right = 67.0
+margin_top = -251.0
+margin_right = 64.0
 margin_bottom = -216.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
