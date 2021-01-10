@@ -113,6 +113,10 @@ health = 2
 position = Vector2( -96, 400 )
 health = 2
 
+[node name="Block19" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -160, 464 )
+health = 2
+
 [node name="Block11" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 96, 208 )
 health = 2

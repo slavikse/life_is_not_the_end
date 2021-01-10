@@ -26,7 +26,22 @@ __meta__ = {
 }
 
 [node name="Block" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 224, -32 )
+position = Vector2( 160, 32 )
+
+[node name="Block2" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( -32, -32 )
+
+[node name="Block3" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 32, -32 )
+health = 1
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 96, -32 )
+health = 1
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 32, -96 )
+health = 1
 
 [node name="Shurikens" type="Node2D" parent="."]
 z_index = 1
@@ -35,4 +50,10 @@ __meta__ = {
 }
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 229, -83 )
+position = Vector2( -19, -83 )
+
+[node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 29, -147 )
+
+[node name="Shuriken3" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 85, -83 )

@@ -42,7 +42,7 @@ health = 3
 
 [node name="Block3" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 96, -96 )
-health = 1
+health = 2
 
 [node name="Block8" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 224, -288 )
