@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundBlack.tscn" type="PackedScene" id=2]
@@ -12,9 +12,7 @@
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundLight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://scenes/rooms/Room_12.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/rooms/Room_13.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/rooms/Room_14.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/rooms/Room_15.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=1]
@@ -51,14 +49,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Room_12" parent="Rooms" instance=ExtResource( 13 )]
-position = Vector2( 448, 240 )
-
 [node name="Room_13" parent="Rooms" instance=ExtResource( 14 )]
-position = Vector2( 512, 560 )
-
-[node name="Room_14" parent="Rooms" instance=ExtResource( 15 )]
-position = Vector2( 192, 496 )
+position = Vector2( 448, 240 )
 
 [node name="Room_15" parent="Rooms" instance=ExtResource( 16 )]
 position = Vector2( -384, 240 )

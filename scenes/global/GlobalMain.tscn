@@ -382,7 +382,7 @@ visible = false
 position = Vector2( -51.6545, -199.489 )
 scale = Vector2( 2.25989, 4.49978 )
 color = Color( 0.14902, 0.196078, 0.219608, 1 )
-polygon = PoolVector2Array( 26.5562, 47.6666, 103.392, 47.6667, 103.392, 49, 26.5562, 49 )
+polygon = PoolVector2Array( 26.3971, 48.111, 103.392, 48.111, 103.392, 48.9999, 26.3971, 48.9999 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Levels"]
 margin_left = 717.0

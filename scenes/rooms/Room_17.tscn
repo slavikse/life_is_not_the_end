@@ -70,9 +70,6 @@ __meta__ = {
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 109, -147 )
 
-[node name="Shuriken5" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 37, -275 )
-
 [node name="Shuriken3" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 101, 45 )
 

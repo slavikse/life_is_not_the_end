@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundBlack.tscn" type="PackedScene" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://scenes/rooms/Room_18.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/rooms/Room_19.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/rooms/Room_20.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/rooms/Room_02.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=1]
@@ -60,9 +59,6 @@ position = Vector2( -320, -16 )
 [node name="Room_19" parent="Rooms" instance=ExtResource( 14 )]
 position = Vector2( 0, 432 )
 
-[node name="Room_20" parent="Rooms" instance=ExtResource( 15 )]
-position = Vector2( 192, -400 )
-
 [node name="Zones" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -91,23 +87,23 @@ health = 1
 
 [node name="Block2" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 32, 16 )
-health = 4
+health = 3
 
 [node name="Block3" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 96, 80 )
-health = 3
+position = Vector2( 96, 144 )
+health = 4
 
 [node name="Block5" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( -32, 208 )
 health = 3
 
-[node name="Block6" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 96, 208 )
-health = 2
+[node name="Block8" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 32, -176 )
+health = 4
 
-[node name="Block4" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( -32, 80 )
-health = 3
+[node name="Block9" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 32, -176 )
+health = 4
 
 [node name="Shurikens" type="Node2D" parent="."]
 z_index = 1
@@ -115,11 +111,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 32, -291 )
-
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 208, 93 )
+position = Vector2( 104, 93 )
+
+[node name="Shuriken4" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 40, -227 )
+
+[node name="Shuriken3" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( -32, 157 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32, -16 )

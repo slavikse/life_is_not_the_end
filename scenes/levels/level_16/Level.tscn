@@ -25,10 +25,10 @@ script = ExtResource( 1 )
 DeadPlayerScene = ExtResource( 11 )
 
 [node name="BackgroundLight" parent="." instance=ExtResource( 10 )]
+visible = false
 scale = Vector2( 1000, 1000 )
 
 [node name="BackgroundBlack" parent="." instance=ExtResource( 2 )]
-visible = false
 
 [node name="Activation" parent="." instance=ExtResource( 8 )]
 position = Vector2( 96, 208 )

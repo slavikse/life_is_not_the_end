@@ -27,16 +27,17 @@ __meta__ = {
 
 [node name="Block" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 32, -96 )
+health = 3
 
 [node name="Block2" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 32, 32 )
 
-[node name="Block3" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 96, 288 )
-health = 2
-
 [node name="Block5" parent="Blocks" instance=ExtResource( 4 )]
-position = Vector2( 96, 96 )
+position = Vector2( 160, 32 )
+health = 1
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 160, 288 )
 health = 1
 
 [node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
@@ -54,3 +55,6 @@ position = Vector2( 21, -147 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 109, -83 )
+
+[node name="Shuriken3" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 165, -19 )

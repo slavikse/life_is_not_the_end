@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundBlack.tscn" type="PackedScene" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://scenes/rooms/Room_08.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/rooms/Room_09.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/rooms/Room_11.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/rooms/Room_10.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=1]
@@ -60,9 +59,6 @@ position = Vector2( 0, -464 )
 [node name="Room_10" parent="Rooms" instance=ExtResource( 16 )]
 position = Vector2( -384, -16 )
 
-[node name="Room_11" parent="Rooms" instance=ExtResource( 15 )]
-position = Vector2( 0, 368 )
-
 [node name="Zones" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -101,12 +97,8 @@ position = Vector2( -96, 208 )
 health = 2
 
 [node name="Block15" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( -160, 144 )
+position = Vector2( -160, 208 )
 health = 2
-
-[node name="Block4" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 160, 16 )
-health = 4
 
 [node name="Block5" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 160, 80 )
@@ -167,6 +159,9 @@ position = Vector2( 56, 29 )
 
 [node name="Shuriken10" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 32, -11 )
+
+[node name="Shuriken11" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 160, 29 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32, -144 )

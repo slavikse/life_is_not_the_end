@@ -1,7 +1,7 @@
 extends Node2D
 
 # Изменяются вручную когда нужно изменить количество уровней и фоновую музыку.
-const LEVELS_COUNT := 17
+const LEVELS_COUNT := 20
 # Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
 const AMBIENTS_EACH := 5
 
@@ -13,7 +13,7 @@ const RERUNS := {}
 
 var current_level_number := 1
 # TODO 1
-var maximum_level_number := 17
+var maximum_level_number := 20
 var previous_ambient_number := 0
 
 var is_game_started := false

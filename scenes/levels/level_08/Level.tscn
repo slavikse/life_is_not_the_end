@@ -100,11 +100,11 @@ position = Vector2( 160, 16 )
 
 [node name="Block2" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 32, -176 )
-health = 2
+health = 3
 
 [node name="Block6" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 32, -304 )
-health = 3
+health = 2
 
 [node name="Block7" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( -160, -48 )
@@ -116,11 +116,11 @@ health = 3
 
 [node name="Block20" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 224, -304 )
-health = 3
+health = 1
 
 [node name="Block21" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( -32, -240 )
-health = 3
+health = 1
 
 [node name="Block22" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 224, 80 )
@@ -128,11 +128,10 @@ health = 3
 
 [node name="Block25" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 224, 208 )
-health = 3
+health = 1
 
 [node name="Block26" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 224, 464 )
-health = 2
 
 [node name="Block27" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( -160, 464 )
@@ -144,15 +143,15 @@ health = 3
 
 [node name="Block24" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( -32, 208 )
-health = 3
+health = 2
 
 [node name="Block12" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 96, -240 )
-health = 3
+health = 2
 
 [node name="Block13" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( -160, 208 )
-health = 3
+health = 2
 
 [node name="Block14" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 96, -48 )
@@ -184,7 +183,7 @@ health = 3
 
 [node name="Block10" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( -32, 336 )
-health = 4
+health = 2
 
 [node name="Block11" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( -32, 528 )

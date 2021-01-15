@@ -23,7 +23,7 @@ __meta__ = {
 
 [node name="Block" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( -160, 160 )
-health = 2
+health = 1
 
 [node name="Block7" parent="Blocks" instance=ExtResource( 4 )]
 position = Vector2( 96, 96 )

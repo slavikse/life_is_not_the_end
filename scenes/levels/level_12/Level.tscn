@@ -57,7 +57,7 @@ position = Vector2( -320, -16 )
 position = Vector2( 320, 304 )
 
 [node name="Room_13" parent="Rooms" instance=ExtResource( 15 )]
-position = Vector2( -128, 624 )
+position = Vector2( 384, -400 )
 
 [node name="Zones" type="Node2D" parent="."]
 __meta__ = {
@@ -149,7 +149,7 @@ health = 2
 
 [node name="Block12" parent="Blocks" instance=ExtResource( 9 )]
 position = Vector2( 32, 272 )
-health = 3
+health = 1
 
 [node name="Shurikens" type="Node2D" parent="."]
 z_index = 1

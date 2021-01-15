@@ -6,6 +6,7 @@ export(PackedScene) var BulletScene: PackedScene
 
 const ACCELERATION_SPEED_NORMAL := 200.0
 const ACCELERATION_SPEED_SMALL := 400.0
+
 var current_rotation_degrees := -1
 
 onready var shot_audio_node := $Shot as AudioStreamPlayer2D
@@ -75,10 +76,7 @@ func external_shot(
         current_rotation_degrees = rotation_degrees
 
         if can_shoot(rotation_degrees):
-            var acceleration := ACCELERATION_SPEED_NORMAL if is_normal_shape else ACCELERATION_SPEED_SMALL
-            var acceleration_speed := acceleration * acceleration_vector
-
-            shoot(player_center, acceleration_speed)
+            shoot(player_center, is_normal_shape, acceleration_vector)
 
 
 func can_shoot(rotation_degrees: int) -> bool:
@@ -90,10 +88,12 @@ func can_shoot(rotation_degrees: int) -> bool:
     return true
 
 
-func shoot(player_center: Vector2, acceleration_speed: Vector2) -> void:
+func shoot(player_center: Vector2, is_normal_shape: bool, acceleration_vector: Vector2) -> void:
     var bullet_node := BulletScene.instance() as Bullet
     bullet_node.position = player_center
 
+    var acceleration := ACCELERATION_SPEED_NORMAL if is_normal_shape else ACCELERATION_SPEED_SMALL
+    var acceleration_speed := acceleration * acceleration_vector
     bullet_node.set_linear_velocity(acceleration_speed)
 
     shot_audio_node.play()

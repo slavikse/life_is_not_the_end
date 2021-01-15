@@ -50,6 +50,9 @@ onready var game_end_return_node := $GameEnd/Return as Button
 
 
 func _ready() -> void:
+    OS.set_window_size(OS.get_screen_size())
+    OS.center_window()
+
     restore_volumes()
     change_button_active(menu_button_active_index, menu_buttons)
 
