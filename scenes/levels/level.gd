@@ -10,6 +10,55 @@ onready var tips_rerun_node := $Tips/Rerun as Label
 onready var closed_doors := rooms_node.get_child_count() + 1
 onready var is_character_not_added := true
 
+# Levels / Verified:
+# 01 / +
+# 02 / +
+# 03 / +
+# 04 / +
+# 05 / +
+# 06 / +
+# 07 / +
+# 08 / +
+# 09 / +
+# 10 / +
+# 11 / +
+# 12 / +
+# 13 / +
+# 14 / +
+# 15 / +
+# 16 / +
+# 17 / +
+# 18 / +
+# 19 / +
+# 20 / +
+
+# Rooms Used:
+# 01 - 1
+# 02 - 2
+# 03 - 1
+# 04 - 2
+# 05 - 2
+# 06 - 1
+# 07 - 1
+# 08 - 2
+# 09 - 2
+# 10 - 3
+# 11 - 1
+# 12 - 1
+# 13 - 2
+# 14 - 1
+# 15 - 3
+# 16 - 2
+# 17 - 3
+# 18 - 2
+# 19 - 1
+# 20 - 2
+# 21 - 2
+# 22 - 1
+# 23 - 1
+# 24 - 2
+# 25 - 1
+# 26 - 1
 
 func _ready() -> void:
     if GlobalController.RERUNS.get(GlobalController.current_level_number):

@@ -12,8 +12,7 @@ const LEVELS_FILE_NAME := "user://levels.bin"
 const RERUNS := {}
 
 var current_level_number := 1
-# TODO 1
-var maximum_level_number := 20
+var maximum_level_number := 1
 var previous_ambient_number := 0
 
 var is_game_started := false

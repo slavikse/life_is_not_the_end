@@ -8,7 +8,7 @@
 [node name="Room" type="Node2D"]
 
 [node name="Activation" parent="." instance=ExtResource( 1 )]
-position = Vector2( 288, -96 )
+position = Vector2( 32, 32 )
 z_index = 1
 
 [node name="Zones" type="Node2D" parent="."]
@@ -67,7 +67,7 @@ position = Vector2( 160, 32 )
 health = 4
 
 [node name="Block17" parent="Blocks" instance=ExtResource( 2 )]
-position = Vector2( 32, 32 )
+position = Vector2( 288, -96 )
 health = 4
 
 [node name="Block3" parent="Blocks" instance=ExtResource( 2 )]
