@@ -31,6 +31,10 @@ onready var is_character_not_added := true
 # 18 / +
 # 19 / +
 # 20 / +
+# 21 / +
+# 22 / +
+# 23 / +
+# 24 / +
 
 # Rooms Used:
 # 01 - 1
@@ -39,7 +43,7 @@ onready var is_character_not_added := true
 # 04 - 2
 # 05 - 2
 # 06 - 1
-# 07 - 1
+# 07 - 2
 # 08 - 2
 # 09 - 2
 # 10 - 3
@@ -54,11 +58,15 @@ onready var is_character_not_added := true
 # 19 - 1
 # 20 - 2
 # 21 - 2
-# 22 - 1
-# 23 - 1
+# 22 - 2
+# 23 - 3
 # 24 - 2
 # 25 - 1
-# 26 - 1
+# 26 - 2
+# 27 - 1
+# 28 - 1
+# 29 - 2
+# 30 - 1
 
 func _ready() -> void:
     if GlobalController.RERUNS.get(GlobalController.current_level_number):

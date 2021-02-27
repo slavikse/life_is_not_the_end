@@ -12,9 +12,9 @@
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundLight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://scenes/rooms/Room_26.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/rooms/Room_28.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/rooms/Room_07.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/rooms/Room_30.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/rooms/Room_26.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/rooms/Room_22.tscn" type="PackedScene" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -32,11 +32,11 @@ scale = Vector2( 1000, 1000 )
 visible = false
 
 [node name="Activation" parent="." instance=ExtResource( 8 )]
-position = Vector2( 32, 80 )
+position = Vector2( 288, 16 )
 z_index = 1
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
-position = Vector2( 220, -80 )
+position = Vector2( 1756, -784 )
 
 [node name="Bullets" type="Node2D" parent="."]
 z_index = 1
@@ -50,14 +50,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Room_07" parent="Rooms" instance=ExtResource( 15 )]
-position = Vector2( 320, -16 )
+[node name="Room_30" parent="Rooms" instance=ExtResource( 13 )]
+position = Vector2( 832, -400 )
 
-[node name="Room_26" parent="Rooms" instance=ExtResource( 13 )]
-position = Vector2( 0, 432 )
+[node name="Room_26" parent="Rooms" instance=ExtResource( 14 )]
+position = Vector2( 1280, -784 )
 
-[node name="Room_28" parent="Rooms" instance=ExtResource( 14 )]
-position = Vector2( 0, -464 )
+[node name="Room_22" parent="Rooms" instance=ExtResource( 15 )]
+position = Vector2( 1152, -272 )
 
 [node name="Zones" type="Node2D" parent="."]
 __meta__ = {
@@ -70,7 +70,10 @@ light_mask = 0
 monitorable = false
 
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 3 )]
-position = Vector2( 160, -304 )
+position = Vector2( 224, -240 )
+
+[node name="ForceZoomOut2" parent="Zones" instance=ExtResource( 3 )]
+position = Vector2( 544, -432 )
 
 [node name="Blocks" type="Node2D" parent="."]
 z_index = 1
@@ -79,42 +82,67 @@ __meta__ = {
 }
 
 [node name="Block" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 224, -48 )
+position = Vector2( 1760, -752 )
 
 [node name="Block2" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 32, -176 )
-health = 4
-
-[node name="Block10" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( -32, -176 )
-health = 2
-
-[node name="Block5" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 32, -368 )
-
-[node name="Block3" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( -160, -48 )
+position = Vector2( 224, 16 )
 health = 1
 
-[node name="Block6" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( -160, -240 )
-health = 2
+[node name="Block4" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 480, -240 )
+health = 4
 
 [node name="Block7" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 224, -240 )
-health = 2
+position = Vector2( 672, -496 )
+health = 4
 
 [node name="Block8" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 288, -368 )
+position = Vector2( 672, -432 )
+health = 4
+
+[node name="Block15" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 352, -432 )
+health = 2
+
+[node name="Block16" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 352, -688 )
 health = 1
 
 [node name="Block9" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( -224, -240 )
-health = 3
+position = Vector2( 672, -368 )
+health = 4
 
-[node name="Block4" parent="Blocks" instance=ExtResource( 9 )]
-position = Vector2( 32, 16 )
+[node name="Block10" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 672, -304 )
+health = 4
+
+[node name="Block11" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 672, -240 )
+health = 4
+
+[node name="Block12" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 672, -560 )
+health = 4
+
+[node name="Block13" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 672, -624 )
+health = 4
+
+[node name="Block14" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 672, -688 )
+health = 4
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 480, -112 )
+health = 1
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 480, 16 )
 health = 2
+
+[node name="Block3" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 32, 272 )
+health = 4
 
 [node name="Shurikens" type="Node2D" parent="."]
 z_index = 1
@@ -123,16 +151,10 @@ __meta__ = {
 }
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 32, -224 )
-
-[node name="Shuriken4" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( 296, -416 )
-
-[node name="Shuriken3" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( -152, -288 )
+position = Vector2( 224, -40 )
 
 [node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
-position = Vector2( -160, -96 )
+position = Vector2( 488, -168 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32, -16 )
