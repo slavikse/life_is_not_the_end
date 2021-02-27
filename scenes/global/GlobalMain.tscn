@@ -536,6 +536,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ResetProgress" type="Button" parent="Options"]
+margin_left = 846.0
+margin_top = 841.0
+margin_right = 1167.0
+margin_bottom = 870.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "RESET PROGRESS "
+flat = true
+align = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ResetProgressStatus" type="Label" parent="Options"]
+margin_left = 974.0
+margin_top = 880.0
+margin_right = 1129.0
+margin_bottom = 903.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+text = "DELETED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="Control" parent="Options" instance=ExtResource( 8 )]
 position = Vector2( 822, 508 )
 z_index = 1
@@ -662,23 +704,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SiteLink" type="LinkButton" parent="Credits/Links"]
-margin_left = 727.0
-margin_top = 570.0
-margin_right = 955.0
-margin_bottom = 594.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
-custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
-custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
-shortcut_in_tooltip = false
-text = "PIXSYNT.RU"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Polygon2D" type="Polygon2D" parent="Credits"]
 visible = false
 position = Vector2( 78, 131 )
@@ -764,25 +789,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Thank" type="LinkButton" parent="GameEnd"]
-margin_left = 726.0
-margin_top = 643.0
-margin_right = 954.0
-margin_bottom = 667.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
-custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
-custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
-shortcut_in_tooltip = false
-text = "PIXSYNT.RU"
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
 [node name="MENU" type="Label" parent="."]
 margin_left = -870.0
 margin_top = 446.0
@@ -846,11 +852,10 @@ __meta__ = {
 [connection signal="pressed" from="Options/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="Options/AmbientVolume" to="." method="_on_AmbientVolume_pressed"]
 [connection signal="pressed" from="Options/EffectsVolume" to="." method="_on_EffectsVolume_pressed"]
+[connection signal="pressed" from="Options/ResetProgress" to="." method="_on_ResetProgress_pressed"]
 [connection signal="pressed" from="Credits/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="Credits/Links/GodotLink" to="." method="_on_GodotLink_pressed"]
 [connection signal="pressed" from="Credits/Links/AbmientsLink" to="." method="_on_AbmientsLink_pressed"]
 [connection signal="pressed" from="Credits/Links/EffectsLink" to="." method="_on_EffectsLink_pressed"]
 [connection signal="pressed" from="Credits/Links/FontLink" to="." method="_on_FontLink_pressed"]
-[connection signal="pressed" from="Credits/Links/SiteLink" to="." method="_on_Author_pressed"]
 [connection signal="pressed" from="GameEnd/Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="GameEnd/Thank" to="." method="_on_Author_pressed"]

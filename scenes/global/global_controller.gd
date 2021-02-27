@@ -1,15 +1,15 @@
 extends Node2D
 
 # Изменяются вручную когда нужно изменить количество уровней и фоновую музыку.
-const LEVELS_COUNT := 20
+const LEVELS_COUNT := 24
 # Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
 const AMBIENTS_EACH := 5
 
-const LEVELS := []
-const AMBIENTS := []
+var LEVELS := []
+var AMBIENTS := []
 
 const LEVELS_FILE_NAME := "user://levels.bin"
-const RERUNS := {}
+var RERUNS := {}
 
 var current_level_number := 1
 var maximum_level_number := 1
@@ -23,10 +23,7 @@ onready var ambient_audio_node := $Ambient as AudioStreamPlayer
 
 
 func _ready() -> void:
-    game_init()
-    restore_level()
-    restore_rerun()
-    play_ambient()
+    external_reset_all()
 
 
 func _process(_delta: float) -> void:
@@ -38,6 +35,23 @@ func _process(_delta: float) -> void:
 
     if is_game_started and Input.is_action_just_pressed('game_reload_current_scene'):
         is_need_reload_level = true
+
+
+func external_reset_all() -> void:
+    #warning-ignore:UNSAFE_PROPERTY_ACCES
+    current_level_number = 1
+    maximum_level_number = 1
+    previous_ambient_number = 0
+
+    LEVELS = []
+    AMBIENTS = []
+    RERUNS = {}
+
+    game_init()
+
+    restore_level()
+    restore_rerun()
+    play_ambient()
 
 
 func game_init() -> void:
@@ -87,7 +101,8 @@ func restore_rerun() -> void:
 
 func play_ambient() -> void:
     # Начинает отсчет с 0, так как уровни начинаются с 1.
-    var ambient_number := int(AMBIENTS[current_level_number - 1])
+    var lvl := current_level_number - 1 if current_level_number - 1 < 20 else 16
+    var ambient_number := int(AMBIENTS[lvl])
 
     if previous_ambient_number != ambient_number:
         previous_ambient_number = ambient_number

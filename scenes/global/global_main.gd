@@ -39,7 +39,9 @@ onready var options_camera_node := $Options/Camera as Camera2D
 onready var options_return_node := $Options/Return as Button
 onready var options_ambient_volume_node := $Options/AmbientVolume as Button
 onready var options_effects_volume_node := $Options/EffectsVolume as Button
-onready var options_buttons := [options_ambient_volume_node, options_effects_volume_node]
+onready var options_reset_progress_node := $Options/ResetProgress as Button
+onready var options_reset_progress_status_node := $Options/ResetProgressStatus as Label
+onready var options_buttons := [options_ambient_volume_node, options_effects_volume_node, options_reset_progress_node]
 
 onready var credits_camera_node := $Credits/Camera as Camera2D
 onready var credits_return_node := $Credits/Return as Button
@@ -56,6 +58,8 @@ func _ready() -> void:
     restore_volumes()
     change_button_active(menu_button_active_index, menu_buttons)
 
+    options_reset_progress_status_node.hide()
+
 
 func _process(_delta: float) -> void:
     if is_submenu_shown:
@@ -67,7 +71,7 @@ func _process(_delta: float) -> void:
                 ui_levels_controls()
 
             elif menu_button_active_index == 2:
-                ul_volume()
+                ui_options()
 
             elif menu_button_active_index == 3:
                 ui_credits()
@@ -81,8 +85,8 @@ func _process(_delta: float) -> void:
 
 
 func restore_volumes() -> void:
-    ambient_volume = restore_volume(ambient_volume_file_name)
-    effects_volume = restore_volume(effects_volume_file_name)
+    ambient_volume = restore_volume(ambient_volume_file_name, ambient_volume)
+    effects_volume = restore_volume(effects_volume_file_name, effects_volume)
 
     for channel in VOLUME_CHANNELS:
         _on_Volume_pressed(channel, 0)
@@ -90,9 +94,8 @@ func restore_volumes() -> void:
     options_button_active_index = 0
 
 
-func restore_volume(file_name: String) -> int:
+func restore_volume(file_name: String, volume: int) -> int:
     var file := File.new() as File
-    var volume := 0
 
     if file.file_exists(file_name):
         #warning-ignore:RETURN_VALUE_DISCARDED
@@ -184,7 +187,7 @@ func change_button_active(button_active_index: int, buttons: Array) -> void:
     button.add_color_override('font_color', '#cfd8dc')
 
 
-func ul_volume() -> void:
+func ui_options() -> void:
     if Input.is_action_just_pressed('ui_arrow_top'):
         options_button_active_index = prev_button_active(options_button_active_index, options_buttons)
         change_button_active(options_button_active_index, options_buttons)
@@ -199,6 +202,9 @@ func ul_volume() -> void:
 
         if Input.is_action_just_pressed('ui_right'):
             _on_Volume_pressed(VOLUME_CHANNELS[options_button_active_index], VOLUME_STEP)
+
+        if options_button_active_index == 2 and Input.is_action_just_pressed('ui_enter'):
+            _on_ResetProgress_pressed()
 
 
 func ui_credits() -> void:
@@ -287,6 +293,33 @@ func _on_EffectsVolume_pressed() -> void:
     _on_Volume_pressed(VOLUME_CHANNELS[1], VOLUME_STEP)
 
 
+func _on_ResetProgress_pressed() -> void:
+    var dir := Directory.new()
+    var levels_path := "user://levels.bin"
+
+    if dir.file_exists(levels_path):
+        #warning-ignore:RETURN_VALUE_DISCARDED
+        dir.remove(levels_path)
+
+    for level_index in GlobalController.LEVELS_COUNT:
+        var level_index_normalize := int(level_index) + 1
+        var level_path := "user://level_%s" % str(level_index_normalize) + ".bin"
+
+        if dir.file_exists(level_path):
+            #warning-ignore:RETURN_VALUE_DISCARDED
+            dir.remove(level_path)
+
+    GlobalController.is_game_started = false
+    is_manual_level_change = true
+    menu_play_node.text = 'PLAY'
+
+    GlobalController.external_reset_all()
+
+    options_reset_progress_status_node.show()
+    yield(get_tree().create_timer(1.0), 'timeout')
+    options_reset_progress_status_node.hide()
+
+
 func _on_Volume_pressed(bus_name: String, volume_value: int) -> void:
     var file_name := ''
     var volume := 0
@@ -298,6 +331,7 @@ func _on_Volume_pressed(bus_name: String, volume_value: int) -> void:
 
         volume = normalize_volume(ambient_volume)
         ambient_volume = volume
+
     elif bus_name == 'Effects':
         options_button_active_index = 1
         file_name = effects_volume_file_name
@@ -447,12 +481,7 @@ func _on_EffectsLink_pressed() -> void:
 
 func _on_FontLink_pressed() -> void:
     #warning-ignore:RETURN_VALUE_DISCARDED
-    OS.shell_open('https://fontlibrary.org/en/font/pixel-operator')
-
-
-func _on_Author_pressed() -> void:
-    #warning-ignore:RETURN_VALUE_DISCARDED
-    OS.shell_open('https://pixsynt.ru')
+    OS.shell_open('https://fontlibrary.org')
 
 
 func _on_Exit_pressed() -> void:
