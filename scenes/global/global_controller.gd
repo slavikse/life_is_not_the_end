@@ -116,7 +116,7 @@ func play_ambient() -> void:
     elif previous_ambient_number != ambient_number:
         previous_ambient_number = ambient_number
 
-        if current_level_number < 10:
+        if current_level_number <= 10:
             ambient_path = 'res://scenes/levels/level_0%s/ambient.ogg' % ambient_number
 
         else:
