@@ -8,9 +8,9 @@ export(PackedScene) var BlockDestroyScene: PackedScene
 const MAX_HEALTH := 5
 
 onready var blocks_node := get_parent() as Node2D
-onready var health_animation_node := $Health as AnimationPlayer
 onready var collision_node := $Collision as CollisionPolygon2D
 onready var increase_health_audio_node := $IncreseHealth as AudioStreamPlayer2D
+onready var health_animation_node := $Health as AnimationPlayer
 onready var swap_blocks_audio_node := $SwapBlocks as AudioStreamPlayer2D
 
 

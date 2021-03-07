@@ -93,16 +93,16 @@ texture = ExtResource( 8 )
 visible = false
 polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
 
+[node name="IncreseHealth" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+bus = "Effects"
+area_mask = 0
+
 [node name="Health" type="AnimationPlayer" parent="."]
 anims/hp1 = SubResource( 1 )
 anims/hp2 = SubResource( 2 )
 anims/hp3 = SubResource( 3 )
 anims/hp4 = SubResource( 4 )
-
-[node name="IncreseHealth" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 2 )
-bus = "Effects"
-area_mask = 0
 
 [node name="SwapBlocks" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

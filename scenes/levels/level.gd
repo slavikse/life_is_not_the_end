@@ -35,6 +35,7 @@ onready var is_character_not_added := true
 # 22 / +
 # 23 / +
 # 24 / +
+# 25 / FINAL
 
 # Rooms Used:
 # 01 - 1

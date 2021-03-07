@@ -1,7 +1,7 @@
 extends Node2D
 
 # Изменяются вручную когда нужно изменить количество уровней и фоновую музыку.
-const LEVELS_COUNT := 24
+const LEVELS_COUNT := 25
 # Меняет фоновую музыку каждые N уровней. При этом в директории уровня должен находиться трек.
 const AMBIENTS_EACH := 5
 
@@ -38,7 +38,6 @@ func _process(_delta: float) -> void:
 
 
 func external_reset_all() -> void:
-    #warning-ignore:UNSAFE_PROPERTY_ACCES
     current_level_number = 1
     maximum_level_number = 1
     previous_ambient_number = 0
@@ -104,10 +103,18 @@ func play_ambient() -> void:
     var lvl := current_level_number - 1 if current_level_number - 1 < 20 else 16
     var ambient_number := int(AMBIENTS[lvl])
 
-    if previous_ambient_number != ambient_number:
-        previous_ambient_number = ambient_number
+    var ambient_path := ''
 
-        var ambient_path := ''
+    if current_level_number == 25:
+        previous_ambient_number = -1
+        ambient_path = 'res://scenes/levels/level_25/ambient.ogg'
+
+        var ambient_audio := load(ambient_path) as AudioStream
+        ambient_audio_node.set_stream(ambient_audio)
+        ambient_audio_node.play()
+
+    elif previous_ambient_number != ambient_number:
+        previous_ambient_number = ambient_number
 
         if current_level_number < 10:
             ambient_path = 'res://scenes/levels/level_0%s/ambient.ogg' % ambient_number

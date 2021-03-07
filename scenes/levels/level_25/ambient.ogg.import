@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ambient.ogg-6d234790519b1ccc6c33689610e50002.oggstr"
+
+[deps]
+
+source_file="res://scenes/levels/level_25/ambient.ogg"
+dest_files=[ "res://.import/ambient.ogg-6d234790519b1ccc6c33689610e50002.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

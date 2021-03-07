@@ -373,7 +373,7 @@ func change_volume(bus_name: String, volume: int) -> void:
         AudioServer.set_bus_volume_db(bus_idx, 0.0)
 
     elif volume == VOLUME_STEP * 4:
-        AudioServer.set_bus_volume_db(bus_idx, 6.0)
+        AudioServer.set_bus_volume_db(bus_idx, 2.0)
 
 
 func save_volume(file_name: String, volume: int) -> void:

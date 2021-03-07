@@ -783,6 +783,7 @@ custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
 text = "Thank you so much for playing my game! I hope you enjoyed the game! In the future, I will try to make games even better and more interesting!"
 align = 2
 autowrap = true
+uppercase = true
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
