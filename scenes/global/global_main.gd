@@ -489,6 +489,8 @@ func _on_Exit_pressed() -> void:
 
 
 func external_game_end() -> void:
+    GlobalController.external_start_level(1)
+
     menu_play_node.text = 'PLAY'
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
